@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios & Reservas | Paraguay Detail - Mobile Auto Detailing Premium</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="top-banner-bar">
+    <div class="top-banner-inner">
+      <div class="top-banner-text">
+        <i data-lucide="tag" style="width: 14px; height: 14px;"></i>
+        <span>Aprovechá nuestra promo especial — <strong>100% Autónomos (Agua tratada y luz propia) en Asunción, Luque y San Lorenzo</strong></span>
+      </div>
+      <button class="top-banner-close" onclick="this.closest('.top-banner-bar').style.display='none'; document.body.classList.add('banner-closed');">&times;</button>
+    </div>
+  </div>
+
+  <!-- 2. FLOATING FIXED NAVBAR -->
+  <header class="navbar-wrapper" id="navbarWrapper">
+    <div class="navbar-pill" id="navbarPill">
+      <a href="index.html" class="brand-logo-pill">
+        <span>PARAGUAY</span><span class="logo-accent">DETAIL</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="nav-item-dropdown">
+            <a href="index.html#services" class="nav-dropdown-trigger">
+              <span>Servicios</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="index.html#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="car" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Lavado & Detallado Exterior</span>
+                  <span class="dropdown-item-desc">Showroom a 2 baldes y sellado cerámico</span>
+                </div>
+              </a>
+              <a href="index.html#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="sparkles" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Limpieza Profunda de Interiores</span>
+                  <span class="dropdown-item-desc">Vapor a 140°C, tapizados y desinfección total</span>
+                </div>
+              </a>
+              <a href="index.html#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="shield-check" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Detailing Completo Insignia</span>
+                  <span class="dropdown-item-desc">Experiencia integral interior + exterior</span>
+                </div>
+              </a>
+              <a href="index.html#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="gem" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Tratamiento Cerámico 9H</span>
+                  <span class="dropdown-item-desc">Corrección de laca y protección 12 meses</span>
+                </div>
+              </a>
+              <a href="index.html#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="wrench" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Detallado de Motor</span>
+                  <span class="dropdown-item-desc">Desengrase seguro a vapor y dieléctricos</span>
+                </div>
+              </a>
+              <a href="index.html#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="sun" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Restauración de Faros</span>
+                  <span class="dropdown-item-desc">Micro-lijado óptico y sellado cerámico UV</span>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li><a href="reservas.html" style="color: #0066FF; font-weight: 700;">Reservas</a></li>
+          <li><a href="dashboard.html">Mi Cuenta</a></li>
+        </ul>
+      </nav>
+
+      <a href="tel:+595981123456" class="phone-badge-pill">
+        <div class="phone-icon-circle">
+          <i data-lucide="phone" style="width: 14px; height: 14px;"></i>
+        </div>
+        <div class="phone-text-box">
+          <span class="phone-label">Llamanos o escribinos</span>
+          <span class="phone-number">+595 981 123 456</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <!-- 3. PAGE HEADER HERO -->
+  <header class="reservas-page-header">
+    <div class="reservas-header-inner">
+      <div class="reservas-badge-pill">
+        <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+        <span>Cotizador & Agenda Online</span>
+      </div>
+      <h1 class="reservas-page-title">Precios & Paquetes</h1>
+      <p class="reservas-page-subtitle">
+        Configurá tu servicio a medida en simples pasos con cotización transparente en tiempo real y agendá tu turno a domicilio.
+      </p>
+      <div class="reservas-trust-tags">
+        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> 100% Autónomos (Agua y Luz propia)</span>
+        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> Pago al finalizar</span>
+        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> Sin costos ocultos</span>
+        <span class="reservas-trust-tag"><i data-lucide="map-pin" style="width: 16px; height: 16px;"></i> Asunción • Luque • San Lorenzo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4. PRICING & PACKAGES SIMULATOR (Multi-Stage Interactive Engine) -->
+  <section class="pricing-sim-section" id="pricing">
+    <div class="pricing-sim-container">
+
+      <!-- Multi-Stage Stepper Navigation Bar -->
+      <div class="sim-stepper-wrap">
+        <div class="sim-stepper-tabs">
+          <button type="button" class="sim-tab-btn active" id="simTab1" onclick="pricingSimulator.goToStage(1)">
+            <span class="sim-tab-num">1</span>
+            <span class="sim-tab-label">Vehículo</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab2" onclick="pricingSimulator.goToStage(2)">
+            <span class="sim-tab-num">2</span>
+            <span class="sim-tab-label">Paquete</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab3" onclick="pricingSimulator.goToStage(3)">
+            <span class="sim-tab-num">3</span>
+            <span class="sim-tab-label">Extras</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab4" onclick="pricingSimulator.goToStage(4)">
+            <span class="sim-tab-num">4</span>
+            <span class="sim-tab-label">Resumen</span>
+          </button>
+        </div>
+        <div class="sim-progress-track">
+          <div class="sim-progress-bar" id="simProgressBar" style="width: 12%;"></div>
+        </div>
+      </div>
+
+      <!-- Stages Viewport Container -->
+      <div class="sim-stages-viewport">
+
+        <!-- ETAPA 1: TAMAÑO DE VEHÍCULO -->
+        <div class="sim-stage-panel active" id="simStage1">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 1 de 4</span>
+            <h3 class="sim-stage-heading">Seleccioná el Tamaño de tu Vehículo</h3>
+            <p class="sim-stage-sub">Los precios y tiempos de trabajo se adaptan con precisión a la categoría de tu móvil.</p>
+          </div>
+
+          <div class="sim-veh-grid">
+            <!-- Size 1: Coupe / Sedan -->
+            <div class="sim-veh-card selected" data-size="coupe_sedan" onclick="pricingSimulator.selectVehicleSize('coupe_sedan')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/toyota-camry.png" alt="Toyota Camry - Coupé / Sedán" class="sim-veh-img">
+              </div>
+              <h4>Coupé / Sedán</h4>
+              <p>e.g. BMW Serie 3, Corolla, Camry, Audi A4, Mercedes Clase C, Gol</p>
+            </div>
+
+            <!-- Size 2: SUV Mediana -->
+            <div class="sim-veh-card" data-size="suv_mediana" onclick="pricingSimulator.selectVehicleSize('suv_mediana')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/mid-size-suv.png" alt="Mid Size SUV - SUV Mediana" class="sim-veh-img">
+              </div>
+              <h4>SUV Mediana (5 Asientos)</h4>
+              <p>e.g. Range Rover, RAV4, CR-V, Tucson, Hilux CS</p>
+            </div>
+
+            <!-- Size 3: Camioneta / Pick Up -->
+            <div class="sim-veh-card" data-size="pickup_suv_grande" onclick="pricingSimulator.selectVehicleSize('pickup_suv_grande')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/land-cruiser.png" alt="Land Cruiser - SUV Grande" class="sim-veh-img">
+              </div>
+              <h4>SUV Grande / Pick-Up (7 Asientos)</h4>
+              <p>e.g. Hilux CD, Ranger, SW4, Amarok, Fortuner, BMW X7</p>
+            </div>
+
+            <!-- Size 4: Van / Oversized -->
+            <div class="sim-veh-card" data-size="van_oversized" onclick="pricingSimulator.selectVehicleSize('van_oversized')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/van.png" alt="Van / Furgón Grande" class="sim-veh-img">
+              </div>
+              <h4>Van / Furgón Grande</h4>
+              <p>e.g. Mercedes Sprinter, Kia Carnival, Ford Transit, Escalade</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 2: NUESTROS PAQUETES -->
+        <div class="sim-stage-panel" id="simStage2">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 2 de 4</span>
+            <h3 class="sim-stage-heading">Seleccioná tu Paquete Principal</h3>
+            <p class="sim-stage-sub">Elegí entre nuestro servicio insignia completo o la opción especializada solo de interiores.</p>
+          </div>
+
+          <div class="sim-packages-grid">
+            <!-- Package A: Interior + Exterior (The Standard) -->
+            <div class="sim-package-card popular selected" id="pkgCardComplete" onclick="pricingSimulator.selectPackage('complete')">
+              <div class="sim-pkg-ribbon">MÁS POPULAR</div>
+              <div class="sim-pkg-tag">INTERIOR + EXTERIOR</div>
+              <h4 class="sim-pkg-title">Detallado Estándar (Completo)</h4>
+              <p class="sim-pkg-desc">Tratamiento integral completo: vapor a 140°C en cabina, lavado artesanal a 2 baldes y sellado de carrocería.</p>
+              
+              <div class="sim-pkg-price-row">
+                <span class="sim-pkg-price" id="pkgPriceComplete">Gs. 250.000</span>
+                <span class="sim-pkg-unit">/ servicio completo</span>
+              </div>
+
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado exterior a 2 baldes con shampoo pH neutro</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y llantas a presión</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aspirado profundo de alfombras, piso y baúl</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionamiento mate con filtro UV y olor a nuevo</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sellador cerámico express en cristales y carrocería</li>
+              </ul>
+
+              <button type="button" class="btn-select-pkg">
+                <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                <span id="pkgBtnTextComplete">Paquete Seleccionado</span>
+              </button>
+            </div>
+
+            <!-- Package B: Interior Only -->
+            <div class="sim-package-card" id="pkgCardInterior" onclick="pricingSimulator.selectPackage('interior')">
+              <div class="sim-pkg-tag">SOLO INTERIOR</div>
+              <h4 class="sim-pkg-title">Detallado de Interiores (Solo Interior)</h4>
+              <p class="sim-pkg-desc">Detallado profundo de habitáculo: desinfección total, nutrición de tapizados y eliminación de bacterias.</p>
+              
+              <div class="sim-pkg-price-row">
+                <span class="sim-pkg-price" id="pkgPriceInterior">Gs. 180.000</span>
+                <span class="sim-pkg-unit">/ servicio completo</span>
+              </div>
+
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Limpieza profunda de alfombras, torpedo y consola</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Eliminación de manchas difíciles, grasa y derrames</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sanitización antibacteriana y desodorización</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Nutrición de cueros genuinos o tapizados de tela</li>
+              </ul>
+
+              <button type="button" class="btn-select-pkg">
+                <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                <span id="pkgBtnTextInterior">Elegir este Paquete</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 3: EXTRAS & ADICIONALES -->
+        <div class="sim-stage-panel" id="simStage3">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 3 de 4</span>
+            <h3 class="sim-stage-heading">Tratamientos Adicionales (Opcionales)</h3>
+            <p class="sim-stage-sub">Personalizá tu experiencia sumando tratamientos especiales de alto rendimiento.</p>
+          </div>
+
+          <div class="sim-extras-grid">
+            <!-- Extra 1: Encerado Carnauba -->
+            <div class="sim-extra-card" data-extra="encerado" onclick="pricingSimulator.toggleExtra('encerado')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Encerado Premium</h4>
+                <p class="sim-extra-desc">Cera de Carnauba de grado concurso para un brillo profundo y repelencia líquida.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +35 min</span>
+                  <span class="sim-extra-price">+Gs. 60.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 2: Pulido 2 Pasos -->
+            <div class="sim-extra-card" data-extra="pulido_2pasos" onclick="pricingSimulator.toggleExtra('pulido_2pasos')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido 2 Pasos</h4>
+                <p class="sim-extra-desc">Corrección de pintura en 2 etapas: remoción de microrrayas y acabado óptico.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +120 min</span>
+                  <span class="sim-extra-price">+Gs. 200.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 3: Pulido de Faros -->
+            <div class="sim-extra-card" data-extra="pulido_faros" onclick="pricingSimulator.toggleExtra('pulido_faros')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido de Faros</h4>
+                <p class="sim-extra-desc">Lijado microprogresivo al agua y sellador cerámico UV para ópticas cristalinas.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +40 min</span>
+                  <span class="sim-extra-price">+Gs. 70.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 4: Pulido de Cristales -->
+            <div class="sim-extra-card" data-extra="pulido_cristales" onclick="pricingSimulator.toggleExtra('pulido_cristales')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido de Cristales</h4>
+                <p class="sim-extra-desc">Descontaminación con óxido de cerio y sellador antilluvia repelente al agua.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +45 min</span>
+                  <span class="sim-extra-price">+Gs. 80.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 5: Ceramic Coating 9H -->
+            <div class="sim-extra-card" data-extra="ceramic_coating" onclick="pricingSimulator.toggleExtra('ceramic_coating')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Ceramic Coating 9H</h4>
+                <p class="sim-extra-desc">Nanotecnología de alta dureza 9H con repelencia extrema y protección de 12 meses.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +180 min</span>
+                  <span class="sim-extra-price">+Gs. 350.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 4: RESUMEN Y CONFIRMACIÓN -->
+        <div class="sim-stage-panel" id="simStage4">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 4 de 4</span>
+            <h3 class="sim-stage-heading">Resumen Final de tu Configuración</h3>
+            <p class="sim-stage-sub">Revisá tu selección y agendá tu turno directamente con nuestra unidad móvil.</p>
+          </div>
+
+          <div class="sim-stage4-summary-card">
+            <div class="stage4-summary-grid">
+              <div class="stage4-item-box">
+                <span class="stage4-item-label">Vehículo Elegido</span>
+                <div class="stage4-item-value" id="stage4Vehicle">Coupé / Sedán</div>
+              </div>
+              <div class="stage4-item-box">
+                <span class="stage4-item-label">Paquete Base</span>
+                <div class="stage4-item-value" id="stage4Package">Detallado Estándar (Completo)</div>
+                <span class="stage4-item-sub" id="stage4PkgPrice">Gs. 250.000</span>
+              </div>
+            </div>
+
+            <div class="stage4-extras-box">
+              <span class="stage4-item-label">Tratamientos Adicionales</span>
+              <ul class="stage4-extras-list" id="stage4ExtrasList">
+                <li class="no-extras"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #10b981;"></i> Sin extras adicionales seleccionados</li>
+              </ul>
+            </div>
+
+            <div class="stage4-meta-row">
+              <div class="stage4-meta-item">
+                <i data-lucide="clock" style="width: 18px; height: 18px; color: #0066FF;"></i>
+                <div>
+                  <span class="meta-label">Tiempo Estimado</span>
+                  <strong id="stage4TotalTime">2h 30m</strong>
+                </div>
+              </div>
+              <div class="stage4-meta-item">
+                <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #10b981;"></i>
+                <div>
+                  <span class="meta-label">Garantía de Pago</span>
+                  <strong>Pago al finalizar el servicio</strong>
+                </div>
+              </div>
+              <div class="stage4-meta-item stage4-total-price-item">
+                <span class="meta-label">Total a Pagar</span>
+                <strong class="stage4-final-price" id="stage4TotalPrice">Gs. 250.000</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Real-Time Calculation & Multi-Stage Nav Control Bar -->
+      <div class="sim-total-bar">
+        <button type="button" class="btn-sim-prev" id="simPrevBtn" onclick="pricingSimulator.prevStage()">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+          <span>Anterior</span>
+        </button>
+
+        <div class="sim-total-breakdown">
+          <span class="sim-total-label">Configuración Actual</span>
+          <div class="sim-total-details" id="simSummaryText">Coupé / Sedán • Detallado Estándar (Completo)</div>
+          <div class="sim-total-time" id="simSummaryTime"><i data-lucide="clock" style="width: 14px; height: 14px; display: inline;"></i> Tiempo Estimado: 2h 30m • Pago al finalizar</div>
+        </div>
+
+        <div class="sim-total-price-box">
+          <span class="sim-total-price-label">Precio Estimado</span>
+          <span class="sim-total-price-val" id="simSummaryPrice">Gs. 250.000</span>
+        </div>
+
+        <button type="button" class="btn-sim-book" id="simNextBtn" onclick="pricingSimulator.nextStage()">
+          <span id="simNextBtnText">Continuar a Paquetes</span>
+          <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. TRUST PILLARS BAR (4 Value Pillars) -->
+  <section class="trust-pillars-section">
+    <div class="trust-pillars-grid">
+      <div class="trust-pillar-card">
+        <div class="pillar-icon-wrap">
+          <i data-lucide="zap" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h4>100% Autónomos</h4>
+        <p>Traemos nuestro propio tanque de agua desmineralizada y generador silencioso. No gastamos tus suministros.</p>
+      </div>
+
+      <div class="trust-pillar-card">
+        <div class="pillar-icon-wrap">
+          <i data-lucide="award" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h4>Insumos Premium</h4>
+        <p>Utilizamos químicos y selladores de primeras marcas mundiales: Gyeon, Meguiar's, Koch Chemie y Vonixx.</p>
+      </div>
+
+      <div class="trust-pillar-card">
+        <div class="pillar-icon-wrap">
+          <i data-lucide="clock" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h4>Puntualidad Garantizada</h4>
+        <p>Llegamos a tu domicilio en el horario reservado y cumplimos los tiempos estimados al pie de la letra.</p>
+      </div>
+
+      <div class="trust-pillar-card">
+        <div class="pillar-icon-wrap">
+          <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h4>Pago al Finalizar</h4>
+        <p>Inspeccionás el resultado final antes de pagar. Aceptamos transferencias bancarias, tarjetas o efectivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FAQ ACCORDION -->
+  <section class="faq-section" id="faq">
+    <div class="faq-container">
+      <div class="faq-header">
+        <span class="faq-badge">Dudas Habituales</span>
+        <h2 class="faq-title">Preguntas Frecuentes sobre Reservas</h2>
+        <p class="faq-subtitle">Todo lo que necesitás saber antes de agendar tu turno con nuestra unidad móvil.</p>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué necesito tener en mi casa o departamento para el servicio?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>¡Absolutamente nada! Nuestras camionetas son 100% autónomas: contamos con generador de electricidad propio y tanque de agua desmineralizada tratada. Solo necesitamos que el vehículo esté accesible para trabajar.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿En qué ciudades de Gran Asunción realizan el servicio a domicilio?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Brindamos cobertura completa sin costo extra de traslado en Asunción, Luque y San Lorenzo. Si tu ubicación está fuera de esta zona, podés consultarnos por WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cómo se realiza el pago del servicio?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>No cobramos nada por adelantado. El pago se efectúa al finalizar el servicio una vez que hayas revisado y aprobado el resultado de tu vehículo. Aceptamos transferencias bancarias (SIPAP), tarjetas de débito/crédito y efectivo.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué sucede si llueve el día de mi reserva?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Si contás con cochera techada, realizamos el servicio con normalidad sin problemas. En caso de estar a la intemperie y haber pronóstico de lluvia severa, reprogramamos tu turno con prioridad para el día disponible más próximo sin penalidad alguna.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo" style="color: #fff; margin-bottom: 1rem;">
+          <span class="logo-badge">PARAGUAY</span>
+          <span>DETAIL<span class="brand-sub">.</span></span>
+        </a>
+        <p style="color: var(--slate-400); font-size: 0.92rem; max-width: 320px;">
+          El servicio #1 de mobile auto detailing a domicilio en Paraguay. Devolvemos el brillo original de tu vehículo con productos de grado profesional y máxima conveniencia.
+        </p>
+        <!-- Redes Sociales & Contacto Directo Oficiales -->
+        <div class="footer-social-links">
+          <!-- Instagram -->
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-ig" title="Instagram" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/595981123456" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-wa" title="WhatsApp" aria-label="WhatsApp">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-fb" title="Facebook" aria-label="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-tiktok" title="TikTok" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01v8.47c0 1.95-.5 3.9-1.55 5.54-1.27 1.98-3.41 3.32-5.74 3.73-1.74.31-3.55.07-5.18-.7-1.89-.9-3.4-2.48-4.25-4.42-.87-1.99-.95-4.31-.22-6.32.74-2.03 2.26-3.73 4.22-4.66 1.69-.8 3.63-.98 5.46-.53v4.16c-1.08-.34-2.28-.27-3.3.2-.99.46-1.77 1.33-2.12 2.37-.36 1.05-.24 2.24.32 3.19.57.97 1.56 1.63 2.67 1.79 1.11.16 2.28-.15 3.16-.86.87-.71 1.39-1.8 1.39-2.92V.02h-1.04z"/>
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-yt" title="YouTube" aria-label="YouTube">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+          <!-- X (Twitter) -->
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-x" title="X (Twitter)" aria-label="X">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <!-- Google Reviews -->
+          <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-google" title="Google Reviews" aria-label="Google Reviews">
+            <svg width="17" height="17" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.97 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Servicios & Precios</h4>
+        <ul>
+          <li><a href="reservas.html">Detallado Estándar</a></li>
+          <li><a href="reservas.html">Detallado de Interiores</a></li>
+          <li><a href="reservas.html">Encerado Premium</a></li>
+          <li><a href="reservas.html">Pulido 2 Pasos</a></li>
+          <li><a href="reservas.html">Ceramic Coating 9H</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Cobertura</h4>
+        <ul>
+          <li><a href="index.html#coverage">Asunción</a></li>
+          <li><a href="index.html#coverage">Luque</a></li>
+          <li><a href="index.html#coverage">San Lorenzo</a></li>
+          <li><a href="index.html#coverage">Horario: Lun a Sáb 08:00 - 18:00</a></li>
+          <li><a href="index.html#coverage">Domingos Cerrado</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto & Cuenta</h4>
+        <ul>
+          <li><a href="tel:+595981123456">+595 981 123 456</a></li>
+          <li><a href="dashboard.html">Portal de Clientes</a></li>
+          <li><a href="javascript:void(0)" onclick="auth.openModal()">Iniciar Sesión</a></li>
+          <li><a href="#faq">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Paraguay Detail. Todos los derechos reservados.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <span>Tarifa: Gs. 100.000 / hora</span>
+        <span>Asunción, Paraguay</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 8. FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/595981123456?text=Hola%20Paraguay%20Detail,%20quisiera%20consultar%20por%20un%20servicio%20a%20domicilio" target="_blank" class="floating-whatsapp" title="Escribinos por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <!-- 9. AUTH MODAL -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="auth.closeModal()">&times;</button>
+      <h3 style="margin-bottom: 0.5rem;" id="authModalTitle">Iniciar Sesión</h3>
+      <p style="color: var(--slate-500); font-size: 0.88rem; margin-bottom: 1.5rem;">Accedé a tu historial de servicios, fichas de vehículos y promociones exclusivas.</p>
+
+      <form id="authForm" onsubmit="auth.handleSubmit(event)">
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label>Correo Electrónico</label>
+          <input type="email" id="authEmail" class="form-control" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label>Contraseña</label>
+          <input type="password" id="authPassword" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 1.25rem;">
+          Ingresar al Portal
+        </button>
+      </form>
+
+      <div style="text-align: center; position: relative; margin: 1.5rem 0;">
+        <span style="background: #fff; padding: 0 0.75rem; color: var(--slate-400); font-size: 0.8rem; position: relative; z-index: 1;">o continuar con</span>
+        <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--slate-200); z-index: 0;"></div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem;">
+        <button type="button" class="btn-secondary" style="flex: 1; justify-content: center;" onclick="auth.socialLogin('google')">
+          <svg style="width: 16px; height: 16px; margin-right: 0.5rem;" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.97 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+          Google
+        </button>
+        <button type="button" class="btn-secondary" style="flex: 1; justify-content: center;" onclick="auth.socialLogin('facebook')">
+          <svg style="width: 16px; height: 16px; margin-right: 0.5rem;" fill="#1877F2" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Facebook
+        </button>
+      </div>
+
+      <div style="text-align: center; font-size: 0.85rem; color: var(--slate-500);">
+        <span id="authToggleText">¿No tenés cuenta todavía?</span>
+        <a href="javascript:void(0)" onclick="auth.toggleMode()" style="color: var(--primary); font-weight: 700; margin-left: 0.25rem;" id="authToggleLink">Registrate</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Application Engine Script -->
+  <script src="app.js"></script>
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

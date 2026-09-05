@@ -728,6 +728,7 @@ const galleryModule = {
   toggleExpand() {
     const wrapper = document.getElementById("galleryWrapper");
     const overlay = document.getElementById("galleryOverlay");
+    const collapseBar = document.getElementById("galleryCollapseBar");
     if (!wrapper) return;
 
     this.isExpanded = !this.isExpanded;
@@ -736,6 +737,18 @@ const galleryModule = {
     if (overlay) {
       overlay.style.display = this.isExpanded ? "none" : "flex";
     }
+    if (collapseBar) {
+      collapseBar.style.display = this.isExpanded ? "flex" : "none";
+    }
+
+    if (!this.isExpanded) {
+      const gallerySection = document.getElementById("gallery");
+      if (gallerySection) {
+        gallerySection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    if (window.lucide) lucide.createIcons();
   }
 };
 
@@ -754,25 +767,25 @@ const pricingSimulator = {
   // Base pricing matrix per vehicle size
   pricingMatrix: {
     coupe_sedan: {
-      name: 'Coupe / Sedan',
+      name: 'Coupé / Sedán',
       wizardCat: 'sedan_hatchback',
       complete: { priceGs: 250000, durationMin: 150 },
       interior: { priceGs: 180000, durationMin: 110 }
     },
     suv_mediana: {
-      name: '5-Seat SUV / Truck',
+      name: 'SUV Mediana (5 Asientos)',
       wizardCat: 'suv_mediana',
       complete: { priceGs: 300000, durationMin: 180 },
       interior: { priceGs: 200000, durationMin: 120 }
     },
     pickup_suv_grande: {
-      name: '7-Seat SUV / Truck',
+      name: 'SUV Grande / Pick-Up (7 Asientos)',
       wizardCat: 'pickup_suv_grande',
       complete: { priceGs: 350000, durationMin: 210 },
       interior: { priceGs: 240000, durationMin: 145 }
     },
     van_oversized: {
-      name: 'Van / Oversized',
+      name: 'Van / Furgón Grande',
       wizardCat: 'pickup_suv_grande',
       complete: { priceGs: 400000, durationMin: 240 },
       interior: { priceGs: 280000, durationMin: 170 }
@@ -791,6 +804,8 @@ const pricingSimulator = {
   currentStage: 1,
 
   init() {
+    const stage1 = document.getElementById("simStage1");
+    if (!stage1) return;
     this.goToStage(1);
     this.recalculate();
   },
@@ -931,7 +946,7 @@ const pricingSimulator = {
   renderSummaryStage() {
     const vehConfig = this.pricingMatrix[this.state.vehicleSize];
     const basePkg = vehConfig[this.state.package];
-    const pkgName = this.state.package === 'complete' ? 'The Standard Detail (Interior + Exterior)' : 'Interior Detail (Solo Interior)';
+    const pkgName = this.state.package === 'complete' ? 'Detallado Estándar (Completo)' : 'Detallado de Interiores (Solo Interior)';
 
     let totalPrice = basePkg.priceGs;
     let totalMinutes = basePkg.durationMin;
@@ -1000,7 +1015,7 @@ const pricingSimulator = {
     const timeFormatted = mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
 
     // Package Name
-    const pkgName = this.state.package === 'complete' ? 'The Standard Detail' : 'Interior Detail';
+    const pkgName = this.state.package === 'complete' ? 'Detallado Estándar (Completo)' : 'Detallado de Interiores (Solo Interior)';
     
     // Extras text
     let extrasText = '';
@@ -1032,7 +1047,7 @@ const pricingSimulator = {
   transferToBooking() {
     const vehConfig = this.pricingMatrix[this.state.vehicleSize];
     const basePkg = vehConfig[this.state.package];
-    const pkgName = this.state.package === 'complete' ? 'The Standard Detail (Interior + Exterior)' : 'Interior Detail (Solo Interior)';
+    const pkgName = this.state.package === 'complete' ? 'Detallado Estándar (Interior + Exterior)' : 'Detallado de Interiores (Solo Interior)';
     
     let totalPrice = basePkg.priceGs;
     let totalMinutes = basePkg.durationMin;
@@ -1099,5 +1114,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const authBtn = document.getElementById("openAuthModalBtn");
   if (authBtn) authBtn.addEventListener("click", () => auth.openModal());
+
+  // Sticky Floating Navbar Scroll Handler
+  const navWrapper = document.getElementById("navbarWrapper");
+  if (navWrapper) {
+    const handleScroll = () => {
+      navWrapper.classList.toggle("scrolled", window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+  }
 });
 

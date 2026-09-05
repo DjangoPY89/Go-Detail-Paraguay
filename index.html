@@ -17,44 +17,115 @@
 <body>
 
   <!-- 1. TOP ANNOUNCEMENT BAR (GoDetail Royal Blue Style) -->
+  <!-- 1. TOP ANNOUNCEMENT BAR (GoDetail Royal Blue Style) -->
   <div class="top-banner-bar">
     <div class="top-banner-inner">
       <div class="top-banner-text">
         <i data-lucide="tag" style="width: 14px; height: 14px;"></i>
         <span>Aprovechá nuestra promo especial — <strong>100% Autónomos (Agua tratada y luz propia) en Asunción, Luque y San Lorenzo</strong></span>
       </div>
-      <button class="top-banner-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</button>
+      <button class="top-banner-close" onclick="this.closest('.top-banner-bar').style.display='none'; document.body.classList.add('banner-closed');">&times;</button>
     </div>
   </div>
 
+  <!-- 2. FLOATING FIXED NAVBAR (Sticky Slide & Transparent Glassmorphism) -->
+  <header class="navbar-wrapper" id="navbarWrapper">
+    <div class="navbar-pill" id="navbarPill">
+      <a href="index.html" class="brand-logo-pill">
+        <span>PARAGUAY</span><span class="logo-accent">DETAIL</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#hero">Inicio</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#services" class="nav-dropdown-trigger">
+              <span>Servicios</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="car" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Lavado & Detallado Exterior</span>
+                  <span class="dropdown-item-desc">Showroom a 2 baldes y sellado cerámico</span>
+                </div>
+              </a>
+              <a href="#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="sparkles" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Limpieza Profunda de Interiores</span>
+                  <span class="dropdown-item-desc">Vapor a 140°C, tapizados y desinfección total</span>
+                </div>
+              </a>
+              <a href="#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="shield-check" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Detailing Completo Insignia</span>
+                  <span class="dropdown-item-desc">Experiencia integral interior + exterior</span>
+                </div>
+              </a>
+              <a href="#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="gem" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Tratamiento Cerámico 9H</span>
+                  <span class="dropdown-item-desc">Corrección de laca y protección 12 meses</span>
+                </div>
+              </a>
+              <a href="#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="wrench" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Detallado de Motor</span>
+                  <span class="dropdown-item-desc">Desengrase seguro a vapor y dieléctricos</span>
+                </div>
+              </a>
+              <a href="#services" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon">
+                  <i data-lucide="sun" style="width: 17px; height: 17px;"></i>
+                </div>
+                <div class="nav-dropdown-text">
+                  <span class="dropdown-item-title">Restauración de Faros</span>
+                  <span class="dropdown-item-desc">Micro-lijado óptico y sellado cerámico UV</span>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li><a href="reservas.html">Reservas</a></li>
+          <li><a href="dashboard.html">Mi Cuenta</a></li>
+        </ul>
+      </nav>
+
+      <a href="tel:+595981123456" class="phone-badge-pill">
+        <div class="phone-icon-circle">
+          <i data-lucide="phone" style="width: 14px; height: 14px;"></i>
+        </div>
+        <div class="phone-text-box">
+          <span class="phone-label">Llamanos o escribinos</span>
+          <span class="phone-number">+595 981 123 456</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
   <div class="hero-wrapper-outer">
-    <!-- 2. FLOATING PILL NAVBAR (GoDetail Rounded White Card) -->
-    <header class="navbar-wrapper">
-      <div class="navbar-pill">
-        <a href="index.html" class="brand-logo-pill">
-          <span>PARAGUAY</span><span class="logo-accent">DETAIL</span>
-        </a>
-
-        <nav>
-          <ul class="nav-menu">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#services">Servicios</a></li>
-            <li><a href="#pricing">Precios</a></li>
-            <li><a href="dashboard.html">Mi Cuenta</a></li>
-          </ul>
-        </nav>
-
-        <a href="tel:+595981123456" class="phone-badge-pill">
-          <div class="phone-icon-circle">
-            <i data-lucide="phone" style="width: 14px; height: 14px;"></i>
-          </div>
-          <div class="phone-text-box">
-            <span class="phone-label">Llamanos o escribinos</span>
-            <span class="phone-number">+595 981 123 456</span>
-          </div>
-        </a>
-      </div>
-    </header>
+    <!-- Hero Background Video -->
+    <div class="hero-video-bg-container">
+      <video class="hero-video-bg" autoplay loop muted playsinline poster="assets/hero-video-poster.jpg">
+        <source src="assets/hero-video.mp4" type="video/mp4">
+        <source src="https://labs.google/fx/api/og-video/shared/10f1755f-a3d4-46e8-a129-b783b859574b" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
 
     <!-- 3. GODETAIL EXACT HERO SECTION -->
     <section class="godetail-hero" id="hero">
@@ -67,7 +138,7 @@
 
         <!-- Huge bold title -->
         <h1 class="hero-headline">
-          #1 Voted Car Detailing
+          #1 en Detailing a Domicilio
         </h1>
         <span class="hero-subheadline-pill">
           Mobile Detailing Profesional a Domicilio • Asunción • Luque • San Lorenzo
@@ -76,8 +147,8 @@
 
       <!-- Bottom CTAs -->
       <div class="hero-bottom-ctas">
-        <a href="#pricing" class="btn-hero-yellow">
-          <span>Ver Precios & Simular</span>
+        <a href="reservas.html" class="btn-hero-yellow">
+          <span>Ver Precios & Reservar</span>
           <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
         </a>
         <a href="#services" class="btn-hero-black">
@@ -86,6 +157,68 @@
       </div>
     </section>
   </div>
+
+  <!-- 3.5 LLEGAMOS A DONDE ESTÉS (GoDetail Mobile Convenience Section) -->
+  <section class="we-come-to-you-section" id="we-come-to-you">
+    <div class="we-come-container">
+      <div class="we-come-header">
+        <h2 class="we-come-title">Llegamos a donde estés</h2>
+        <p class="we-come-subtitle">
+          Casa, oficina, departamento — dondequiera que esté tu auto, llegamos con nuestra unidad móvil 100% equipada. <strong>No necesitamos tus tomas de agua ni electricidad.</strong>
+        </p>
+      </div>
+
+      <div class="we-come-grid">
+        <!-- Card 1: Casa -->
+        <div class="we-come-card">
+          <img src="assets/gallery-house.jpg" alt="Detailing a Domicilio en Casa" class="we-come-img" />
+          <div class="we-come-overlay">
+            <div class="we-come-card-header">
+              <i data-lucide="home" class="we-come-icon"></i>
+              <h3 class="we-come-card-title">Casa</h3>
+            </div>
+            <p class="we-come-card-desc">Llegamos directo a la entrada de tu casa — sin moverte de tu hogar.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Oficina -->
+        <div class="we-come-card">
+          <img src="assets/gallery-trx-interior.jpg" alt="Detailing a Domicilio en Oficina" class="we-come-img" />
+          <div class="we-come-overlay">
+            <div class="we-come-card-header">
+              <i data-lucide="building-2" class="we-come-icon"></i>
+              <h3 class="we-come-card-title">Oficina</h3>
+            </div>
+            <p class="we-come-card-desc">Dejá tu auto impecable mientras trabajás — nos encargamos de todo en el estacionamiento.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Departamento -->
+        <div class="we-come-card">
+          <img src="assets/gallery-apartment.jpg" alt="Detailing a Domicilio en Departamento" class="we-come-img" />
+          <div class="we-come-overlay">
+            <div class="we-come-card-header">
+              <i data-lucide="building" class="we-come-icon"></i>
+              <h3 class="we-come-card-title">Departamento</h3>
+            </div>
+            <p class="we-come-card-desc">Cochera techada o estacionamiento abierto — nos adaptamos a cualquier espacio.</p>
+          </div>
+        </div>
+
+        <!-- Card 4: Cochera & Comercial -->
+        <div class="we-come-card">
+          <img src="assets/gallery-parking.jpg" alt="Detailing en Cocheras y Edificios" class="we-come-img" />
+          <div class="we-come-overlay">
+            <div class="we-come-card-header">
+              <i data-lucide="car" class="we-come-icon"></i>
+              <h3 class="we-come-card-title">Cochera & Comercial</h3>
+            </div>
+            <p class="we-come-card-desc">Edificios multinivel o subterráneos — llevamos el detailing directo a tu lugar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 3. NUESTROS SERVICIOS (GoDetail Inspired Services Catalog) -->
   <section class="services-section" id="services">
@@ -118,61 +251,57 @@
           <p class="service-card-desc">
             Lavado artesanal a dos baldes con shampoo pH neutro, descontaminado férrico de llantas y carrocería, secado con microfibra premium y sellador cerámico express.
           </p>
-          <ul class="service-points">
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Cero rayas ni micro-swirls</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Desengrase y abrillantado de neumáticos</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Protección UV y repelencia líquida</li>
-          </ul>
-          <a href="#pricing" class="service-cta-link">
-            <span>Ver Precios & Cotizar</span>
-            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+          <div class="service-meta-row">
+            <span class="service-time-est"><i data-lucide="clock" style="width: 14px; height: 14px;"></i> ~90 - 120 min</span>
+            <span class="service-price-from">Gs. 100.000 / hr</span>
+          </div>
+          <a href="reservas.html" class="btn-service-add">
+            <span>Cotizar & Reservar</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
         </div>
 
-        <!-- Service 2: Detallado & Vapor de Interiores -->
+        <!-- Service 2: Limpieza Profunda de Interiores -->
         <div class="service-feature-card popular">
-          <div class="service-popular-pill">MÁS SOLICITADO</div>
           <div class="service-card-top">
             <div class="service-icon-box">
               <i data-lucide="sparkles" style="width: 26px; height: 26px;"></i>
             </div>
-            <span class="service-badge-tag">Higiene Profunda</span>
+            <span class="service-badge-tag tag-featured">Más Solicitado</span>
           </div>
-          <h3 class="service-card-title">Detallado & Vapor de Interiores</h3>
+          <h3 class="service-card-title">Limpieza Profunda de Interiores</h3>
           <p class="service-card-desc">
-            Higienización completa de cabina con inyección y extracción de vapor a 140°C en butacas, alfombras y baúl. Desinfección antibacteriana total y nutrición de plásticos.
+            Inyección y extracción de vapor a 140°C en tapizados y alfombras, limpieza de techos, hidratación profunda de cueros y plásticos con protección UV mate.
           </p>
-          <ul class="service-points">
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Eliminación de manchas rebeldes y olores</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Nutrición de cueros o tapizados de tela</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Torpedo y consola con acabado mate original</li>
-          </ul>
-          <a href="#pricing" class="service-cta-link">
-            <span>Ver Precios & Cotizar</span>
-            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+          <div class="service-meta-row">
+            <span class="service-time-est"><i data-lucide="clock" style="width: 14px; height: 14px;"></i> ~120 - 180 min</span>
+            <span class="service-price-from">Gs. 100.000 / hr</span>
+          </div>
+          <a href="reservas.html" class="btn-service-add">
+            <span>Cotizar & Reservar</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
         </div>
 
-        <!-- Service 3: Corrección & Pulido de Pintura -->
+        <!-- Service 3: Detailing Completo (Insignia) -->
         <div class="service-feature-card">
           <div class="service-card-top">
             <div class="service-icon-box">
-              <i data-lucide="disc" style="width: 26px; height: 26px;"></i>
+              <i data-lucide="shield-check" style="width: 26px; height: 26px;"></i>
             </div>
-            <span class="service-badge-tag">Corrección Óptica</span>
+            <span class="service-badge-tag">Full Experience</span>
           </div>
-          <h3 class="service-card-title">Corrección & Pulido de Pintura</h3>
+          <h3 class="service-card-title">Detailing Completo Insignia</h3>
           <p class="service-card-desc">
-            Tratamiento técnico rotorbital en 1 o 2 etapas para eliminar marcas circulares (swirls), micro-rayas y marcas de agua, recuperando la profundidad del color y brillo espejo.
+            La experiencia integral definitiva: incluye el servicio completo de Interior Profundo + Detallado Exterior Showroom + Encerado Premium con Carnauba.
           </p>
-          <ul class="service-points">
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Eliminación de hasta el 85% de swirls</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Acabado espejo sin hologramas</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Medición micrométrica de espesor de laca</li>
-          </ul>
-          <a href="#pricing" class="service-cta-link">
-            <span>Ver Precios & Cotizar</span>
-            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+          <div class="service-meta-row">
+            <span class="service-time-est"><i data-lucide="clock" style="width: 14px; height: 14px;"></i> ~180 - 240 min</span>
+            <span class="service-price-from">Gs. 100.000 / hr</span>
+          </div>
+          <a href="reservas.html" class="btn-service-add">
+            <span>Cotizar & Reservar</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
         </div>
 
@@ -180,135 +309,70 @@
         <div class="service-feature-card">
           <div class="service-card-top">
             <div class="service-icon-box">
-              <i data-lucide="shield-check" style="width: 26px; height: 26px;"></i>
+              <i data-lucide="gem" style="width: 26px; height: 26px;"></i>
             </div>
-            <span class="service-badge-tag">Protección 12+ Meses</span>
+            <span class="service-badge-tag">Protección 12 Meses</span>
           </div>
           <h3 class="service-card-title">Tratamiento Cerámico 9H</h3>
           <p class="service-card-desc">
-            Nanotecnología líquida de cuarzo que se funde con la pintura creando un escudo protector ultra resistente contra rayos UV, lluvia ácida, excrementos de aves y suciedad vial.
+            Corrección de pintura en 2 pasos eliminando micro-rayas (swirls) y aplicación de recubrimiento cerámico 9H con repelencia extrema al agua y polvo.
           </p>
-          <ul class="service-points">
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Dureza 9H con repelencia hidrofóbica extrema</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Facilita los lavados posteriores por meses</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Garantía escrita de durabilidad</li>
-          </ul>
-          <a href="#pricing" class="service-cta-link">
-            <span>Ver Precios & Cotizar</span>
-            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+          <div class="service-meta-row">
+            <span class="service-time-est"><i data-lucide="clock" style="width: 14px; height: 14px;"></i> ~240 - 360 min</span>
+            <span class="service-price-from">Gs. 100.000 / hr</span>
+          </div>
+          <a href="reservas.html" class="btn-service-add">
+            <span>Cotizar & Reservar</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
         </div>
 
-        <!-- Service 5: Restauración & Pulido de Faros -->
+        <!-- Service 5: Detallado de Motor -->
+        <div class="service-feature-card">
+          <div class="service-card-top">
+            <div class="service-icon-box">
+              <i data-lucide="wrench" style="width: 26px; height: 26px;"></i>
+            </div>
+            <span class="service-badge-tag">Vano Motor</span>
+          </div>
+          <h3 class="service-card-title">Limpieza y Detallado de Motor</h3>
+          <p class="service-card-desc">
+            Desengrasado seguro a vapor con dieléctricos, protección de componentes electrónicos y acondicionado de mangueras y plásticos con sellador térmico.
+          </p>
+          <div class="service-meta-row">
+            <span class="service-time-est"><i data-lucide="clock" style="width: 14px; height: 14px;"></i> ~60 min</span>
+            <span class="service-price-from">Gs. 100.000 / hr</span>
+          </div>
+          <a href="reservas.html" class="btn-service-add">
+            <span>Cotizar & Reservar</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </a>
+        </div>
+
+        <!-- Service 6: Restauración de Ópticas / Faros -->
         <div class="service-feature-card">
           <div class="service-card-top">
             <div class="service-icon-box">
               <i data-lucide="sun" style="width: 26px; height: 26px;"></i>
             </div>
-            <span class="service-badge-tag">Seguridad Nocturna</span>
+            <span class="service-badge-tag">Claridad Óptica</span>
           </div>
           <h3 class="service-card-title">Restauración de Faros</h3>
           <p class="service-card-desc">
-            Recuperación de ópticas opacas, amarillentas o rayadas mediante micro-lijado progresivo al agua y sellador cerámico UV para máxima visibilidad en tus viajes.
+            Lijado micro-progresivo de policarbonato para eliminar el tono amarillo/opaco, pulido de alta definición y sellado cerámico con filtro UV de larga duración.
           </p>
-          <ul class="service-points">
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> 100% de transparencia restaurada</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Sellador cerámico anti-amarilleo</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Mejora inmediata de potencia lumínica</li>
-          </ul>
-          <a href="#pricing" class="service-cta-link">
-            <span>Ver Precios & Cotizar</span>
-            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
-          </a>
-        </div>
-
-        <!-- Service 6: Descontaminado & Sellado de Parabrisas -->
-        <div class="service-feature-card">
-          <div class="service-card-top">
-            <div class="service-icon-box">
-              <i data-lucide="droplet" style="width: 26px; height: 26px;"></i>
-            </div>
-            <span class="service-badge-tag">Efecto Loto</span>
+          <div class="service-meta-row">
+            <span class="service-time-est"><i data-lucide="clock" style="width: 14px; height: 14px;"></i> ~60 min</span>
+            <span class="service-price-from">Gs. 100.000 / hr</span>
           </div>
-          <h3 class="service-card-title">Sellado de Cristales Antilluvia</h3>
-          <p class="service-card-desc">
-            Pulido con óxido de cerio para eliminar marcas persistentes de sarro y lluvia ácida, seguido de sellador hidrofóbico que repele el agua al instante a más de 60 km/h.
-          </p>
-          <ul class="service-points">
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Visibilidad cristalina en días de tormenta</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Menor desgaste de escobillas limpiaparabrisas</li>
-            <li><i data-lucide="check" style="width: 15px; height: 15px;"></i> Mayor seguridad al volante en carretera</li>
-          </ul>
-          <a href="#pricing" class="service-cta-link">
-            <span>Ver Precios & Cotizar</span>
-            <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+          <a href="reservas.html" class="btn-service-add">
+            <span>Cotizar & Reservar</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
         </div>
 
       </div>
 
-    </div>
-  </section>
-
-  <!-- 3.5 WE COME TO YOU (GoDetail Mobile Convenience Section) -->
-  <section class="we-come-to-you-section" id="we-come-to-you">
-    <div class="we-come-container">
-      <div class="we-come-header">
-        <h2 class="we-come-title">We come to you</h2>
-        <p class="we-come-subtitle">
-          Home, office, apartment — wherever your car is parked, we'll be there with our full mobile setup. <strong>No water or power hookup needed.</strong>
-        </p>
-      </div>
-
-      <div class="we-come-grid">
-        <!-- Card 1: House -->
-        <div class="we-come-card">
-          <img src="assets/gallery-house.jpg" alt="House Mobile Detailing" class="we-come-img" />
-          <div class="we-come-overlay">
-            <div class="we-come-card-header">
-              <i data-lucide="home" class="we-come-icon"></i>
-              <h3 class="we-come-card-title">House</h3>
-            </div>
-            <p class="we-come-card-desc">We come right to your driveway — no need to leave home.</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Office -->
-        <div class="we-come-card">
-          <img src="assets/gallery-trx-interior.jpg" alt="Office Mobile Detailing" class="we-come-img" />
-          <div class="we-come-overlay">
-            <div class="we-come-card-header">
-              <i data-lucide="building-2" class="we-come-icon"></i>
-              <h3 class="we-come-card-title">Office</h3>
-            </div>
-            <p class="we-come-card-desc">Get detailed while you work — we handle everything in the lot.</p>
-          </div>
-        </div>
-
-        <!-- Card 3: Apartment -->
-        <div class="we-come-card">
-          <img src="assets/gallery-apartment.jpg" alt="Apartment Mobile Detailing" class="we-come-img" />
-          <div class="we-come-overlay">
-            <div class="we-come-card-header">
-              <i data-lucide="building" class="we-come-icon"></i>
-              <h3 class="we-come-card-title">Apartment</h3>
-            </div>
-            <p class="we-come-card-desc">Covered garage or open lot — we make it work anywhere.</p>
-          </div>
-        </div>
-
-        <!-- Card 4: Parking Garage -->
-        <div class="we-come-card">
-          <img src="assets/gallery-parking.jpg" alt="Parking Garage Mobile Detailing" class="we-come-img" />
-          <div class="we-come-overlay">
-            <div class="we-come-card-header">
-              <i data-lucide="car" class="we-come-icon"></i>
-              <h3 class="we-come-card-title">Parking Garage</h3>
-            </div>
-            <p class="we-come-card-desc">Multi-level or underground — we bring the detail to your spot.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -319,12 +383,12 @@
       <!-- Left Column: Title, Electric Blue Text & Google Badge -->
       <div class="reviews-left-col">
         <h2 class="reviews-heading">
-          Trusted by
-          <span class="electric-blue-text">thousands of customers</span>
+          La elección de confianza de
+          <span class="electric-blue-text">miles de clientes</span>
         </h2>
         
         <p class="reviews-subtext">
-          5-Star Experience, Every Time - 100% Satisfaction Guaranteed. El servicio de mobile detailing mejor valorado de Asunción, Luque y San Lorenzo.
+          Experiencia 5 estrellas en cada visita — 100% de satisfacción garantizada. El servicio de detailing a domicilio mejor valorado de Asunción, Luque y San Lorenzo.
         </p>
 
         <!-- Google Rating Badge Card -->
@@ -341,7 +405,7 @@
           <div class="google-card-stars">★★★★★</div>
 
           <p class="google-card-rating-text">
-            <strong>4.9</strong> star rating from <strong>2,241</strong> reviews
+            Calificación <strong>4.9</strong> estrellas en más de <strong>2.241</strong> reseñas
           </p>
 
           <!-- Customer Avatar Cluster -->
@@ -350,10 +414,10 @@
             <div class="avatar-stack-item" style="background: linear-gradient(135deg, #10b981, #047857);">MV</div>
             <div class="avatar-stack-item" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">EB</div>
             <div class="avatar-stack-item" style="background: linear-gradient(135deg, #f59e0b, #d97706);">JS</div>
-            <div class="avatar-stack-badge">+2,238</div>
+            <div class="avatar-stack-badge">+2.238</div>
           </div>
 
-          <a href="#pricing" class="btn-read-reviews">
+          <a href="reservas.html" class="btn-read-reviews">
             Ver Precios & Agendar <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
         </div>
@@ -379,7 +443,7 @@
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #6366f1, #4338ca);">RC</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Rodrigo Caballero</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -398,14 +462,14 @@
               <span class="card-time">hace un día</span>
             </div>
             <p class="card-body-text">
-              Timothy did an exceptional job with the interior and exterior detail! Mis tapizados tenían manchas de café imposibles y las sacaron al 100% con vapor. <span class="card-read-more">Read more</span>
+              ¡Timothy hizo un trabajo excepcional con el detallado interior y exterior! Mis tapizados tenían manchas de café imposibles y las sacaron al 100% con inyección y extracción de vapor. <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">MB</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Muhammad Bilal Sheikh</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -424,14 +488,14 @@
               <span class="card-time">hace 2 días</span>
             </div>
             <p class="card-body-text">
-              Vin did a wonderful job! Puntuales al minuto en Asunción. No te cobran nada por adelantado y pagás recién cuando inspeccionás tu vehículo. 10/10 en seriedad.
+              ¡Vin hizo un trabajo maravilloso! Puntuales al minuto en Asunción. No te cobran nada por adelantado y pagás recién cuando inspeccionás tu vehículo. 10/10 en seriedad y profesionalismo.
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #ec4899, #be185d);">AB</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Amanda Borders</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -450,14 +514,14 @@
               <span class="card-time">hace 3 días</span>
             </div>
             <p class="card-body-text">
-              Jonas did such an incredible job on the detail of my car! Super professional. Excellent customer service! El tratamiento cerámico 9H hace que el auto se lave solo. <span class="card-read-more">Read more</span>
+              ¡Jonas hizo un trabajo increíble con el detallado de mi auto! Súper profesional y excelente atención al cliente. El sellado cerámico 9H hace que el agua y la suciedad resbalen solas. <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">MC</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Maria C.</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -483,7 +547,7 @@
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #6366f1, #4338ca);">RC</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Rodrigo Caballero</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -501,14 +565,14 @@
               <span class="card-time">hace un día</span>
             </div>
             <p class="card-body-text">
-              Timothy did an exceptional job with the interior and exterior detail! Mis tapizados tenían manchas de café imposibles y las sacaron al 100% con vapor. <span class="card-read-more">Read more</span>
+              ¡Timothy hizo un trabajo excepcional con el detallado interior y exterior! Mis tapizados tenían manchas de café imposibles y las sacaron al 100% con inyección y extracción de vapor. <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">MB</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Muhammad Bilal Sheikh</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -526,14 +590,14 @@
               <span class="card-time">hace 2 días</span>
             </div>
             <p class="card-body-text">
-              Vin did a wonderful job! Puntuales al minuto en Asunción. No te cobran nada por adelantado y pagás recién cuando inspeccionás tu vehículo. 10/10 en seriedad.
+              ¡Vin hizo un trabajo maravilloso! Puntuales al minuto en Asunción. No te cobran nada por adelantado y pagás recién cuando inspeccionás tu vehículo. 10/10 en seriedad y profesionalismo.
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #ec4899, #be185d);">AB</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Amanda Borders</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -551,14 +615,14 @@
               <span class="card-time">hace 3 días</span>
             </div>
             <p class="card-body-text">
-              Jonas did such an incredible job on the detail of my car! Super professional. Excellent customer service! El tratamiento cerámico 9H hace que el auto se lave solo. <span class="card-read-more">Read more</span>
+              ¡Jonas hizo un trabajo increíble con el detallado de mi auto! Súper profesional y excelente atención al cliente. El sellado cerámico 9H hace que el agua y la suciedad resbalen solas. <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">MC</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Maria C.</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -582,14 +646,14 @@
               <span class="card-time">hace 4 días</span>
             </div>
             <p class="card-body-text">
-              Tim in Luque did a great job. Truck looks great. He knows what he is doing. Dejaron el vano motor y los pasa ruedas como de fábrica. Muy recomendados.
+              Tim en Luque hizo un gran trabajo. La camioneta quedó impecable. Sabe perfectamente lo que hace. Dejaron el motor y los guardabarros como recién salidos de fábrica. Muy recomendados.
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #0284c7, #0369a1);">MW</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Mark Watson</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -608,14 +672,14 @@
               <span class="card-time">hace una semana</span>
             </div>
             <p class="card-body-text">
-              Von did an amazing job on my vehicle and our car seat. He was on time for the appointment and worked efficiently. Highly recommend! <span class="card-read-more">Read more</span>
+              ¡Von hizo un trabajo asombroso en mi vehículo y en las butacas de los chicos! Llegó súper puntual a la cita y trabajó con total eficiencia. ¡Altamente recomendados! <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">BI</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Braidee Ireland</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -634,14 +698,14 @@
               <span class="card-time">hace una semana</span>
             </div>
             <p class="card-body-text">
-              Corbin did an amazing job and was very professional and friendly. Would recommend to anyone looking for a great mobile detail. La comodidad de no mover el auto no tiene precio.
+              Corbin hizo un trabajo impresionante, muy profesional y amable. Lo recomiendo a cualquiera que busque un detailing a domicilio de primera. La comodidad de no mover el auto no tiene precio.
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #f59e0b, #b45309);">JM</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Jason Myer</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -660,14 +724,14 @@
               <span class="card-time">hace 2 semanas</span>
             </div>
             <p class="card-body-text">
-              Von did a great job with my car; it looks amazing! It was super easy to book online and I'm very happy with how everything turned out. <span class="card-read-more">Read more</span>
+              ¡Von hizo un trabajo genial con mi auto, quedó increíble! Fue facilísimo cotizar online y quedé súper feliz con el resultado final. <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #14b8a6, #0f766e);">MZ</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Meg Zhang</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -686,14 +750,14 @@
               <span class="card-time">hace 4 días</span>
             </div>
             <p class="card-body-text">
-              Tim in Luque did a great job. Truck looks great. He knows what he is doing. Dejaron el vano motor y los pasa ruedas como de fábrica. Muy recomendados.
+              Tim en Luque hizo un gran trabajo. La camioneta quedó impecable. Sabe perfectamente lo que hace. Dejaron el motor y los guardabarros como recién salidos de fábrica. Muy recomendados.
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #0284c7, #0369a1);">MW</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Mark Watson</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -711,14 +775,14 @@
               <span class="card-time">hace una semana</span>
             </div>
             <p class="card-body-text">
-              Von did an amazing job on my vehicle and our car seat. He was on time for the appointment and worked efficiently. Highly recommend! <span class="card-read-more">Read more</span>
+              ¡Von hizo un trabajo asombroso en mi vehículo y en las butacas de los chicos! Llegó súper puntual a la cita y trabajó con total eficiencia. ¡Altamente recomendados! <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">BI</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Braidee Ireland</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -736,14 +800,14 @@
               <span class="card-time">hace una semana</span>
             </div>
             <p class="card-body-text">
-              Corbin did an amazing job and was very professional and friendly. Would recommend to anyone looking for a great mobile detail. La comodidad de no mover el auto no tiene precio.
+              Corbin hizo un trabajo impresionante, muy profesional y amable. Lo recomiendo a cualquiera que busque un detailing a domicilio de primera. La comodidad de no mover el auto no tiene precio.
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #f59e0b, #b45309);">JM</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Jason Myer</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -761,14 +825,14 @@
               <span class="card-time">hace 2 semanas</span>
             </div>
             <p class="card-body-text">
-              Von did a great job with my car; it looks amazing! It was super easy to book online and I'm very happy with how everything turned out. <span class="card-read-more">Read more</span>
+              ¡Von hizo un trabajo genial con mi auto, quedó increíble! Fue facilísimo cotizar online y quedé súper feliz con el resultado final. <span class="card-read-more">Leer más</span>
             </p>
             <div class="card-footer-row">
               <div class="card-author-info">
                 <div class="card-author-avatar" style="background: linear-gradient(135deg, #14b8a6, #0f766e);">MZ</div>
                 <div class="card-author-names">
                   <span class="card-author-name">Meg Zhang</span>
-                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Google Verified</span>
+                  <span class="card-verified-badge"><i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> Verificado en Google</span>
                 </div>
               </div>
               <svg class="google-icon-svg" viewBox="0 0 24 24">
@@ -795,11 +859,11 @@
       <div class="gallery-header">
         <div class="gallery-pill-badge">
           <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
-          <span>Our Work</span>
+          <span>Nuestros Trabajos</span>
         </div>
 
         <h2 class="gallery-title">
-          Give Your Car The Shine It Deserves With Expert Detailing
+          Dale a tu auto el brillo que merece con un detailing profesional
         </h2>
 
         <p class="gallery-subtitle">
@@ -807,8 +871,8 @@
         </p>
 
         <div class="gallery-cta-group">
-          <a href="#pricing" class="btn-gallery-primary">
-            <span>Ver Precios & Simular</span>
+          <a href="reservas.html" class="btn-gallery-primary">
+            <span>Ver Precios & Reservar</span>
             <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
           <a href="https://wa.me/595981123456" target="_blank" class="btn-gallery-outline">
@@ -832,7 +896,7 @@
                   <span class="badge-name">Brian Johnson</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -847,7 +911,7 @@
                   <span class="badge-name">Daniel Garcia</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -862,7 +926,7 @@
                   <span class="badge-name">Rodrigo Caballero</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -880,7 +944,7 @@
                   <span class="badge-name">Angela Clark</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -895,7 +959,7 @@
                   <span class="badge-name">Jessica Thompson</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -910,7 +974,7 @@
                   <span class="badge-name">María Victoria Vera</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -925,7 +989,7 @@
                   <span class="badge-name">Carlos Benítez</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -943,7 +1007,7 @@
                   <span class="badge-name">Matthew Robinson</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -958,7 +1022,7 @@
                   <span class="badge-name">Charles Martin</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -973,7 +1037,7 @@
                   <span class="badge-name">Eduardo Benítez</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -991,7 +1055,7 @@
                   <span class="badge-name">Susan Martinez</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -1006,7 +1070,7 @@
                   <span class="badge-name">Elizabeth Harris</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -1021,7 +1085,7 @@
                   <span class="badge-name">Lucas Giménez</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -1036,7 +1100,7 @@
                   <span class="badge-name">Fernando Rojas</span>
                   <div class="badge-stars-row">
                     <span>★★★★★</span>
-                    <span class="badge-stars-text">5 stars</span>
+                    <span class="badge-stars-text">5 estrellas</span>
                   </div>
                 </div>
               </div>
@@ -1048,328 +1112,17 @@
         <!-- Bottom Fade Overlay with Show All Button -->
         <div class="gallery-fade-overlay" id="galleryOverlay">
           <button type="button" class="btn-show-all" onclick="galleryModule.toggleExpand()">
-            <span>Show all</span>
+            <span>Ver todas las fotos</span>
             <i data-lucide="chevron-down" style="width: 18px; height: 18px;"></i>
           </button>
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- 4. PRICING & PACKAGES SIMULATOR (Multi-Stage Interactive Engine) -->
-  <section class="pricing-sim-section" id="pricing">
-    <div class="pricing-sim-container">
-      
-      <!-- Section Header -->
-      <div class="pricing-sim-header">
-        <h2 class="pricing-sim-title">Pricing & Packages</h2>
-        <p class="pricing-sim-subtitle">
-          Configurá tu servicio a medida en simples pasos con cotización transparente y en tiempo real.
-        </p>
-      </div>
-
-      <!-- Multi-Stage Stepper Navigation Bar -->
-      <div class="sim-stepper-wrap">
-        <div class="sim-stepper-tabs">
-          <button type="button" class="sim-tab-btn active" id="simTab1" onclick="pricingSimulator.goToStage(1)">
-            <span class="sim-tab-num">1</span>
-            <span class="sim-tab-label">Vehículo</span>
-          </button>
-          <div class="sim-tab-connector"></div>
-          <button type="button" class="sim-tab-btn" id="simTab2" onclick="pricingSimulator.goToStage(2)">
-            <span class="sim-tab-num">2</span>
-            <span class="sim-tab-label">Paquete</span>
-          </button>
-          <div class="sim-tab-connector"></div>
-          <button type="button" class="sim-tab-btn" id="simTab3" onclick="pricingSimulator.goToStage(3)">
-            <span class="sim-tab-num">3</span>
-            <span class="sim-tab-label">Extras</span>
-          </button>
-          <div class="sim-tab-connector"></div>
-          <button type="button" class="sim-tab-btn" id="simTab4" onclick="pricingSimulator.goToStage(4)">
-            <span class="sim-tab-num">4</span>
-            <span class="sim-tab-label">Resumen</span>
-          </button>
-        </div>
-        <div class="sim-progress-track">
-          <div class="sim-progress-bar" id="simProgressBar" style="width: 12%;"></div>
-        </div>
-      </div>
-
-      <!-- Stages Viewport Container -->
-      <div class="sim-stages-viewport">
-
-        <!-- ETAPA 1: TAMAÑO DE VEHÍCULO -->
-        <div class="sim-stage-panel active" id="simStage1">
-          <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 1 de 4</span>
-            <h3 class="sim-stage-heading">Seleccioná el Tamaño de tu Vehículo</h3>
-            <p class="sim-stage-sub">Los precios y tiempos de trabajo se adaptan con precisión a la categoría de tu móvil.</p>
-          </div>
-
-          <div class="sim-veh-grid">
-            <!-- Size 1: Coupe / Sedan -->
-            <div class="sim-veh-card selected" data-size="coupe_sedan" onclick="pricingSimulator.selectVehicleSize('coupe_sedan')">
-              <div class="sim-veh-img-wrap">
-                <img src="assets/toyota-camry.png" alt="Toyota Camry - Coupe / Sedan" class="sim-veh-img">
-              </div>
-              <h4>Coupe / Sedan</h4>
-              <p>e.g. BMW Serie 3, Corolla, Camry, Audi A4, Mercedes Clase C, Gol</p>
-            </div>
-
-            <!-- Size 2: SUV Mediana -->
-            <div class="sim-veh-card" data-size="suv_mediana" onclick="pricingSimulator.selectVehicleSize('suv_mediana')">
-              <div class="sim-veh-img-wrap">
-                <img src="assets/mid-size-suv.png" alt="Mid Size SUV - 5-Seat SUV" class="sim-veh-img">
-              </div>
-              <h4>5-Seat SUV / Truck</h4>
-              <p>e.g. Range Rover, RAV4, CR-V, Tucson, Hilux CS</p>
-            </div>
-
-            <!-- Size 3: Camioneta / Pick Up -->
-            <div class="sim-veh-card" data-size="pickup_suv_grande" onclick="pricingSimulator.selectVehicleSize('pickup_suv_grande')">
-              <div class="sim-veh-img-wrap">
-                <img src="assets/land-cruiser.png" alt="Land Cruiser - 7-Seat SUV" class="sim-veh-img">
-              </div>
-              <h4>7-Seat SUV / Truck</h4>
-              <p>e.g. Hilux CD, Ranger, SW4, Amarok, Fortuner, BMW X7</p>
-            </div>
-
-            <!-- Size 4: Van / Oversized -->
-            <div class="sim-veh-card" data-size="van_oversized" onclick="pricingSimulator.selectVehicleSize('van_oversized')">
-              <div class="sim-veh-img-wrap">
-                <img src="assets/van.png" alt="Van / Oversized" class="sim-veh-img">
-              </div>
-              <h4>Van / Oversized</h4>
-              <p>e.g. Mercedes Sprinter, Kia Carnival, Ford Transit, Escalade</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ETAPA 2: NUESTROS PAQUETES -->
-        <div class="sim-stage-panel" id="simStage2">
-          <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 2 de 4</span>
-            <h3 class="sim-stage-heading">Seleccioná tu Paquete Principal</h3>
-            <p class="sim-stage-sub">Elegí entre nuestro servicio insignia completo o la opción especializada solo de interiores.</p>
-          </div>
-
-          <div class="sim-packages-grid">
-            <!-- Package A: Interior + Exterior (The Standard) -->
-            <div class="sim-package-card popular selected" id="pkgCardComplete" onclick="pricingSimulator.selectPackage('complete')">
-              <div class="sim-pkg-ribbon">MÁS POPULAR</div>
-              <div class="sim-pkg-tag">INTERIOR + EXTERIOR</div>
-              <h4 class="sim-pkg-title">The Standard Detail</h4>
-              <p class="sim-pkg-desc">Tratamiento integral completo: vapor a 140°C en cabina, lavado artesanal a 2 baldes y sellado de carrocería.</p>
-              
-              <div class="sim-pkg-price-row">
-                <span class="sim-pkg-price" id="pkgPriceComplete">Gs. 250.000</span>
-                <span class="sim-pkg-unit">/ servicio completo</span>
-              </div>
-
-              <ul class="sim-pkg-features">
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado exterior a 2 baldes con shampoo pH neutro</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y llantas a presión</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aspirado profundo de alfombras, piso y baúl</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionamiento mate con filtro UV y olor a nuevo</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sellador cerámico express en cristales y carrocería</li>
-              </ul>
-
-              <button type="button" class="btn-select-pkg">
-                <i data-lucide="check" style="width: 16px; height: 16px;"></i>
-                <span id="pkgBtnTextComplete">Paquete Seleccionado</span>
-              </button>
-            </div>
-
-            <!-- Package B: Interior Only -->
-            <div class="sim-package-card" id="pkgCardInterior" onclick="pricingSimulator.selectPackage('interior')">
-              <div class="sim-pkg-tag">INTERIOR ONLY</div>
-              <h4 class="sim-pkg-title">Interior Detail</h4>
-              <p class="sim-pkg-desc">Detallado profundo de habitáculo: desinfección total, nutrición de tapizados y eliminación de bacterias.</p>
-              
-              <div class="sim-pkg-price-row">
-                <span class="sim-pkg-price" id="pkgPriceInterior">Gs. 180.000</span>
-                <span class="sim-pkg-unit">/ servicio completo</span>
-              </div>
-
-              <ul class="sim-pkg-features">
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Limpieza profunda de alfombras, torpedo y consola</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Eliminación de manchas difíciles, grasa y derrames</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sanitización antibacteriana y desodorización</li>
-                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Nutrición de cueros genuinos o tapizados de tela</li>
-              </ul>
-
-              <button type="button" class="btn-select-pkg">
-                <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
-                <span id="pkgBtnTextInterior">Elegir este Paquete</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- ETAPA 3: EXTRAS & ADICIONALES -->
-        <div class="sim-stage-panel" id="simStage3">
-          <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 3 de 4</span>
-            <h3 class="sim-stage-heading">Tratamientos Adicionales (Opcionales)</h3>
-            <p class="sim-stage-sub">Personalizá tu experiencia sumando tratamientos especiales de alto rendimiento.</p>
-          </div>
-
-          <div class="sim-extras-grid">
-            <!-- Extra 1: Encerado Carnauba -->
-            <div class="sim-extra-card" data-extra="encerado" onclick="pricingSimulator.toggleExtra('encerado')">
-              <div class="sim-extra-checkbox">
-                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-              </div>
-              <div class="sim-extra-info">
-                <h4 class="sim-extra-title">Encerado Premium</h4>
-                <p class="sim-extra-desc">Cera de Carnauba de grado concurso para un brillo profundo y repelencia líquida.</p>
-                <div class="sim-extra-meta">
-                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +35 min</span>
-                  <span class="sim-extra-price">+Gs. 60.000</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Extra 2: Pulido 2 Pasos -->
-            <div class="sim-extra-card" data-extra="pulido_2pasos" onclick="pricingSimulator.toggleExtra('pulido_2pasos')">
-              <div class="sim-extra-checkbox">
-                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-              </div>
-              <div class="sim-extra-info">
-                <h4 class="sim-extra-title">Pulido 2 Pasos</h4>
-                <p class="sim-extra-desc">Corrección de pintura en 2 etapas: remoción de microrrayas y acabado óptico.</p>
-                <div class="sim-extra-meta">
-                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +120 min</span>
-                  <span class="sim-extra-price">+Gs. 200.000</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Extra 3: Pulido de Faros -->
-            <div class="sim-extra-card" data-extra="pulido_faros" onclick="pricingSimulator.toggleExtra('pulido_faros')">
-              <div class="sim-extra-checkbox">
-                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-              </div>
-              <div class="sim-extra-info">
-                <h4 class="sim-extra-title">Pulido de Faros</h4>
-                <p class="sim-extra-desc">Lijado microprogresivo al agua y sellador cerámico UV para ópticas cristalinas.</p>
-                <div class="sim-extra-meta">
-                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +40 min</span>
-                  <span class="sim-extra-price">+Gs. 70.000</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Extra 4: Pulido de Cristales -->
-            <div class="sim-extra-card" data-extra="pulido_cristales" onclick="pricingSimulator.toggleExtra('pulido_cristales')">
-              <div class="sim-extra-checkbox">
-                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-              </div>
-              <div class="sim-extra-info">
-                <h4 class="sim-extra-title">Pulido de Cristales</h4>
-                <p class="sim-extra-desc">Descontaminación con óxido de cerio y sellador antilluvia repelente al agua.</p>
-                <div class="sim-extra-meta">
-                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +45 min</span>
-                  <span class="sim-extra-price">+Gs. 80.000</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Extra 5: Ceramic Coating 9H -->
-            <div class="sim-extra-card" data-extra="ceramic_coating" onclick="pricingSimulator.toggleExtra('ceramic_coating')">
-              <div class="sim-extra-checkbox">
-                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-              </div>
-              <div class="sim-extra-info">
-                <h4 class="sim-extra-title">Ceramic Coating 9H</h4>
-                <p class="sim-extra-desc">Nanotecnología de alta dureza 9H con repelencia extrema y protección de 12 meses.</p>
-                <div class="sim-extra-meta">
-                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +180 min</span>
-                  <span class="sim-extra-price">+Gs. 350.000</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ETAPA 4: RESUMEN Y CONFIRMACIÓN -->
-        <div class="sim-stage-panel" id="simStage4">
-          <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 4 de 4</span>
-            <h3 class="sim-stage-heading">Resumen Final de tu Configuración</h3>
-            <p class="sim-stage-sub">Revisá tu selección y agendá tu turno directamente con nuestra unidad móvil.</p>
-          </div>
-
-          <div class="sim-stage4-summary-card">
-            <div class="stage4-summary-grid">
-              <div class="stage4-item-box">
-                <span class="stage4-item-label">Vehículo Elegido</span>
-                <div class="stage4-item-value" id="stage4Vehicle">Coupe / Sedan</div>
-              </div>
-              <div class="stage4-item-box">
-                <span class="stage4-item-label">Paquete Base</span>
-                <div class="stage4-item-value" id="stage4Package">The Standard Detail</div>
-                <span class="stage4-item-sub" id="stage4PkgPrice">Gs. 250.000</span>
-              </div>
-            </div>
-
-            <div class="stage4-extras-box">
-              <span class="stage4-item-label">Tratamientos Adicionales</span>
-              <ul class="stage4-extras-list" id="stage4ExtrasList">
-                <li class="no-extras"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #10b981;"></i> Sin extras adicionales seleccionados</li>
-              </ul>
-            </div>
-
-            <div class="stage4-meta-row">
-              <div class="stage4-meta-item">
-                <i data-lucide="clock" style="width: 18px; height: 18px; color: #0066FF;"></i>
-                <div>
-                  <span class="meta-label">Tiempo Estimado</span>
-                  <strong id="stage4TotalTime">2h 30m</strong>
-                </div>
-              </div>
-              <div class="stage4-meta-item">
-                <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #10b981;"></i>
-                <div>
-                  <span class="meta-label">Garantía de Pago</span>
-                  <strong>Pago al finalizar el servicio</strong>
-                </div>
-              </div>
-              <div class="stage4-meta-item stage4-total-price-item">
-                <span class="meta-label">Total a Pagar</span>
-                <strong class="stage4-final-price" id="stage4TotalPrice">Gs. 250.000</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Real-Time Calculation & Multi-Stage Nav Control Bar -->
-      <div class="sim-total-bar">
-        <button type="button" class="btn-sim-prev" id="simPrevBtn" onclick="pricingSimulator.prevStage()">
-          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
-          <span>Anterior</span>
-        </button>
-
-        <div class="sim-total-breakdown">
-          <span class="sim-total-label">Configuración Actual</span>
-          <div class="sim-total-details" id="simSummaryText">Coupe / Sedan • The Standard Detail</div>
-          <div class="sim-total-time" id="simSummaryTime"><i data-lucide="clock" style="width: 14px; height: 14px; display: inline;"></i> Tiempo Estimado: 2h 30m • Pago al finalizar</div>
-        </div>
-
-        <div class="sim-total-price-box">
-          <span class="sim-total-price-label">Precio Estimado</span>
-          <span class="sim-total-price-val" id="simSummaryPrice">Gs. 250.000</span>
-        </div>
-
-        <button type="button" class="btn-sim-book" id="simNextBtn" onclick="pricingSimulator.nextStage()">
-          <span id="simNextBtnText">Continuar a Paquetes</span>
-          <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+      <!-- Collapse Bar (Visible when gallery is expanded) -->
+      <div class="gallery-collapse-bar" id="galleryCollapseBar" style="display: none;">
+        <button type="button" class="btn-show-less" onclick="galleryModule.toggleExpand()">
+          <span>Ver menos fotos</span>
+          <i data-lucide="chevron-up" style="width: 18px; height: 18px;"></i>
         </button>
       </div>
 
@@ -1573,16 +1326,64 @@
         <p style="color: var(--slate-400); font-size: 0.92rem; max-width: 320px;">
           El servicio #1 de mobile auto detailing a domicilio en Paraguay. Devolvemos el brillo original de tu vehículo con productos de grado profesional y máxima conveniencia.
         </p>
+        <!-- Redes Sociales & Contacto Directo Oficiales -->
+        <div class="footer-social-links">
+          <!-- Instagram -->
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-ig" title="Instagram" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/595981123456" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-wa" title="WhatsApp" aria-label="WhatsApp">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-fb" title="Facebook" aria-label="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-tiktok" title="TikTok" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01v8.47c0 1.95-.5 3.9-1.55 5.54-1.27 1.98-3.41 3.32-5.74 3.73-1.74.31-3.55.07-5.18-.7-1.89-.9-3.4-2.48-4.25-4.42-.87-1.99-.95-4.31-.22-6.32.74-2.03 2.26-3.73 4.22-4.66 1.69-.8 3.63-.98 5.46-.53v4.16c-1.08-.34-2.28-.27-3.3.2-.99.46-1.77 1.33-2.12 2.37-.36 1.05-.24 2.24.32 3.19.57.97 1.56 1.63 2.67 1.79 1.11.16 2.28-.15 3.16-.86.87-.71 1.39-1.8 1.39-2.92V.02h-1.04z"/>
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-yt" title="YouTube" aria-label="YouTube">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+          <!-- X (Twitter) -->
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-x" title="X (Twitter)" aria-label="X">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <!-- Google Reviews -->
+          <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-google" title="Google Reviews" aria-label="Google Reviews">
+            <svg width="17" height="17" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.97 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
       <div class="footer-col">
         <h4>Servicios & Precios</h4>
         <ul>
-          <li><a href="#pricing">The Standard Detail</a></li>
-          <li><a href="#pricing">Interior Detail</a></li>
-          <li><a href="#pricing">Encerado Premium</a></li>
-          <li><a href="#pricing">Pulido 2 Pasos</a></li>
-          <li><a href="#pricing">Ceramic Coating 9H</a></li>
+          <li><a href="reservas.html">Detallado Estándar</a></li>
+          <li><a href="reservas.html">Detallado de Interiores</a></li>
+          <li><a href="reservas.html">Encerado Premium</a></li>
+          <li><a href="reservas.html">Pulido 2 Pasos</a></li>
+          <li><a href="reservas.html">Ceramic Coating 9H</a></li>
         </ul>
       </div>
 
@@ -1617,9 +1418,11 @@
     </div>
   </footer>
 
-  <!-- 13. FLOATING WHATSAPP BUTTON -->
+  <!-- 13. FLOATING WHATSAPP BUTTON (Official WhatsApp SVG) -->
   <a href="https://wa.me/595981123456?text=Hola%20Paraguay%20Detail,%20quisiera%20consultar%20por%20un%20servicio%20a%20domicilio" target="_blank" class="floating-whatsapp" title="Escribinos por WhatsApp">
-    <i data-lucide="message-circle" style="width: 30px; height: 30px;"></i>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
   </a>
 
   <!-- 14. AUTH MODAL (Email/Password, Google, Facebook) -->
