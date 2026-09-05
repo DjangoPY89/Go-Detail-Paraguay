@@ -788,8 +788,77 @@ const pricingSimulator = {
     ceramic_coating: { name: 'Ceramic Coating 9H', priceGs: 350000, durationMin: 180 }
   },
 
+  currentStage: 1,
+
   init() {
+    this.goToStage(1);
     this.recalculate();
+  },
+
+  goToStage(stageNum) {
+    if (stageNum < 1 || stageNum > 4) return;
+    this.currentStage = stageNum;
+
+    // Update Stage Panels
+    for (let i = 1; i <= 4; i++) {
+      const panel = document.getElementById(`simStage${i}`);
+      if (panel) {
+        panel.classList.toggle("active", i === stageNum);
+      }
+      const tab = document.getElementById(`simTab${i}`);
+      if (tab) {
+        tab.classList.toggle("active", i === stageNum);
+        tab.classList.toggle("completed", i < stageNum);
+      }
+    }
+
+    // Update Progress Bar
+    const progressBar = document.getElementById("simProgressBar");
+    if (progressBar) {
+      const percent = ((stageNum - 1) / 3) * 100;
+      progressBar.style.width = `${Math.max(12, percent)}%`;
+    }
+
+    // Update Nav Buttons
+    const prevBtn = document.getElementById("simPrevBtn");
+    const nextBtn = document.getElementById("simNextBtn");
+    const nextBtnText = document.getElementById("simNextBtnText");
+
+    if (prevBtn) {
+      prevBtn.style.visibility = stageNum === 1 ? "hidden" : "visible";
+    }
+
+    if (nextBtn && nextBtnText) {
+      if (stageNum === 1) {
+        nextBtnText.innerText = "Continuar a Paquetes";
+      } else if (stageNum === 2) {
+        nextBtnText.innerText = "Continuar a Extras";
+      } else if (stageNum === 3) {
+        nextBtnText.innerText = "Ver Resumen Final";
+      } else if (stageNum === 4) {
+        nextBtnText.innerText = "Agendar Turno";
+      }
+    }
+
+    if (stageNum === 4) {
+      this.renderSummaryStage();
+    }
+
+    if (window.lucide) lucide.createIcons();
+  },
+
+  nextStage() {
+    if (this.currentStage < 4) {
+      this.goToStage(this.currentStage + 1);
+    } else {
+      this.transferToBooking();
+    }
+  },
+
+  prevStage() {
+    if (this.currentStage > 1) {
+      this.goToStage(this.currentStage - 1);
+    }
   },
 
   selectVehicleSize(size) {
@@ -859,6 +928,57 @@ const pricingSimulator = {
     this.recalculate();
   },
 
+  renderSummaryStage() {
+    const vehConfig = this.pricingMatrix[this.state.vehicleSize];
+    const basePkg = vehConfig[this.state.package];
+    const pkgName = this.state.package === 'complete' ? 'The Standard Detail (Interior + Exterior)' : 'Interior Detail (Solo Interior)';
+
+    let totalPrice = basePkg.priceGs;
+    let totalMinutes = basePkg.durationMin;
+    const extrasList = [];
+
+    this.state.extras.forEach(extraId => {
+      const extra = this.extrasMatrix[extraId];
+      if (extra) {
+        totalPrice += extra.priceGs;
+        totalMinutes += extra.durationMin;
+        extrasList.push({ name: extra.name, price: extra.priceGs, time: extra.durationMin });
+      }
+    });
+
+    const hours = Math.floor(totalMinutes / 60);
+    const mins = totalMinutes % 60;
+    const timeFormatted = mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+
+    const summaryVehEl = document.getElementById("stage4Vehicle");
+    const summaryPkgEl = document.getElementById("stage4Package");
+    const summaryPkgPriceEl = document.getElementById("stage4PkgPrice");
+    const summaryExtrasListEl = document.getElementById("stage4ExtrasList");
+    const summaryTotalTimeEl = document.getElementById("stage4TotalTime");
+    const summaryTotalPriceEl = document.getElementById("stage4TotalPrice");
+
+    if (summaryVehEl) summaryVehEl.innerText = vehConfig.name;
+    if (summaryPkgEl) summaryPkgEl.innerText = pkgName;
+    if (summaryPkgPriceEl) summaryPkgPriceEl.innerText = `Gs. ${basePkg.priceGs.toLocaleString("es-PY")}`;
+
+    if (summaryExtrasListEl) {
+      if (extrasList.length === 0) {
+        summaryExtrasListEl.innerHTML = `<li class="no-extras"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #10b981;"></i> Sin extras adicionales seleccionados</li>`;
+      } else {
+        summaryExtrasListEl.innerHTML = extrasList.map(e => `
+          <li>
+            <span><i data-lucide="plus-circle" style="width: 14px; height: 14px; color: #0066FF;"></i> ${e.name} (+${e.time} min)</span>
+            <strong>+Gs. ${e.price.toLocaleString("es-PY")}</strong>
+          </li>
+        `).join("");
+      }
+    }
+
+    if (summaryTotalTimeEl) summaryTotalTimeEl.innerText = timeFormatted;
+    if (summaryTotalPriceEl) summaryTotalPriceEl.innerText = `Gs. ${totalPrice.toLocaleString("es-PY")}`;
+    if (window.lucide) lucide.createIcons();
+  },
+
   recalculate() {
     const vehConfig = this.pricingMatrix[this.state.vehicleSize];
     const basePkg = vehConfig[this.state.package];
@@ -902,6 +1022,10 @@ const pricingSimulator = {
     if (summaryTimeEl) {
       summaryTimeEl.innerHTML = `<i data-lucide="clock" style="width: 14px; height: 14px; display: inline;"></i> Tiempo Estimado: ${timeFormatted} • Pago al finalizar`;
       if (window.lucide) lucide.createIcons();
+    }
+
+    if (this.currentStage === 4) {
+      this.renderSummaryStage();
     }
   },
 

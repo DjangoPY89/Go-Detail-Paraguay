@@ -893,7 +893,7 @@
     </div>
   </section>
 
-  <!-- 4. PRICING & PACKAGES SIMULATOR (Interactive 3-Step Calculator - Directly Below Our Work) -->
+  <!-- 4. PRICING & PACKAGES SIMULATOR (Multi-Stage Interactive Engine) -->
   <section class="pricing-sim-section" id="pricing">
     <div class="pricing-sim-container">
       
@@ -901,242 +901,310 @@
       <div class="pricing-sim-header">
         <h2 class="pricing-sim-title">Pricing & Packages</h2>
         <p class="pricing-sim-subtitle">
-          We keep it simple — one package per service, no confusing tiers. Browse our pricing below, then book online when you're ready.
+          Configurá tu servicio a medida en simples pasos con cotización transparente y en tiempo real.
         </p>
       </div>
 
-      <!-- Savings Plan Banner -->
-      <div class="sim-savings-banner">
-        <div class="savings-left">
-          <div class="savings-badge-icon">%</div>
-          <div class="savings-text">
-            <strong>Save up to Gs. 100.000 per visit with a service plan</strong>
-            <span>Monthly, Bi-Monthly & Quarterly options available for recurring care</span>
-          </div>
+      <!-- Multi-Stage Stepper Navigation Bar -->
+      <div class="sim-stepper-wrap">
+        <div class="sim-stepper-tabs">
+          <button type="button" class="sim-tab-btn active" id="simTab1" onclick="pricingSimulator.goToStage(1)">
+            <span class="sim-tab-num">1</span>
+            <span class="sim-tab-label">Vehículo</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab2" onclick="pricingSimulator.goToStage(2)">
+            <span class="sim-tab-num">2</span>
+            <span class="sim-tab-label">Paquete</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab3" onclick="pricingSimulator.goToStage(3)">
+            <span class="sim-tab-num">3</span>
+            <span class="sim-tab-label">Extras</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab4" onclick="pricingSimulator.goToStage(4)">
+            <span class="sim-tab-num">4</span>
+            <span class="sim-tab-label">Resumen</span>
+          </button>
         </div>
-        <a href="#how-it-works" class="savings-link">
-          <span>Ver Cómo Funciona</span>
-          <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-        </a>
-      </div>
-
-      <!-- STEP 1: VEHICLE SIZE -->
-      <div class="sim-step-block">
-        <div class="sim-step-header">
-          <div class="sim-step-badge">1</div>
-          <div class="sim-step-info">
-            <h3>VEHICLE SIZE</h3>
-            <p>Pricing is based on your vehicle size. Select yours to see pricing below.</p>
-          </div>
-        </div>
-
-        <div class="sim-veh-grid">
-          <!-- Size 1: Coupe / Sedan -->
-          <div class="sim-veh-card selected" data-size="coupe_sedan" onclick="pricingSimulator.selectVehicleSize('coupe_sedan')">
-            <div class="sim-veh-img-wrap">
-              <span class="sim-veh-icon-svg">🚗</span>
-            </div>
-            <h4>Coupe / Sedan</h4>
-            <p>e.g. BMW Serie 3, Corolla, Audi A4, Mercedes Clase C, Gol</p>
-          </div>
-
-          <!-- Size 2: SUV Mediana -->
-          <div class="sim-veh-card" data-size="suv_mediana" onclick="pricingSimulator.selectVehicleSize('suv_mediana')">
-            <div class="sim-veh-img-wrap">
-              <span class="sim-veh-icon-svg">🚙</span>
-            </div>
-            <h4>5-Seat SUV / Truck</h4>
-            <p>e.g. Range Rover, RAV4, CR-V, Tucson, Hilux CS</p>
-          </div>
-
-          <!-- Size 3: Camioneta / Pick Up -->
-          <div class="sim-veh-card" data-size="pickup_suv_grande" onclick="pricingSimulator.selectVehicleSize('pickup_suv_grande')">
-            <div class="sim-veh-img-wrap">
-              <span class="sim-veh-icon-svg">🛻</span>
-            </div>
-            <h4>7-Seat SUV / Truck</h4>
-            <p>e.g. Hilux CD, Ranger, SW4, Amarok, Fortuner, BMW X7</p>
-          </div>
-
-          <!-- Size 4: Van / Oversized -->
-          <div class="sim-veh-card" data-size="van_oversized" onclick="pricingSimulator.selectVehicleSize('van_oversized')">
-            <div class="sim-veh-img-wrap">
-              <span class="sim-veh-icon-svg">🚐</span>
-            </div>
-            <h4>Van / Oversized</h4>
-            <p>e.g. Mercedes Sprinter, Kia Carnival, Ford Transit, Escalade</p>
-          </div>
+        <div class="sim-progress-track">
+          <div class="sim-progress-bar" id="simProgressBar" style="width: 12%;"></div>
         </div>
       </div>
 
-      <!-- STEP 2: OUR PACKAGES -->
-      <div class="sim-step-block">
-        <div class="sim-step-header">
-          <div class="sim-step-badge">2</div>
-          <div class="sim-step-info">
-            <h3>OUR PACKAGES</h3>
-            <p>Two simple options — <strong>Interior + Exterior</strong>, or <strong>Interior Only</strong> for Gs. 70.000 less.</p>
+      <!-- Stages Viewport Container -->
+      <div class="sim-stages-viewport">
+
+        <!-- ETAPA 1: TAMAÑO DE VEHÍCULO -->
+        <div class="sim-stage-panel active" id="simStage1">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 1 de 4</span>
+            <h3 class="sim-stage-heading">Seleccioná el Tamaño de tu Vehículo</h3>
+            <p class="sim-stage-sub">Los precios y tiempos de trabajo se adaptan con precisión a la categoría de tu móvil.</p>
+          </div>
+
+          <div class="sim-veh-grid">
+            <!-- Size 1: Coupe / Sedan -->
+            <div class="sim-veh-card selected" data-size="coupe_sedan" onclick="pricingSimulator.selectVehicleSize('coupe_sedan')">
+              <div class="sim-veh-img-wrap">
+                <span class="sim-veh-icon-svg">🚗</span>
+              </div>
+              <h4>Coupe / Sedan</h4>
+              <p>e.g. BMW Serie 3, Corolla, Audi A4, Mercedes Clase C, Gol</p>
+            </div>
+
+            <!-- Size 2: SUV Mediana -->
+            <div class="sim-veh-card" data-size="suv_mediana" onclick="pricingSimulator.selectVehicleSize('suv_mediana')">
+              <div class="sim-veh-img-wrap">
+                <span class="sim-veh-icon-svg">🚙</span>
+              </div>
+              <h4>5-Seat SUV / Truck</h4>
+              <p>e.g. Range Rover, RAV4, CR-V, Tucson, Hilux CS</p>
+            </div>
+
+            <!-- Size 3: Camioneta / Pick Up -->
+            <div class="sim-veh-card" data-size="pickup_suv_grande" onclick="pricingSimulator.selectVehicleSize('pickup_suv_grande')">
+              <div class="sim-veh-img-wrap">
+                <span class="sim-veh-icon-svg">🛻</span>
+              </div>
+              <h4>7-Seat SUV / Truck</h4>
+              <p>e.g. Hilux CD, Ranger, SW4, Amarok, Fortuner, BMW X7</p>
+            </div>
+
+            <!-- Size 4: Van / Oversized -->
+            <div class="sim-veh-card" data-size="van_oversized" onclick="pricingSimulator.selectVehicleSize('van_oversized')">
+              <div class="sim-veh-img-wrap">
+                <span class="sim-veh-icon-svg">🚐</span>
+              </div>
+              <h4>Van / Oversized</h4>
+              <p>e.g. Mercedes Sprinter, Kia Carnival, Ford Transit, Escalade</p>
+            </div>
           </div>
         </div>
 
-        <div class="sim-packages-grid">
-          <!-- Package A: Interior + Exterior (The Standard) -->
-          <div class="sim-package-card popular selected" id="pkgCardComplete" onclick="pricingSimulator.selectPackage('complete')">
-            <div class="sim-pkg-ribbon">MOST POPULAR</div>
-            <div class="sim-pkg-tag">INTERIOR + EXTERIOR</div>
-            <h4 class="sim-pkg-title">The Standard Detail</h4>
-            <p class="sim-pkg-desc">Complete detail — steam-cleaned inside, hand-washed, decontaminated and protected outside.</p>
-            
-            <div class="sim-pkg-price-row">
-              <span class="sim-pkg-price" id="pkgPriceComplete">Gs. 250.000</span>
-              <span class="sim-pkg-unit">/ one-time visit</span>
-            </div>
-
-            <ul class="sim-pkg-features">
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado exterior a 2 baldes con shampoo pH neutro</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y llantas a presión</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aspirado profundo de alfombras, piso y baúl</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionamiento mate con filtro UV y olor a nuevo</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sellador cerámico express en cristales y carrocería</li>
-            </ul>
-
-            <button type="button" class="btn-select-pkg">
-              <i data-lucide="check" style="width: 16px; height: 16px;"></i>
-              <span id="pkgBtnTextComplete">Paquete Seleccionado</span>
-            </button>
+        <!-- ETAPA 2: NUESTROS PAQUETES -->
+        <div class="sim-stage-panel" id="simStage2">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 2 de 4</span>
+            <h3 class="sim-stage-heading">Seleccioná tu Paquete Principal</h3>
+            <p class="sim-stage-sub">Elegí entre nuestro servicio insignia completo o la opción especializada solo de interiores.</p>
           </div>
 
-          <!-- Package B: Interior Only -->
-          <div class="sim-package-card" id="pkgCardInterior" onclick="pricingSimulator.selectPackage('interior')">
-            <div class="sim-pkg-tag">INTERIOR ONLY</div>
-            <h4 class="sim-pkg-title">Interior Detail</h4>
-            <p class="sim-pkg-desc">Full interior detail — steam cleaned, vacuumed, sanitized and refreshed throughout. Exterior not included.</p>
-            
-            <div class="sim-pkg-price-row">
-              <span class="sim-pkg-price" id="pkgPriceInterior">Gs. 180.000</span>
-              <span class="sim-pkg-unit">/ one-time visit</span>
+          <div class="sim-packages-grid">
+            <!-- Package A: Interior + Exterior (The Standard) -->
+            <div class="sim-package-card popular selected" id="pkgCardComplete" onclick="pricingSimulator.selectPackage('complete')">
+              <div class="sim-pkg-ribbon">MÁS POPULAR</div>
+              <div class="sim-pkg-tag">INTERIOR + EXTERIOR</div>
+              <h4 class="sim-pkg-title">The Standard Detail</h4>
+              <p class="sim-pkg-desc">Tratamiento integral completo: vapor a 140°C en cabina, lavado artesanal a 2 baldes y sellado de carrocería.</p>
+              
+              <div class="sim-pkg-price-row">
+                <span class="sim-pkg-price" id="pkgPriceComplete">Gs. 250.000</span>
+                <span class="sim-pkg-unit">/ servicio completo</span>
+              </div>
+
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado exterior a 2 baldes con shampoo pH neutro</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y llantas a presión</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aspirado profundo de alfombras, piso y baúl</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionamiento mate con filtro UV y olor a nuevo</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sellador cerámico express en cristales y carrocería</li>
+              </ul>
+
+              <button type="button" class="btn-select-pkg">
+                <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                <span id="pkgBtnTextComplete">Paquete Seleccionado</span>
+              </button>
             </div>
 
-            <ul class="sim-pkg-features">
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Limpieza profunda de alfombras, torpedo y consola</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Eliminación de manchas difíciles, grasa y derrames</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sanitización antibacteriana y desodorización</li>
-              <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Nutrición de cueros genuinos o tapizados de tela</li>
-            </ul>
+            <!-- Package B: Interior Only -->
+            <div class="sim-package-card" id="pkgCardInterior" onclick="pricingSimulator.selectPackage('interior')">
+              <div class="sim-pkg-tag">INTERIOR ONLY</div>
+              <h4 class="sim-pkg-title">Interior Detail</h4>
+              <p class="sim-pkg-desc">Detallado profundo de habitáculo: desinfección total, nutrición de tapizados y eliminación de bacterias.</p>
+              
+              <div class="sim-pkg-price-row">
+                <span class="sim-pkg-price" id="pkgPriceInterior">Gs. 180.000</span>
+                <span class="sim-pkg-unit">/ servicio completo</span>
+              </div>
 
-            <button type="button" class="btn-select-pkg">
-              <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
-              <span id="pkgBtnTextInterior">Elegir este Paquete</span>
-            </button>
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Limpieza profunda de alfombras, torpedo y consola</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Eliminación de manchas difíciles, grasa y derrames</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sanitización antibacteriana y desodorización</li>
+                <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Nutrición de cueros genuinos o tapizados de tela</li>
+              </ul>
+
+              <button type="button" class="btn-select-pkg">
+                <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                <span id="pkgBtnTextInterior">Elegir este Paquete</span>
+              </button>
+            </div>
           </div>
         </div>
+
+        <!-- ETAPA 3: EXTRAS & ADICIONALES -->
+        <div class="sim-stage-panel" id="simStage3">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 3 de 4</span>
+            <h3 class="sim-stage-heading">Tratamientos Adicionales (Opcionales)</h3>
+            <p class="sim-stage-sub">Personalizá tu experiencia sumando tratamientos especiales de alto rendimiento.</p>
+          </div>
+
+          <div class="sim-extras-grid">
+            <!-- Extra 1: Encerado Carnauba -->
+            <div class="sim-extra-card" data-extra="encerado" onclick="pricingSimulator.toggleExtra('encerado')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Encerado Premium</h4>
+                <p class="sim-extra-desc">Cera de Carnauba de grado concurso para un brillo profundo y repelencia líquida.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +35 min</span>
+                  <span class="sim-extra-price">+Gs. 60.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 2: Pulido 2 Pasos -->
+            <div class="sim-extra-card" data-extra="pulido_2pasos" onclick="pricingSimulator.toggleExtra('pulido_2pasos')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido 2 Pasos</h4>
+                <p class="sim-extra-desc">Corrección de pintura en 2 etapas: remoción de microrrayas y acabado óptico.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +120 min</span>
+                  <span class="sim-extra-price">+Gs. 200.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 3: Pulido de Faros -->
+            <div class="sim-extra-card" data-extra="pulido_faros" onclick="pricingSimulator.toggleExtra('pulido_faros')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido de Faros</h4>
+                <p class="sim-extra-desc">Lijado microprogresivo al agua y sellador cerámico UV para ópticas cristalinas.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +40 min</span>
+                  <span class="sim-extra-price">+Gs. 70.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 4: Pulido de Cristales -->
+            <div class="sim-extra-card" data-extra="pulido_cristales" onclick="pricingSimulator.toggleExtra('pulido_cristales')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido de Cristales</h4>
+                <p class="sim-extra-desc">Descontaminación con óxido de cerio y sellador antilluvia repelente al agua.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +45 min</span>
+                  <span class="sim-extra-price">+Gs. 80.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 5: Ceramic Coating 9H -->
+            <div class="sim-extra-card" data-extra="ceramic_coating" onclick="pricingSimulator.toggleExtra('ceramic_coating')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Ceramic Coating 9H</h4>
+                <p class="sim-extra-desc">Nanotecnología de alta dureza 9H con repelencia extrema y protección de 12 meses.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +180 min</span>
+                  <span class="sim-extra-price">+Gs. 350.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 4: RESUMEN Y CONFIRMACIÓN -->
+        <div class="sim-stage-panel" id="simStage4">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 4 de 4</span>
+            <h3 class="sim-stage-heading">Resumen Final de tu Configuración</h3>
+            <p class="sim-stage-sub">Revisá tu selección y agendá tu turno directamente con nuestra unidad móvil.</p>
+          </div>
+
+          <div class="sim-stage4-summary-card">
+            <div class="stage4-summary-grid">
+              <div class="stage4-item-box">
+                <span class="stage4-item-label">Vehículo Elegido</span>
+                <div class="stage4-item-value" id="stage4Vehicle">Coupe / Sedan</div>
+              </div>
+              <div class="stage4-item-box">
+                <span class="stage4-item-label">Paquete Base</span>
+                <div class="stage4-item-value" id="stage4Package">The Standard Detail</div>
+                <span class="stage4-item-sub" id="stage4PkgPrice">Gs. 250.000</span>
+              </div>
+            </div>
+
+            <div class="stage4-extras-box">
+              <span class="stage4-item-label">Tratamientos Adicionales</span>
+              <ul class="stage4-extras-list" id="stage4ExtrasList">
+                <li class="no-extras"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #10b981;"></i> Sin extras adicionales seleccionados</li>
+              </ul>
+            </div>
+
+            <div class="stage4-meta-row">
+              <div class="stage4-meta-item">
+                <i data-lucide="clock" style="width: 18px; height: 18px; color: #0066FF;"></i>
+                <div>
+                  <span class="meta-label">Tiempo Estimado</span>
+                  <strong id="stage4TotalTime">2h 30m</strong>
+                </div>
+              </div>
+              <div class="stage4-meta-item">
+                <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #10b981;"></i>
+                <div>
+                  <span class="meta-label">Garantía de Pago</span>
+                  <strong>Pago al finalizar el servicio</strong>
+                </div>
+              </div>
+              <div class="stage4-meta-item stage4-total-price-item">
+                <span class="meta-label">Total a Pagar</span>
+                <strong class="stage4-final-price" id="stage4TotalPrice">Gs. 250.000</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- STEP 3: EXTRAS (Add-ons) -->
-      <div class="sim-step-block">
-        <div class="sim-step-header">
-          <div class="sim-step-badge">3</div>
-          <div class="sim-step-info">
-            <h3>EXTRAS & TRATAMIENTOS ESPECIALES</h3>
-            <p>Personalizá tu servicio con nuestros tratamientos adicionales de alto rendimiento.</p>
-          </div>
-        </div>
-
-        <div class="sim-extras-grid">
-          <!-- Extra 1: Encerado Carnauba -->
-          <div class="sim-extra-card" data-extra="encerado" onclick="pricingSimulator.toggleExtra('encerado')">
-            <div class="sim-extra-checkbox">
-              <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-            </div>
-            <div class="sim-extra-info">
-              <h4 class="sim-extra-title">Encerado Premium</h4>
-              <p class="sim-extra-desc">Cera de Carnauba de grado concurso para un brillo profundo y repelencia líquida.</p>
-              <div class="sim-extra-meta">
-                <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +35 min</span>
-                <span class="sim-extra-price">+Gs. 60.000</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Extra 2: Pulido 2 Pasos -->
-          <div class="sim-extra-card" data-extra="pulido_2pasos" onclick="pricingSimulator.toggleExtra('pulido_2pasos')">
-            <div class="sim-extra-checkbox">
-              <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-            </div>
-            <div class="sim-extra-info">
-              <h4 class="sim-extra-title">Pulido 2 Pasos</h4>
-              <p class="sim-extra-desc">Corrección de pintura en 2 etapas: remoción de microrrayas y acabado óptico de alto brillo.</p>
-              <div class="sim-extra-meta">
-                <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +120 min</span>
-                <span class="sim-extra-price">+Gs. 200.000</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Extra 3: Pulido de Faros -->
-          <div class="sim-extra-card" data-extra="pulido_faros" onclick="pricingSimulator.toggleExtra('pulido_faros')">
-            <div class="sim-extra-checkbox">
-              <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-            </div>
-            <div class="sim-extra-info">
-              <h4 class="sim-extra-title">Pulido de Faros</h4>
-              <p class="sim-extra-desc">Lijado microprogresivo al agua y sellador cerámico UV para ópticas cristalinas.</p>
-              <div class="sim-extra-meta">
-                <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +40 min</span>
-                <span class="sim-extra-price">+Gs. 70.000</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Extra 4: Pulido de Cristales -->
-          <div class="sim-extra-card" data-extra="pulido_cristales" onclick="pricingSimulator.toggleExtra('pulido_cristales')">
-            <div class="sim-extra-checkbox">
-              <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-            </div>
-            <div class="sim-extra-info">
-              <h4 class="sim-extra-title">Pulido de Cristales</h4>
-              <p class="sim-extra-desc">Descontaminación con óxido de cerio y sellador antilluvia repelente al agua.</p>
-              <div class="sim-extra-meta">
-                <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +45 min</span>
-                <span class="sim-extra-price">+Gs. 80.000</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Extra 5: Ceramic Coating 9H -->
-          <div class="sim-extra-card" data-extra="ceramic_coating" onclick="pricingSimulator.toggleExtra('ceramic_coating')">
-            <div class="sim-extra-checkbox">
-              <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
-            </div>
-            <div class="sim-extra-info">
-              <h4 class="sim-extra-title">Ceramic Coating 9H</h4>
-              <p class="sim-extra-desc">Nanotecnología de alta dureza 9H con repelencia extrema y protección de 12 meses.</p>
-              <div class="sim-extra-meta">
-                <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +180 min</span>
-                <span class="sim-extra-price">+Gs. 350.000</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Real-Time Calculation Sticky Summary Bar -->
+      <!-- Real-Time Calculation & Multi-Stage Nav Control Bar -->
       <div class="sim-total-bar">
+        <button type="button" class="btn-sim-prev" id="simPrevBtn" onclick="pricingSimulator.prevStage()">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+          <span>Anterior</span>
+        </button>
+
         <div class="sim-total-breakdown">
-          <span class="sim-total-label">Tu Configuración en Tiempo Real</span>
+          <span class="sim-total-label">Configuración Actual</span>
           <div class="sim-total-details" id="simSummaryText">Coupe / Sedan • The Standard Detail</div>
           <div class="sim-total-time" id="simSummaryTime"><i data-lucide="clock" style="width: 14px; height: 14px; display: inline;"></i> Tiempo Estimado: 2h 30m • Pago al finalizar</div>
         </div>
 
         <div class="sim-total-price-box">
-          <span class="sim-total-price-label">Precio Final Estimado</span>
+          <span class="sim-total-price-label">Precio Estimado</span>
           <span class="sim-total-price-val" id="simSummaryPrice">Gs. 250.000</span>
         </div>
 
-        <button type="button" class="btn-sim-book" onclick="pricingSimulator.transferToBooking()">
-          <span>Agendar Turno Online</span>
+        <button type="button" class="btn-sim-book" id="simNextBtn" onclick="pricingSimulator.nextStage()">
+          <span id="simNextBtnText">Continuar a Paquetes</span>
           <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
         </button>
       </div>

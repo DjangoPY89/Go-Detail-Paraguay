@@ -2484,11 +2484,11 @@ svg.we-come-icon {
 }
 
 /* ==========================================================================
-   PRICING & PACKAGES SIMULATOR SECTION (Interactive 3-Step Engine)
+   PRICING & PACKAGES SIMULATOR SECTION (Multi-Stage Interactive Engine)
    ========================================================================== */
 .pricing-sim-section {
-  padding: 6.5rem 1.5rem;
-  background: #ffffff;
+  padding: 5rem 1.5rem;
+  background: #f8fafc;
   position: relative;
 }
 
@@ -2500,16 +2500,16 @@ svg.we-come-icon {
 .pricing-sim-header {
   text-align: center;
   max-width: 780px;
-  margin: 0 auto 2.75rem;
+  margin: 0 auto 2rem;
 }
 
 .pricing-sim-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
   font-weight: 800;
   color: #0f172a;
   letter-spacing: -0.035em;
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
 }
 
 .pricing-sim-subtitle {
@@ -2519,108 +2519,169 @@ svg.we-come-icon {
   margin: 0;
 }
 
-/* Plan Savings Banner */
-.sim-savings-banner {
-  background: #090d16;
-  color: #ffffff;
-  border-radius: 18px;
-  padding: 1.25rem 2rem;
+/* Stepper Navigation Bar */
+.sim-stepper-wrap {
+  max-width: 750px;
+  margin: 0 auto 2.25rem;
+}
+
+.sim-stepper-tabs {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+  margin-bottom: 1rem;
 }
 
-.savings-left {
+.sim-tab-btn {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 50px;
+  padding: 0.55rem 1.25rem;
   display: flex;
   align-items: center;
-  gap: 1.15rem;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 2;
+  font-family: var(--font-heading);
 }
 
-.savings-badge-icon {
-  width: 38px;
-  height: 38px;
+.sim-tab-btn:hover {
+  border-color: #0066FF;
+  transform: translateY(-1px);
+}
+
+.sim-tab-num {
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: rgba(0, 102, 255, 0.22);
-  color: #38bdf8;
+  background: #f1f5f9;
+  color: #64748b;
+  font-weight: 800;
+  font-size: 0.78rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  flex-shrink: 0;
+  transition: all 0.25s ease;
 }
 
-.savings-text strong {
-  color: #ffffff;
+.sim-tab-label {
+  font-size: 0.88rem;
   font-weight: 700;
-  display: block;
-  font-size: 0.98rem;
+  color: #64748b;
+  transition: all 0.25s ease;
 }
 
-.savings-text span {
-  font-size: 0.82rem;
-  color: #94a3b8;
-}
-
-.savings-link {
-  color: #38bdf8 !important;
-  font-weight: 700;
-  font-size: 0.92rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: transform 0.2s ease;
-  white-space: nowrap;
-}
-
-.savings-link:hover {
-  transform: translateX(3px);
-}
-
-/* Step Headers */
-.sim-step-block {
-  margin-bottom: 3.5rem;
-}
-
-.sim-step-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1.75rem;
-}
-
-.sim-step-badge {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+.sim-tab-btn.active {
   background: #0066FF;
-  color: #ffffff;
-  font-weight: 800;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(0, 102, 255, 0.35);
+  border-color: #0066FF;
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.3);
 }
 
-.sim-step-info h3 {
-  font-size: 1.25rem;
+.sim-tab-btn.active .sim-tab-num {
+  background: #ffffff;
+  color: #0066FF;
+}
+
+.sim-tab-btn.active .sim-tab-label {
+  color: #ffffff;
+}
+
+.sim-tab-btn.completed {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.sim-tab-btn.completed .sim-tab-num {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.sim-tab-btn.completed .sim-tab-label {
+  color: #047857;
+}
+
+.sim-tab-connector {
+  flex-grow: 1;
+  height: 2px;
+  background: #e2e8f0;
+  margin: 0 0.5rem;
+  z-index: 1;
+}
+
+.sim-progress-track {
+  width: 100%;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sim-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0066FF, #38bdf8);
+  border-radius: 4px;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Stages Viewport */
+.sim-stages-viewport {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1.75rem;
+  min-height: 420px;
+}
+
+.sim-stage-panel {
+  display: none;
+}
+
+.sim-stage-panel.active {
+  display: block;
+  animation: simFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes simFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sim-stage-header {
+  margin-bottom: 2rem;
+}
+
+.sim-stage-counter {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0066FF;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+
+.sim-stage-heading {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
   font-weight: 800;
   color: #0f172a;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin: 0;
+  margin: 0 0 0.35rem;
 }
 
-.sim-step-info p {
+.sim-stage-sub {
   font-size: 0.92rem;
   color: #64748b;
-  margin: 0.25rem 0 0;
+  margin: 0;
 }
 
 /* Step 1: Vehicle Sizes Grid */
@@ -2641,7 +2702,7 @@ svg.we-come-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
   user-select: none;
 }
 
@@ -2657,7 +2718,7 @@ svg.we-come-icon {
 }
 
 .sim-veh-img-wrap {
-  height: 55px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2682,7 +2743,7 @@ svg.we-come-icon {
   margin: 0;
 }
 
-/* Step 2: Packages Comparison Grid */
+/* Step 2: Packages Grid */
 .sim-packages-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2692,12 +2753,12 @@ svg.we-come-icon {
 .sim-package-card {
   background: #ffffff;
   border: 2px solid #e2e8f0;
-  border-radius: 22px;
-  padding: 2.5rem 2.25rem 2rem;
+  border-radius: 20px;
+  padding: 2.25rem 2rem 1.75rem;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.15rem;
   cursor: pointer;
   transition: all 0.25s ease;
   user-select: none;
@@ -2710,7 +2771,7 @@ svg.we-come-icon {
 
 .sim-package-card.selected {
   border-color: #0066FF;
-  box-shadow: 0 12px 35px rgba(0, 102, 255, 0.16);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.15);
 }
 
 .sim-pkg-ribbon {
@@ -2720,12 +2781,12 @@ svg.we-come-icon {
   right: 0;
   background: #0066FF;
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
   text-align: center;
-  padding: 0.4rem;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  padding: 0.35rem;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2739,16 +2800,16 @@ svg.we-come-icon {
 }
 
 .sim-pkg-title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: #0f172a;
   margin: 0;
 }
 
 .sim-pkg-desc {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: #64748b;
-  line-height: 1.55;
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -2756,20 +2817,20 @@ svg.we-come-icon {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  padding: 0.75rem 0;
+  padding: 0.65rem 0;
   border-top: 1px solid #f1f5f9;
   border-bottom: 1px solid #f1f5f9;
 }
 
 .sim-pkg-price {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #0f172a;
   font-family: var(--font-heading);
 }
 
 .sim-pkg-unit {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #94a3b8;
   font-weight: 600;
 }
@@ -2780,16 +2841,16 @@ svg.we-come-icon {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 .sim-pkg-features li {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: #334155;
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  line-height: 1.4;
+  gap: 0.6rem;
+  line-height: 1.35;
 }
 
 .sim-pkg-features li i {
@@ -2801,9 +2862,9 @@ svg.we-come-icon {
 .btn-select-pkg {
   margin-top: auto;
   border-radius: 50px;
-  padding: 0.85rem;
+  padding: 0.8rem;
   font-weight: 800;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   border: 1.5px solid #cbd5e1;
   background: transparent;
   color: #0f172a;
@@ -2825,17 +2886,17 @@ svg.we-come-icon {
 .sim-extras-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .sim-extra-card {
   background: #ffffff;
   border: 1.5px solid #e2e8f0;
   border-radius: 18px;
-  padding: 1.35rem 1.25rem;
+  padding: 1.25rem 1.15rem;
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.85rem;
   cursor: pointer;
   transition: all 0.22s ease;
   user-select: none;
@@ -2874,7 +2935,7 @@ svg.we-come-icon {
 .sim-extra-info {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
   flex-grow: 1;
 }
 
@@ -2886,7 +2947,7 @@ svg.we-come-icon {
 }
 
 .sim-extra-desc {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #64748b;
   line-height: 1.35;
   margin: 0;
@@ -2896,7 +2957,7 @@ svg.we-come-icon {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0.35rem;
+  margin-top: 0.3rem;
 }
 
 .sim-extra-time {
@@ -2909,33 +2970,187 @@ svg.we-come-icon {
 }
 
 .sim-extra-price {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 800;
   color: #0f172a;
 }
 
-/* Real-Time Calculation Sticky Summary Bar */
-.sim-total-bar {
-  background: #090d16;
-  color: #ffffff;
-  border-radius: 24px;
-  padding: 2rem 2.5rem;
+/* Step 4: Summary Card */
+.sim-stage4-summary-card {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 3.5rem;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.sim-total-breakdown {
+.stage4-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.stage4-item-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
+.stage4-item-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #0066FF;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stage4-item-value {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.stage4-item-sub {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.stage4-extras-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stage4-extras-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stage4-extras-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: #334155;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed #f1f5f9;
+}
+
+.stage4-extras-list li:last-child {
+  border-bottom: none;
+}
+
+.stage4-extras-list li.no-extras {
+  color: #64748b;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stage4-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #090d16;
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 1.25rem 1.75rem;
+  gap: 1.5rem;
+}
+
+.stage4-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stage4-meta-item .meta-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stage4-meta-item strong {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.stage4-total-price-item {
+  text-align: right;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.stage4-final-price {
+  font-family: var(--font-heading);
+  font-size: 1.75rem !important;
+  font-weight: 900;
+  color: #38bdf8 !important;
+  line-height: 1;
+}
+
+/* Dynamic Bottom Navigation & Calculation Bar */
+.sim-total-bar {
+  background: #090d16;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.btn-sim-prev {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 0.75rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-sim-prev:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.sim-total-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
 .sim-total-label {
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   color: #38bdf8;
   font-weight: 800;
   letter-spacing: 0.05em;
@@ -2943,13 +3158,13 @@ svg.we-come-icon {
 }
 
 .sim-total-details {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: #ffffff;
 }
 
 .sim-total-time {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #94a3b8;
 }
 
@@ -2961,7 +3176,7 @@ svg.we-come-icon {
 }
 
 .sim-total-price-label {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: #94a3b8;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -2969,7 +3184,7 @@ svg.we-come-icon {
 
 .sim-total-price-val {
   font-family: var(--font-heading);
-  font-size: 2.25rem;
+  font-size: 1.85rem;
   font-weight: 900;
   color: #38bdf8;
   line-height: 1.1;
@@ -2979,22 +3194,23 @@ svg.we-come-icon {
   background: #0066FF;
   color: #ffffff !important;
   border-radius: 50px;
-  padding: 0.95rem 2.25rem;
+  padding: 0.85rem 1.85rem;
   font-weight: 800;
-  font-size: 0.98rem;
-  text-decoration: none;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 18px rgba(0, 102, 255, 0.45);
+  box-shadow: 0 4px 16px rgba(0, 102, 255, 0.4);
   white-space: nowrap;
 }
 
 .btn-sim-book:hover {
   background: #1d7bff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 102, 255, 0.65);
+  box-shadow: 0 8px 22px rgba(0, 102, 255, 0.6);
 }
 
 /* Responsive Rules for Pricing Simulator */
@@ -3002,19 +3218,66 @@ svg.we-come-icon {
   .sim-veh-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .sim-packages-grid {
+    grid-template-columns: 1fr;
+  }
   .sim-extras-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .stage4-meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .stage4-total-price-item {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing-sim-section {
+    padding: 3.5rem 1rem;
+  }
+  .sim-stepper-tabs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .sim-tab-btn {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+  }
+  .sim-tab-connector {
+    display: none;
+  }
+  .sim-stages-viewport {
+    padding: 1.5rem 1rem;
+    min-height: auto;
+  }
+  .sim-veh-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .sim-extras-grid {
+    grid-template-columns: 1fr;
+  }
+  .stage4-summary-grid {
+    grid-template-columns: 1fr;
   }
   .sim-total-bar {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1.75rem 1.5rem;
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem;
   }
   .sim-total-price-box {
     align-items: center;
     text-align: center;
+  }
+  .btn-sim-book, .btn-sim-prev {
+    width: 100%;
+    justify-content: center;
   }
 }
 
