@@ -605,7 +605,7 @@ body.banner-closed .navbar-wrapper {
   visibility: visible;
 }
 
-/* Mobile Nav Dropdown (Directly underneath navbar pill, exact same width) */
+/* Mobile Nav Dropdown (Directly underneath navbar pill, exact same width, white background) */
 .mobile-nav-dropdown {
   display: none;
   pointer-events: none;
@@ -613,12 +613,10 @@ body.banner-closed .navbar-wrapper {
   visibility: hidden;
   width: 100%;
   margin-top: 0.5rem;
-  background: rgba(15, 23, 42, 0.94);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 102, 255, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.08);
   max-height: calc(85vh - 75px);
   overflow-y: auto;
   transform: translateY(-8px) scale(0.98);
@@ -650,11 +648,11 @@ body.banner-closed .navbar-wrapper {
 
 .mobile-nav-links {
   list-style: none;
-  margin: 0 0 1.75rem 0;
+  margin: 0 0 1.5rem 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .mobile-nav-link {
@@ -662,22 +660,22 @@ body.banner-closed .navbar-wrapper {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1rem;
-  color: #e2e8f0;
+  color: #0f172a;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.95rem;
   border-radius: 12px;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .mobile-nav-link:hover {
-  background: rgba(0, 102, 255, 0.15);
-  border-color: rgba(0, 102, 255, 0.3);
-  color: #38bdf8;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0066FF;
   transform: translateX(4px);
 }
 
@@ -688,12 +686,23 @@ body.banner-closed .navbar-wrapper {
 }
 
 .mobile-nav-link-left i {
-  color: #38bdf8;
+  color: #0066FF;
 }
 
 .mobile-nav-link.highlight-booking {
-  background: rgba(0, 102, 255, 0.2);
-  border-color: rgba(56, 189, 248, 0.4);
+  background: #0066FF;
+  border-color: #0066FF;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.25);
+}
+
+.mobile-nav-link.highlight-booking:hover {
+  background: #0052cc;
+  border-color: #0052cc;
+  color: #ffffff;
+}
+
+.mobile-nav-link.highlight-booking .mobile-nav-link-left i {
   color: #ffffff;
 }
 
@@ -710,12 +719,12 @@ body.banner-closed .navbar-wrapper {
 
 .mobile-dropdown-arrow {
   transition: transform 0.25s ease;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .mobile-dropdown-arrow.rotated {
   transform: rotate(180deg);
-  color: #38bdf8;
+  color: #0066FF;
 }
 
 .mobile-services-list {
@@ -735,21 +744,23 @@ body.banner-closed .navbar-wrapper {
   align-items: center;
   gap: 0.65rem;
   padding: 0.6rem 0.85rem;
-  color: #cbd5e1;
-  font-size: 0.82rem;
+  color: #334155;
+  font-size: 0.84rem;
   font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
   transition: all 0.2s ease;
 }
 
 .mobile-sub-link i {
-  color: #38bdf8;
+  color: #0066FF;
 }
 
 .mobile-sub-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: #e2e8f0;
+  color: #0066FF;
 }
 
 .mobile-nav-footer {
@@ -757,8 +768,8 @@ body.banner-closed .navbar-wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.25rem;
+  border-top: 1px solid #e2e8f0;
 }
 
 .mobile-call-btn {
@@ -774,7 +785,7 @@ body.banner-closed .navbar-wrapper {
   padding: 0.8rem 1rem;
   border-radius: 12px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.35);
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.25);
   transition: all 0.2s ease;
 }
 
@@ -788,9 +799,9 @@ body.banner-closed .navbar-wrapper {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  background: rgba(37, 211, 102, 0.15);
-  border: 1px solid rgba(37, 211, 102, 0.4);
-  color: #25D366;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #16a34a;
   font-family: var(--font-heading);
   font-size: 0.9rem;
   font-weight: 800;
@@ -801,7 +812,7 @@ body.banner-closed .navbar-wrapper {
 }
 
 .mobile-wa-btn:hover {
-  background: #25D366;
+  background: #16a34a;
   color: #ffffff;
 }
 
@@ -812,13 +823,13 @@ body.banner-closed .navbar-wrapper {
   gap: 0.4rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #64748b;
   text-align: center;
   margin-top: 0.25rem;
 }
 
 .mobile-coverage-info i {
-  color: #38bdf8;
+  color: #0066FF;
 }
 
 @media (max-width: 960px) {
