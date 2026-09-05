@@ -2922,6 +2922,16 @@ svg.we-come-icon {
   line-height: 1;
 }
 
+.sim-veh-img {
+  max-height: 48px;
+  max-width: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
 .sim-veh-card h4 {
   font-size: 1rem;
   font-weight: 800;
