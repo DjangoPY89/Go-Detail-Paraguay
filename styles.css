@@ -512,43 +512,56 @@ body.banner-closed .navbar-wrapper {
 }
 
 /* ==========================================================================
-   MOBILE MENU TOGGLE (3 Vertical Bars) & MOBILE DRAWER
+   MOBILE MENU TOGGLE (3 Thin Horizontal Bars, Borderless) & MOBILE DRAWER
    ========================================================================== */
 .mobile-menu-toggle-btn {
   display: none;
-  background: rgba(0, 102, 255, 0.25);
-  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: transparent;
+  border: none;
   color: #ffffff;
   width: 40px;
   height: 40px;
-  border-radius: 10px;
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  gap: 3.5px;
+  flex-direction: column;
+  gap: 5px;
   padding: 0;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: none;
+  transition: all 0.25s ease;
 }
 
 .mobile-menu-toggle-btn:hover,
 .mobile-menu-toggle-btn:active {
-  background: rgba(0, 102, 255, 0.45);
-  border-color: #38bdf8;
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.04);
 }
 
 .mobile-menu-toggle-btn .menu-bar-line {
   display: block;
-  width: 3px;
-  height: 16px;
+  width: 22px;
+  height: 1.5px;
   background: #ffffff;
-  border-radius: 3px;
-  transition: all 0.25s ease;
+  border-radius: 2px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-menu-toggle-btn:hover .menu-bar-line {
   background: #38bdf8;
+}
+
+.mobile-menu-toggle-btn.active .menu-bar-line:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.mobile-menu-toggle-btn.active .menu-bar-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-menu-toggle-btn.active .menu-bar-line:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 /* Mobile Nav Drawer Overlay */
