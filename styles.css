@@ -845,12 +845,205 @@ svg.we-come-icon {
 }
 
 /* ==========================================================================
-   SERVICES SHOWCASE (GoDetail Style Packages)
+   NUESTROS SERVICIOS SECTION (GoDetail Style Catalog)
    ========================================================================== */
 .services-section {
-  padding: 5rem 1.5rem;
-  background: var(--slate-50);
-  border-top: 1px solid var(--slate-200);
+  padding: 5.5rem 1.5rem 4.5rem;
+  background: #ffffff;
+  position: relative;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.services-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.5rem;
+}
+
+.services-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(0, 102, 255, 0.08);
+  color: #0066FF;
+  padding: 0.35rem 0.95rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.85rem;
+}
+
+.services-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+}
+
+.services-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.service-feature-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 22px;
+  padding: 2.25rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.service-feature-card:hover {
+  transform: translateY(-6px);
+  border-color: #0066FF;
+  box-shadow: 0 16px 35px -8px rgba(0, 102, 255, 0.14);
+}
+
+.service-feature-card.popular {
+  border-color: #0066FF;
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+}
+
+.service-popular-pill {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #0066FF;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 3px 10px rgba(0, 102, 255, 0.35);
+}
+
+.service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.service-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(0, 102, 255, 0.08);
+  color: #0066FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-badge-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0066FF;
+  background: #eff6ff;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+}
+
+.service-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.service-card-desc {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.service-points {
+  list-style: none;
+  padding: 0.9rem 0 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.service-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: #334155;
+  line-height: 1.35;
+}
+
+.service-points li i {
+  color: #0066FF;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.service-cta-link {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid #f1f5f9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #0066FF;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.service-cta-link:hover {
+  color: #1d4ed8;
+  transform: translateX(3px);
+}
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-section {
+    padding: 3.5rem 1rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }
 
 .services-filter-bar {
