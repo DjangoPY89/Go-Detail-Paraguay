@@ -595,13 +595,44 @@ svg.we-come-icon {
 }
 
 @media (max-width: 640px) {
+  .we-come-to-you-section {
+    padding: 2.5rem 1rem;
+  }
   .we-come-title {
-    font-size: 2rem;
+    font-size: 1.85rem;
+  }
+  .we-come-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
   }
   .we-come-grid {
-    grid-template-columns: 1fr;
-    max-width: 320px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    max-width: 100%;
     margin: 0 auto;
+  }
+  .we-come-card {
+    height: 250px;
+    border-radius: 14px;
+  }
+  .we-come-overlay {
+    padding: 1rem 0.85rem;
+  }
+  .we-come-card-header {
+    gap: 0.4rem;
+    margin-bottom: 0.35rem;
+  }
+  .we-come-icon,
+  svg.we-come-icon {
+    width: 17px;
+    height: 17px;
+  }
+  .we-come-card-title {
+    font-size: 1.05rem;
+  }
+  .we-come-card-desc {
+    font-size: 0.75rem;
+    line-height: 1.35;
   }
 }
 
