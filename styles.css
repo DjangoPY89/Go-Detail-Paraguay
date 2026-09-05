@@ -2911,25 +2911,27 @@ svg.we-come-icon {
 }
 
 .sim-veh-img-wrap {
-  height: 50px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.sim-veh-img-wrap img {
+  max-width: 100%;
+  max-height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+  transition: transform 0.25s ease;
+}
+
+.sim-veh-card:hover .sim-veh-img-wrap img {
+  transform: scale(1.08);
+}
+
 .sim-veh-icon-svg {
   font-size: 2.25rem;
   line-height: 1;
-}
-
-.sim-veh-img {
-  max-height: 48px;
-  max-width: 80px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .sim-veh-card h4 {
