@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Car paint gradient (White/Silver metallic) -->
+    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="35%" stop-color="#F1F5F9" />
+      <stop offset="70%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+
+    <linearGradient id="hoodGradient" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+
+    <!-- Glass gradient -->
+    <linearGradient id="glassGradient" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#0F172A" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Glass reflection line -->
+    <linearGradient id="glassReflect" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.4" />
+      <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Chrome / Trim Gradient -->
+    <linearGradient id="chromeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="50%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+
+    <!-- Headlight glow -->
+    <linearGradient id="headlightGlow" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="60%" stop-color="#E0F2FE" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <!-- Tire Gradient -->
+    <radialGradient id="tireGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="70%" stop-color="#1E293B" />
+      <stop offset="90%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+
+    <!-- Rim Gradient -->
+    <linearGradient id="rimGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0" />
+      <stop offset="50%" stop-color="#64748B" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+
+    <!-- Shadow under car -->
+    <radialGradient id="groundShadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Drop Shadow on ground -->
+  <ellipse cx="160" cy="156" rx="138" ry="12" fill="url(#groundShadow)" />
+
+  <!-- Rear Left Wheel (peeking through) -->
+  <ellipse cx="62" cy="132" rx="16" ry="19" fill="#0F172A" />
+
+  <!-- Main Body Silhouette / Base Layer -->
+  <path d="M 38 128 
+           C 36 120 40 102 54 94
+           C 68 86 98 64 126 50
+           C 142 42 168 38 214 38
+           C 236 38 252 42 262 52
+           C 274 64 286 86 288 98
+           C 290 106 292 118 290 128
+           C 288 136 280 142 268 144
+           C 252 146 226 148 160 148
+           C 94 148 54 146 44 140
+           Z" 
+        fill="url(#bodyGradient)" 
+        stroke="#94A3B8" 
+        stroke-width="1.2" />
+
+  <!-- Roof Rails -->
+  <path d="M 134 47 C 160 41 200 40 228 42" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 142 48 L 144 52 M 216 43 L 216 47" stroke="#64748B" stroke-width="2" />
+
+  <!-- Greenhouse / Cabin Glass -->
+  <!-- Windshield (Front 3/4) -->
+  <path d="M 194 44 
+           L 246 54 
+           C 256 70 264 88 266 94 
+           L 194 92 
+           C 192 76 192 58 194 44 Z" 
+        fill="url(#glassGradient)" />
+  
+  <!-- Side Windows -->
+  <path d="M 188 45 
+           L 128 53 
+           C 106 65 84 82 74 94 
+           L 186 93 
+           Z" 
+        fill="url(#glassGradient)" />
+
+  <!-- Window pillars / B-Pillar & C-Pillar -->
+  <line x1="140" y1="52" x2="142" y2="93" stroke="#0F172A" stroke-width="3" />
+  <line x1="188" y1="44" x2="190" y2="93" stroke="#0F172A" stroke-width="4" />
+
+  <!-- Glass reflection streaks -->
+  <path d="M 132 54 L 176 93 L 162 93 L 122 55 Z" fill="url(#glassReflect)" />
+  <path d="M 200 46 L 242 93 L 230 93 L 194 48 Z" fill="url(#glassReflect)" />
+
+  <!-- Hood (Bonnet) Surface -->
+  <path d="M 194 92 
+           L 266 94 
+           C 276 98 284 104 286 112 
+           L 218 116 
+           C 198 108 192 100 194 92 Z" 
+        fill="url(#hoodGradient)" 
+        stroke="#CBD5E1" 
+        stroke-width="0.8" />
+
+  <!-- Sharp Crease Lines on Hood -->
+  <path d="M 210 93 L 236 114" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+  <path d="M 242 94 L 270 110" stroke="#FFFFFF" stroke-width="1.2" />
+
+  <!-- Side Mirror -->
+  <path d="M 196 82 C 204 80 212 84 212 90 C 212 94 204 96 196 94 Z" fill="#FFFFFF" stroke="#64748B" stroke-width="1" />
+  <ellipse cx="202" cy="88" rx="4" ry="3" fill="#1E293B" />
+
+  <!-- Front Fascia & Dynamic Grille (Modern VW style) -->
+  <path d="M 264 112 
+           L 286 112 
+           C 288 118 288 126 284 134 
+           L 258 134 
+           C 258 126 260 118 264 112 Z" 
+        fill="#0F172A" />
+  
+  <!-- Horizontal Chrome Bars on Grille -->
+  <line x1="266" y1="117" x2="286" y2="116" stroke="url(#chromeGradient)" stroke-width="2" />
+  <line x1="263" y1="123" x2="286" y2="122" stroke="url(#chromeGradient)" stroke-width="2" />
+  <line x1="260" y1="129" x2="284" y2="128" stroke="url(#chromeGradient)" stroke-width="1.5" />
+
+  <!-- Center Emblem Accent -->
+  <circle cx="274" cy="122" r="5" fill="#0F172A" stroke="url(#chromeGradient)" stroke-width="1.2" />
+
+  <!-- Modern LED Headlight Cluster -->
+  <path d="M 246 106 
+           L 266 111 
+           L 262 118 
+           L 242 114 
+           Z" 
+        fill="url(#headlightGlow)" 
+        stroke="#38BDF8" 
+        stroke-width="0.8" />
+  
+  <!-- LED DRL Lightbar Line -->
+  <path d="M 244 110 Q 256 113 266 115" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  <path d="M 266 115 L 286 115" stroke="#E0F2FE" stroke-width="1.2" />
+
+  <!-- Lower Bumper & Air Dam -->
+  <path d="M 252 134 
+           L 282 134 
+           C 280 142 272 146 256 146 
+           L 246 146 
+           Z" 
+        fill="#1E293B" />
+  <path d="M 256 142 L 276 142" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" />
+
+  <!-- Side Body Sculpting / Character Lines -->
+  <path d="M 82 100 Q 140 106 218 116" stroke="#FFFFFF" stroke-width="1.8" fill="none" />
+  <path d="M 84 102 Q 140 108 218 118" stroke="#94A3B8" stroke-width="0.8" fill="none" />
+  <path d="M 88 132 Q 130 134 196 136" stroke="#94A3B8" stroke-width="1" fill="none" />
+
+  <!-- Wheel Arches (Plastic cladding / SUV trim) -->
+  <path d="M 60 142 C 60 118 94 118 96 144" stroke="#334155" stroke-width="4.5" fill="none" />
+  <path d="M 198 146 C 198 114 246 114 248 146" stroke="#334155" stroke-width="5" fill="none" />
+
+  <!-- Front Right Wheel (Main) -->
+  <g>
+    <!-- Outer Tire -->
+    <ellipse cx="222" cy="136" rx="22" ry="22" fill="url(#tireGradient)" />
+    <!-- Rim Outer Ring -->
+    <ellipse cx="222" cy="136" rx="15" ry="15" fill="url(#rimGradient)" />
+    <!-- Inner Dark Hub -->
+    <ellipse cx="222" cy="136" rx="8" ry="8" fill="#0F172A" />
+    <!-- Alloy Spokes -->
+    <line x1="222" y1="123" x2="222" y2="149" stroke="#F1F5F9" stroke-width="2.5" />
+    <line x1="210" y1="136" x2="234" y2="136" stroke="#F1F5F9" stroke-width="2.5" />
+    <line x1="213" y1="127" x2="231" y2="145" stroke="#E2E8F0" stroke-width="2" />
+    <line x1="213" y1="145" x2="231" y2="127" stroke="#E2E8F0" stroke-width="2" />
+    <!-- Center Cap -->
+    <circle cx="222" cy="136" r="3.5" fill="#38BDF8" stroke="#FFFFFF" stroke-width="0.8" />
+  </g>
+
+  <!-- Rear Right Wheel -->
+  <g>
+    <!-- Outer Tire -->
+    <ellipse cx="78" cy="134" rx="17" ry="17" fill="url(#tireGradient)" />
+    <!-- Rim Outer Ring -->
+    <ellipse cx="78" cy="134" rx="11" ry="11" fill="url(#rimGradient)" />
+    <!-- Inner Dark Hub -->
+    <ellipse cx="78" cy="134" rx="6" ry="6" fill="#0F172A" />
+    <!-- Alloy Spokes -->
+    <line x1="78" y1="125" x2="78" y2="143" stroke="#F1F5F9" stroke-width="2" />
+    <line x1="69" y1="134" x2="87" y2="134" stroke="#F1F5F9" stroke-width="2" />
+    <line x1="71" y1="127" x2="85" y2="141" stroke="#E2E8F0" stroke-width="1.5" />
+    <line x1="71" y1="141" x2="85" y2="127" stroke="#E2E8F0" stroke-width="1.5" />
+    <!-- Center Cap -->
+    <circle cx="78" cy="134" r="2.5" fill="#38BDF8" stroke="#FFFFFF" stroke-width="0.6" />
+  </g>
+
+  <!-- Door Handles -->
+  <rect x="110" y="98" width="10" height="3" rx="1.5" fill="#E2E8F0" stroke="#94A3B8" stroke-width="0.6" />
+  <rect x="156" y="100" width="11" height="3" rx="1.5" fill="#E2E8F0" stroke="#94A3B8" stroke-width="0.6" />
+</svg>
