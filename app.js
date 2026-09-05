@@ -1104,6 +1104,62 @@ const toast = {
   }
 };
 
+/**
+ * =========================================================================
+ * 9. MOBILE NAVIGATION DRAWER CONTROLLER
+ * =========================================================================
+ */
+const mobileNav = {
+  isOpen: false,
+  servicesOpen: false,
+
+  toggle() {
+    if (this.isOpen) {
+      this.close();
+    } else {
+      this.open();
+    }
+  },
+
+  open() {
+    this.isOpen = true;
+    const drawer = document.getElementById("mobileNavDrawer");
+    const overlay = document.getElementById("mobileNavOverlay");
+    const toggleBtn = document.getElementById("mobileMenuToggleBtn");
+    if (drawer) {
+      drawer.classList.add("active");
+      drawer.setAttribute("aria-hidden", "false");
+    }
+    if (overlay) overlay.classList.add("active");
+    if (toggleBtn) toggleBtn.classList.add("active");
+    document.body.style.overflow = "hidden";
+    if (window.lucide) lucide.createIcons();
+  },
+
+  close() {
+    this.isOpen = false;
+    const drawer = document.getElementById("mobileNavDrawer");
+    const overlay = document.getElementById("mobileNavOverlay");
+    const toggleBtn = document.getElementById("mobileMenuToggleBtn");
+    if (drawer) {
+      drawer.classList.remove("active");
+      drawer.setAttribute("aria-hidden", "true");
+    }
+    if (overlay) overlay.classList.remove("active");
+    if (toggleBtn) toggleBtn.classList.remove("active");
+    document.body.style.overflow = "";
+  },
+
+  toggleServices() {
+    this.servicesOpen = !this.servicesOpen;
+    const list = document.getElementById("mobileServicesList");
+    const arrow = document.getElementById("mobileServicesArrow");
+    if (list) list.classList.toggle("active", this.servicesOpen);
+    if (arrow) arrow.classList.toggle("rotated", this.servicesOpen);
+    if (window.lucide) lucide.createIcons();
+  }
+};
+
 // Global Bootstrapping
 document.addEventListener("DOMContentLoaded", () => {
   wizard.init();
@@ -1124,5 +1180,12 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial check
   }
+
+  // Close mobile drawer on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileNav.isOpen) {
+      mobileNav.close();
+    }
+  });
 });
 

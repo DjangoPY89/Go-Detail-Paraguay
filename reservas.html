@@ -113,8 +113,111 @@
           <span class="phone-number">+595 981 123 456</span>
         </div>
       </a>
+
+      <!-- Mobile Menu Button (3 Rayas Verticales) -->
+      <button type="button" class="mobile-menu-toggle-btn" id="mobileMenuToggleBtn" aria-label="Abrir menú" onclick="mobileNav.toggle()">
+        <span class="menu-bar-line"></span>
+        <span class="menu-bar-line"></span>
+        <span class="menu-bar-line"></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer Overlay & Panel -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="mobileNav.close()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="brand-logo-pill" onclick="mobileNav.close()">
+        <span>PARAGUAY</span><span class="logo-accent">DETAIL</span>
+      </a>
+      <button type="button" class="mobile-nav-close-btn" onclick="mobileNav.close()" aria-label="Cerrar menú">
+        <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+      </button>
+    </div>
+
+    <div class="mobile-nav-body">
+      <ul class="mobile-nav-links">
+        <li>
+          <a href="index.html" class="mobile-nav-link" onclick="mobileNav.close()">
+            <div class="mobile-nav-link-left">
+              <i data-lucide="home" style="width: 18px; height: 18px;"></i>
+              <span>Inicio</span>
+            </div>
+            <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i>
+          </a>
+        </li>
+        <li class="mobile-nav-dropdown-item">
+          <div class="mobile-nav-link mobile-dropdown-header" onclick="mobileNav.toggleServices()">
+            <div class="mobile-nav-link-left">
+              <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+              <span>Servicios</span>
+            </div>
+            <i data-lucide="chevron-down" class="mobile-dropdown-arrow" id="mobileServicesArrow" style="width: 16px; height: 16px;"></i>
+          </div>
+          <div class="mobile-services-list" id="mobileServicesList">
+            <a href="index.html#services" class="mobile-sub-link" onclick="mobileNav.close()">
+              <i data-lucide="car" style="width: 15px; height: 15px;"></i>
+              <span>Lavado & Detallado Exterior</span>
+            </a>
+            <a href="index.html#services" class="mobile-sub-link" onclick="mobileNav.close()">
+              <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i>
+              <span>Limpieza Profunda de Interiores</span>
+            </a>
+            <a href="index.html#services" class="mobile-sub-link" onclick="mobileNav.close()">
+              <i data-lucide="shield-check" style="width: 15px; height: 15px;"></i>
+              <span>Detailing Completo Insignia</span>
+            </a>
+            <a href="index.html#services" class="mobile-sub-link" onclick="mobileNav.close()">
+              <i data-lucide="gem" style="width: 15px; height: 15px;"></i>
+              <span>Tratamiento Cerámico 9H</span>
+            </a>
+            <a href="index.html#services" class="mobile-sub-link" onclick="mobileNav.close()">
+              <i data-lucide="wrench" style="width: 15px; height: 15px;"></i>
+              <span>Detallado de Motor</span>
+            </a>
+            <a href="index.html#services" class="mobile-sub-link" onclick="mobileNav.close()">
+              <i data-lucide="sun" style="width: 15px; height: 15px;"></i>
+              <span>Restauración de Faros</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="reservas.html" class="mobile-nav-link highlight-booking" onclick="mobileNav.close()">
+            <div class="mobile-nav-link-left">
+              <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+              <span>Precios & Reservas</span>
+            </div>
+            <span class="mobile-badge-new">Agendar</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard.html" class="mobile-nav-link" onclick="mobileNav.close()">
+            <div class="mobile-nav-link-left">
+              <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+              <span>Mi Cuenta / Portal</span>
+            </div>
+            <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile Nav CTAs & Contact -->
+      <div class="mobile-nav-footer">
+        <a href="tel:+595981123456" class="mobile-call-btn">
+          <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i>
+          <span>Llamar: +595 981 123 456</span>
+        </a>
+        <a href="https://wa.me/595981123456" target="_blank" class="mobile-wa-btn">
+          <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+          <span>Escribir por WhatsApp</span>
+        </a>
+        <div class="mobile-coverage-info">
+          <i data-lucide="map-pin" style="width: 14px; height: 14px;"></i>
+          <span>Asunción • Luque • San Lorenzo</span>
+        </div>
+      </div>
+    </div>
+  </aside>
 
   <!-- 3. PAGE HEADER HERO -->
   <header class="reservas-page-header">
