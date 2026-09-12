@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.5">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -328,8 +328,8 @@
             <!-- Package 1: Full Detail (Exterior + Interior) -->
             <div class="sim-package-card popular selected" id="pkgCardFullDetail" onclick="pricingSimulator.selectPackage('full_detail')">
               <div class="sim-pkg-ribbon">MÁS POPULAR</div>
-              <div class="sim-pkg-img-wrap">
-                <img src="assets/gallery-house.jpg" alt="Full Detail (Exterior + Interior)" class="sim-pkg-img">
+              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
+                <img src="assets/gallery-house.jpg" alt="Full Detail (Exterior + Interior)" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
                 <div class="sim-pkg-badge-overlay">EXTERIOR + INTERIOR</div>
               </div>
               <div class="sim-pkg-body">
@@ -360,8 +360,8 @@
 
             <!-- Package 2: Full Interior Detail -->
             <div class="sim-package-card" id="pkgCardFullInterior" onclick="pricingSimulator.selectPackage('full_interior')">
-              <div class="sim-pkg-img-wrap">
-                <img src="assets/gallery-trx-interior.jpg" alt="Full Interior Detail" class="sim-pkg-img">
+              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
+                <img src="assets/gallery-trx-interior.jpg" alt="Full Interior Detail" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
                 <div class="sim-pkg-badge-overlay">SOLO INTERIOR</div>
               </div>
               <div class="sim-pkg-body">
@@ -391,8 +391,8 @@
 
             <!-- Package 3: Exterior Detail -->
             <div class="sim-package-card" id="pkgCardExterior" onclick="pricingSimulator.selectPackage('exterior_detail')">
-              <div class="sim-pkg-img-wrap">
-                <img src="assets/gallery-parking.jpg" alt="Exterior Detail" class="sim-pkg-img">
+              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
+                <img src="assets/gallery-parking.jpg" alt="Exterior Detail" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
                 <div class="sim-pkg-badge-overlay">SOLO EXTERIOR</div>
               </div>
               <div class="sim-pkg-body">
@@ -423,8 +423,8 @@
             <!-- Package 4: Ceramic Coating -->
             <div class="sim-package-card" id="pkgCardCeramic" onclick="pricingSimulator.selectPackage('ceramic_coating')">
               <div class="sim-pkg-ribbon" style="background: linear-gradient(135deg, #0f172a, #0066FF);">MÁXIMA PROTECCIÓN</div>
-              <div class="sim-pkg-img-wrap">
-                <img src="assets/gallery-office.jpg" alt="Ceramic Coating" class="sim-pkg-img">
+              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
+                <img src="assets/gallery-office.jpg" alt="Ceramic Coating" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
                 <div class="sim-pkg-badge-overlay">PROTECCIÓN CERÁMICA 9H</div>
               </div>
               <div class="sim-pkg-body">

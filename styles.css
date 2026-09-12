@@ -3591,8 +3591,11 @@ svg.we-come-icon {
 /* Step 2: Packages Grid */
 .sim-packages-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sim-package-card {
@@ -3606,6 +3609,10 @@ svg.we-come-icon {
   cursor: pointer;
   transition: all 0.25s ease;
   user-select: none;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sim-package-card:hover {
