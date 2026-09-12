@@ -1119,6 +1119,583 @@ const pricingSimulator = {
 
 /**
  * =========================================================================
+ * 10. GODETAIL 5-STEP BOOKING WIZARD CONTROLLER (Suds / GoDetail UX)
+ * =========================================================================
+ */
+const gdWizard = {
+  state: {
+    currentStep: 1, // 1, 2, '3A', '3B', 4, 5
+    service: {
+      id: 'full_detail',
+      name: 'Full Detail',
+      durationMinutes: 210,
+      priceGs: 300000
+    },
+    location: {
+      type: 'location', // 'location' or 'shop'
+      address: 'Av. Santa Teresa 1827',
+      city: 'Asunción'
+    },
+    vehicle: {
+      year: '2024',
+      make: 'Toyota',
+      model: 'Tacoma / Hilux',
+      size: 'suv_truck',
+      sizeLabel: 'SUV / Truck',
+      img: 'assets/suv-7seat-vector.png'
+    },
+    tier: {
+      id: 'gold',
+      name: 'Gold Premium',
+      durationMinutes: 210,
+      priceGs: 350000
+    },
+    schedule: {
+      date: '2026-09-15',
+      dateFormatted: 'Martes, 15 de Septiembre',
+      time: '08:30',
+      timeFormatted: '8:30 AM'
+    },
+    client: {
+      fullName: '',
+      phone: '',
+      email: '',
+      notes: ''
+    },
+    calMonth: 8, // September (0-indexed: 8 = Sep)
+    calYear: 2026
+  },
+
+  modelsPerMake: {
+    Toyota: ["Tacoma / Hilux", "Land Cruiser / Prado", "Corolla", "Camry", "RAV4", "SW4 / Fortuner"],
+    BMW: ["Serie 3 (Sedán)", "Serie 5", "X3 (Crossover)", "X5 (SUV)", "X7 (XL SUV)", "M4 (Coupé)"],
+    "Mercedes-Benz": ["Clase C", "Clase E", "GLC", "GLE", "GLS", "Sprinter"],
+    Honda: ["Civic", "Accord", "CR-V", "HR-V", "Pilot", "Ridgeline"],
+    Ford: ["Ranger", "F-150", "Explorer", "Mustang", "Transit", "Bronco"],
+    Hyundai: ["Tucson", "Santa Fe", "Creta", "Elantra", "Palisade", "Staria"],
+    Kia: ["Sportage", "Sorento", "Carnival", "Cerato", "Telluride", "K3"],
+    Chevrolet: ["S10", "Tracker", "Trailblazer", "Silverado", "Camaro", "Cruze"],
+    Porsche: ["911 Carrera", "Cayenne", "Macan", "Panamera", "Taycan"],
+    Audi: ["A4", "A6", "Q3", "Q5", "Q7", "Q8"],
+    Volkswagen: ["Amarok", "Golf", "Taos", "Tiguan", "T-Cross", "Touareg"],
+    Jeep: ["Wrangler", "Grand Cherokee", "Compass", "Renegade", "Gladiator"],
+    "Land Rover": ["Defender", "Range Rover Sport", "Range Rover Velar", "Discovery"]
+  },
+
+  vehicleImages: {
+    coupe: "assets/toyota-camry.png",
+    sedan: "assets/toyota-camry.png",
+    crossover: "assets/mid-size-suv.png",
+    suv_truck: "assets/suv-7seat-vector.png",
+    xl_suv: "assets/land-cruiser.png",
+    van_sprinter: "assets/van.png"
+  },
+
+  init() {
+    const bookingContainer = document.getElementById("booking");
+    if (!bookingContainer) return;
+
+    this.renderCalendar();
+    this.updateVehiclePreview();
+    if (window.lucide) lucide.createIcons();
+  },
+
+  goToStep(step) {
+    this.state.currentStep = step;
+
+    // Hide all step panels
+    const panels = ["gdStep1", "gdStep2", "gdStep3A", "gdStep3B", "gdStep4", "gdStep5"];
+    panels.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove("active");
+    });
+
+    // Show target step panel
+    const targetId = step === '3A' ? 'gdStep3A' : step === '3B' ? 'gdStep3B' : `gdStep${step}`;
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) targetEl.classList.add("active");
+
+    // Update Top Navigation
+    const backBtn = document.getElementById("gdBackBtn");
+    const stepText = document.getElementById("gdStepText");
+    const progressBar = document.getElementById("gdProgressBar");
+
+    if (backBtn) {
+      backBtn.style.visibility = step === 1 ? "hidden" : "visible";
+    }
+
+    let label = "Service · 1/5";
+    let progress = "20%";
+
+    if (step === 2) {
+      label = "Location · 2/5";
+      progress = "40%";
+    } else if (step === '3A' || step === '3B') {
+      label = "Details · 3/5";
+      progress = "60%";
+    } else if (step === 4) {
+      label = "Schedule · 4/5";
+      progress = "80%";
+    } else if (step === 5) {
+      label = "Review · 5/5";
+      progress = "100%";
+    }
+
+    if (stepText) stepText.innerText = label;
+    if (progressBar) progressBar.style.width = progress;
+
+    // Scroll smoothly to top of wizard container
+    const section = document.getElementById("booking");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    if (window.lucide) lucide.createIcons();
+  },
+
+  prevStep() {
+    const cur = this.state.currentStep;
+    if (cur === 5) this.goToStep(4);
+    else if (cur === 4) this.goToStep('3B');
+    else if (cur === '3B') this.goToStep('3A');
+    else if (cur === '3A') this.goToStep(2);
+    else if (cur === 2) this.goToStep(1);
+  },
+
+  selectService(id, name, duration, price) {
+    this.state.service = { id, name, durationMinutes: duration, priceGs: price };
+
+    const locSvcName = document.getElementById("gdLocServiceName");
+    const tierSvcName = document.getElementById("gdTierServiceName");
+
+    if (locSvcName) locSvcName.innerText = name;
+    if (tierSvcName) tierSvcName.innerText = name;
+
+    this.goToStep(2);
+  },
+
+  selectLocationType(type) {
+    this.state.location.type = type;
+
+    const locCard = document.getElementById("locChoiceLocation");
+    const shopCard = document.getElementById("locChoiceShop");
+    const addrSection = document.getElementById("gdAddressSection");
+
+    if (locCard && shopCard) {
+      locCard.classList.toggle("active", type === 'location');
+      shopCard.classList.toggle("active", type === 'shop');
+    }
+
+    const pinLabel = document.getElementById("gdPinLabel");
+    if (pinLabel) {
+      pinLabel.innerText = type === 'location' 
+        ? `${this.state.location.city} (A Domicilio)` 
+        : `Taller Oficial (${this.state.location.city})`;
+    }
+  },
+
+  selectCity(city) {
+    if (!APP_CONFIG.GEO_WHITELIST.includes(city)) {
+      toast.show("Ciudad fuera de cobertura. Disponible: Asunción, Luque, San Lorenzo.", "error");
+      return;
+    }
+
+    this.state.location.city = city;
+
+    // Update chips
+    const chips = {
+      "Asunción": "chipAsuncion",
+      "Luque": "chipLuque",
+      "San Lorenzo": "chipSanLorenzo"
+    };
+
+    Object.keys(chips).forEach(c => {
+      const el = document.getElementById(chips[c]);
+      if (el) el.classList.toggle("active", c === city);
+    });
+
+    const pinLabel = document.getElementById("gdPinLabel");
+    if (pinLabel) {
+      pinLabel.innerText = `${city} (Cobertura Activa)`;
+    }
+  },
+
+  mapZoom(delta) {
+    const canvas = document.getElementById("gdMapCanvas");
+    if (canvas) {
+      const currentScale = parseFloat(canvas.dataset.scale || "1");
+      const newScale = Math.min(Math.max(0.85, currentScale + delta * 0.15), 1.5);
+      canvas.dataset.scale = newScale;
+      const roads = canvas.querySelector(".gd-map-roads-svg");
+      if (roads) roads.style.transform = `scale(${newScale})`;
+    }
+  },
+
+  nextFromLocation() {
+    const addrInput = document.getElementById("gdAddressInput");
+    if (addrInput && addrInput.value.trim()) {
+      this.state.location.address = addrInput.value.trim();
+    }
+
+    if (!this.state.location.address && this.state.location.type === 'location') {
+      toast.show("Por favor ingresá tu dirección para continuar.", "error");
+      return;
+    }
+
+    this.goToStep('3A');
+  },
+
+  handleMakeChange() {
+    const makeSelect = document.getElementById("gdVehMake");
+    const modelSelect = document.getElementById("gdVehModel");
+    if (!makeSelect || !modelSelect) return;
+
+    const selectedMake = makeSelect.value;
+    const models = this.modelsPerMake[selectedMake] || ["Modelo Estándar", "Crossover / SUV", "Sedán"];
+
+    modelSelect.innerHTML = models.map(m => `<option value="${m}">${m}</option>`).join("");
+    this.updateVehiclePreview();
+  },
+
+  selectVehicleSize(size) {
+    this.state.vehicle.size = size;
+    const sizeLabels = {
+      coupe: "Coupe / 2-seater",
+      sedan: "Sedan",
+      crossover: "Crossover",
+      suv_truck: "SUV / Truck",
+      xl_suv: "XL SUV / Truck",
+      van_sprinter: "Van / Sprinter"
+    };
+    this.state.vehicle.sizeLabel = sizeLabels[size] || "SUV / Truck";
+
+    // Update active class on cards
+    document.querySelectorAll(".gd-size-card").forEach(c => {
+      const isSelected = c.dataset.size === size;
+      c.classList.toggle("active", isSelected);
+      
+      // Update check icon
+      let check = c.querySelector(".gd-card-check");
+      if (isSelected && !check) {
+        c.insertAdjacentHTML("afterbegin", `<div class="gd-card-check"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>`);
+      } else if (!isSelected && check) {
+        check.remove();
+      }
+    });
+
+    this.updateVehiclePreview();
+    if (window.lucide) lucide.createIcons();
+  },
+
+  updateVehiclePreview() {
+    const yearEl = document.getElementById("gdVehYear");
+    const makeEl = document.getElementById("gdVehMake");
+    const modelEl = document.getElementById("gdVehModel");
+    const mainImgEl = document.getElementById("gdVehMainImg");
+    const mini1El = document.getElementById("gdMiniCarImg");
+    const mini2El = document.getElementById("gdMiniCarImg2");
+
+    if (yearEl) this.state.vehicle.year = yearEl.value;
+    if (makeEl) this.state.vehicle.make = makeEl.value;
+    if (modelEl) this.state.vehicle.model = modelEl.value;
+
+    const imgSrc = this.vehicleImages[this.state.vehicle.size] || "assets/suv-7seat-vector.png";
+    this.state.vehicle.img = imgSrc;
+
+    if (mainImgEl) mainImgEl.src = imgSrc;
+    if (mini1El) mini1El.src = imgSrc;
+    if (mini2El) mini2El.src = imgSrc;
+  },
+
+  goToStage3B() {
+    this.updateVehiclePreview();
+
+    // Adjust trophy tier prices deterministically based on vehicle size & service
+    const sizeMultiplier = {
+      coupe: 0.9,
+      sedan: 1.0,
+      crossover: 1.1,
+      suv_truck: 1.2,
+      xl_suv: 1.35,
+      van_sprinter: 1.5
+    }[this.state.vehicle.size] || 1.2;
+
+    const baseMaint = Math.round(250000 * (sizeMultiplier / 1.2) / 10000) * 10000;
+    const baseGold = Math.round(350000 * (sizeMultiplier / 1.2) / 10000) * 10000;
+    const baseMaster = Math.round(500000 * (sizeMultiplier / 1.2) / 10000) * 10000;
+
+    const priceMaintEl = document.getElementById("priceMaint");
+    const priceGoldEl = document.getElementById("priceGold");
+    const priceMasterEl = document.getElementById("priceMaster");
+
+    if (priceMaintEl) priceMaintEl.innerText = `Gs. ${baseMaint.toLocaleString("es-PY")}`;
+    if (priceGoldEl) priceGoldEl.innerText = `Gs. ${baseGold.toLocaleString("es-PY")}`;
+    if (priceMasterEl) priceMasterEl.innerText = `Gs. ${baseMaster.toLocaleString("es-PY")}`;
+
+    this.goToStep('3B');
+  },
+
+  selectTier(id, name, duration, price) {
+    const sizeMultiplier = {
+      coupe: 0.9,
+      sedan: 1.0,
+      crossover: 1.1,
+      suv_truck: 1.2,
+      xl_suv: 1.35,
+      van_sprinter: 1.5
+    }[this.state.vehicle.size] || 1.2;
+
+    const calculatedPrice = Math.round(price * (sizeMultiplier / 1.2) / 10000) * 10000;
+
+    this.state.tier = {
+      id,
+      name,
+      durationMinutes: duration,
+      priceGs: calculatedPrice
+    };
+
+    const schedSub = document.getElementById("gdSchedSub");
+    const hours = (duration / 60).toFixed(1).replace(".0", "");
+    if (schedSub) {
+      schedSub.innerText = `${name} · ${hours} hours (${duration} min)`;
+    }
+
+    this.goToStep(4);
+  },
+
+  renderCalendar() {
+    const monthTextEl = document.getElementById("gdCalMonthText");
+    const daysGridEl = document.getElementById("gdCalDaysGrid");
+    if (!daysGridEl) return;
+
+    const year = this.state.calYear;
+    const month = this.state.calMonth;
+
+    const monthNames = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    if (monthTextEl) {
+      monthTextEl.innerText = `${monthNames[month]} ${year}`;
+    }
+
+    // First day of month (0 = Sun, 1 = Mon, ..., 6 = Sat)
+    const firstDay = new Date(year, month, 1).getDay();
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    let daysHtml = "";
+
+    // Empty lead cells
+    for (let i = 0; i < firstDay; i++) {
+      daysHtml += `<div class="gd-cal-day disabled"></div>`;
+    }
+
+    // Days of the month
+    for (let d = 1; d <= totalDays; d++) {
+      const dateObj = new Date(year, month, d);
+      const isSunday = dateObj.getDay() === 0; // Strictly closed on Sundays (GEMINI.md Rule 1)
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+      const isSelected = dateStr === this.state.schedule.date;
+
+      if (isSunday) {
+        daysHtml += `<div class="gd-cal-day sunday" title="Cerrado los domingos">${d}</div>`;
+      } else {
+        const activeClass = isSelected ? " active" : "";
+        daysHtml += `<div class="gd-cal-day${activeClass}" onclick="gdWizard.selectDate('${dateStr}', '${d}', '${monthNames[month]}')">${d}</div>`;
+      }
+    }
+
+    daysGridEl.innerHTML = daysHtml;
+  },
+
+  selectDate(dateStr, dayNum, monthName) {
+    this.state.schedule.date = dateStr;
+    const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    const parts = dateStr.split("-");
+    const dObj = new Date(parts[0], parts[1] - 1, parts[2]);
+    const dayOfWeek = dayNames[dObj.getDay()];
+
+    this.state.schedule.dateFormatted = `${dayOfWeek}, ${dayNum} de ${monthName}`;
+    this.renderCalendar();
+  },
+
+  prevMonth() {
+    if (this.state.calMonth === 0) {
+      this.state.calMonth = 11;
+      this.state.calYear -= 1;
+    } else {
+      this.state.calMonth -= 1;
+    }
+    this.renderCalendar();
+  },
+
+  nextMonth() {
+    if (this.state.calMonth === 11) {
+      this.state.calMonth = 0;
+      this.state.calYear += 1;
+    } else {
+      this.state.calMonth += 1;
+    }
+    this.renderCalendar();
+  },
+
+  selectTime(timeStr) {
+    this.state.schedule.time = timeStr;
+    const timeLabels = {
+      "08:30": "8:30 AM",
+      "10:30": "10:30 AM",
+      "12:30": "12:30 PM",
+      "14:30": "2:30 PM",
+      "16:30": "4:30 PM"
+    };
+    this.state.schedule.timeFormatted = timeLabels[timeStr] || timeStr;
+
+    document.querySelectorAll(".gd-time-pill-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.time === timeStr);
+    });
+  },
+
+  goToStep5() {
+    if (!this.state.schedule.date) {
+      toast.show("Por favor seleccioná un día en el calendario.", "error");
+      return;
+    }
+
+    // Populate Review elements
+    const revServiceTier = document.getElementById("revServiceTier");
+    const revDuration = document.getElementById("revDuration");
+    const revVehicleSummary = document.getElementById("revVehicleSummary");
+    const revLocationSummary = document.getElementById("revLocationSummary");
+    const revDateSummary = document.getElementById("revDateSummary");
+    const revTotalPrice = document.getElementById("revTotalPrice");
+
+    const hours = (this.state.tier.durationMinutes / 60).toFixed(1).replace(".0", "");
+
+    if (revServiceTier) {
+      revServiceTier.innerText = `${this.state.service.name} — ${this.state.tier.name}`;
+    }
+    if (revDuration) {
+      revDuration.innerText = `${hours} horas (${this.state.tier.durationMinutes} min) de tratamiento`;
+    }
+    if (revVehicleSummary) {
+      revVehicleSummary.innerText = `${this.state.vehicle.year} ${this.state.vehicle.make} ${this.state.vehicle.model} (${this.state.vehicle.sizeLabel})`;
+    }
+    if (revLocationSummary) {
+      const locTypeLabel = this.state.location.type === 'location' ? 'At Your Location' : 'At Our Shop';
+      revLocationSummary.innerText = `${locTypeLabel} — ${this.state.location.address}, ${this.state.location.city}`;
+    }
+    if (revDateSummary) {
+      revDateSummary.innerText = `${this.state.schedule.dateFormatted} a las ${this.state.schedule.timeFormatted}`;
+    }
+    if (revTotalPrice) {
+      revTotalPrice.innerText = `Gs. ${this.state.tier.priceGs.toLocaleString("es-PY")}`;
+    }
+
+    this.goToStep(5);
+  },
+
+  async handleSubmit(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("gdClientName").value.trim();
+    const phone = document.getElementById("gdClientPhone").value.trim();
+    const email = document.getElementById("gdClientEmail").value.trim();
+    const notes = document.getElementById("gdClientNotes").value.trim();
+
+    if (!name || !phone || !email) {
+      toast.show("Por favor completá todos los campos requeridos (*).", "error");
+      return;
+    }
+
+    this.state.client = { fullName: name, phone, email, notes };
+
+    const submitBtn = document.getElementById("gdSubmitBtn");
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="loading-spinner"></span> Confirmando Turno...`;
+    }
+
+    // Map size to GEMINI.md allowed categories
+    let mappedCategory = "suv_mediana";
+    if (this.state.vehicle.size === "coupe" || this.state.vehicle.size === "sedan") {
+      mappedCategory = "sedan_hatchback";
+    } else if (this.state.vehicle.size === "xl_suv" || this.state.vehicle.size === "van_sprinter") {
+      mappedCategory = "pickup_suv_grande";
+    }
+
+    // Normalized GEMINI.md Payload
+    const payload = {
+      client: {
+        fullName: name,
+        email: email,
+        phone: phone,
+        userId: "usr_gd_" + Math.random().toString(36).substring(2, 7)
+      },
+      vehicle: {
+        category: mappedCategory,
+        brand: this.state.vehicle.make,
+        model: this.state.vehicle.model,
+        year: parseInt(this.state.vehicle.year, 10) || 2024,
+        plate: "N/A"
+      },
+      services: [
+        {
+          id: this.state.service.id,
+          name: `${this.state.service.name} (${this.state.tier.name})`,
+          durationMinutes: this.state.tier.durationMinutes
+        }
+      ],
+      schedule: {
+        date: this.state.schedule.date,
+        time: this.state.schedule.time
+      },
+      location: {
+        city: this.state.location.city,
+        address: this.state.location.address,
+        notes: notes || "Reserva desde wizard 5 pasos GoDetail"
+      },
+      pricing: {
+        totalMinutes: this.state.tier.durationMinutes,
+        hourlyRateGs: APP_CONFIG.HOURLY_RATE_GS,
+        totalPriceGs: this.state.tier.priceGs,
+        paymentMethod: "pay_on_completion"
+      }
+    };
+
+    console.log("🚀 Booking Submitted Successfully:", payload);
+
+    // Format WhatsApp Message
+    const waText = `¡Hola Paraguay Detail! Acabo de completar mi reserva online con los siguientes datos:\n\n` +
+      `👤 *Cliente:* ${name} (${phone})\n` +
+      `✨ *Servicio:* ${this.state.service.name} — ${this.state.tier.name}\n` +
+      `🚗 *Vehículo:* ${this.state.vehicle.year} ${this.state.vehicle.make} ${this.state.vehicle.model} (${this.state.vehicle.sizeLabel})\n` +
+      `📍 *Ubicación:* ${this.state.location.address}, ${this.state.location.city}\n` +
+      `📅 *Fecha & Turno:* ${this.state.schedule.dateFormatted} a las ${this.state.schedule.timeFormatted}\n` +
+      `💰 *Total a Pagar:* Gs. ${this.state.tier.priceGs.toLocaleString("es-PY")} (Pago al finalizar)\n\n` +
+      `¿Podrían confirmarme la disponibilidad en su agenda? ¡Muchas gracias!`;
+
+    const waUrl = `https://wa.me/595981123456?text=${encodeURIComponent(waText)}`;
+
+    // Simulate backend response
+    await new Promise(r => setTimeout(r, 600));
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<i data-lucide="check" style="width: 20px; height: 20px;"></i> ¡Reserva Confirmada!`;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    toast.show("¡Reserva confirmada con éxito! Redirigiendo a WhatsApp...", "success");
+
+    setTimeout(() => {
+      window.open(waUrl, "_blank");
+    }, 800);
+  }
+};
+
+/**
+ * =========================================================================
  * 8. TOAST NOTIFIER
  * =========================================================================
  */
@@ -1203,6 +1780,7 @@ document.addEventListener("DOMContentLoaded", () => {
   faqAccordion.init();
   reviewsModule.init();
   pricingSimulator.init();
+  gdWizard.init();
 
   const authBtn = document.getElementById("openAuthModalBtn");
   if (authBtn) authBtn.addEventListener("click", () => auth.openModal());
@@ -1224,4 +1802,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
