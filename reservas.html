@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.5">
+  <link rel="stylesheet" href="styles.css?v=2.6">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -258,11 +258,16 @@
           <div class="sim-tab-connector"></div>
           <button type="button" class="sim-tab-btn" id="simTab4" onclick="pricingSimulator.goToStage(4)">
             <span class="sim-tab-num">4</span>
+            <span class="sim-tab-label">Ubicación</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab5" onclick="pricingSimulator.goToStage(5)">
+            <span class="sim-tab-num">5</span>
             <span class="sim-tab-label">Resumen</span>
           </button>
         </div>
         <div class="sim-progress-track">
-          <div class="sim-progress-bar" id="simProgressBar" style="width: 12%;"></div>
+          <div class="sim-progress-bar" id="simProgressBar" style="width: 10%;"></div>
         </div>
       </div>
 
@@ -272,7 +277,7 @@
         <!-- ETAPA 1: TAMAÑO DE VEHÍCULO -->
         <div class="sim-stage-panel active" id="simStage1">
           <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 1 de 4</span>
+            <span class="sim-stage-counter">Paso 1 de 5</span>
             <h3 class="sim-stage-heading">Seleccioná el Tamaño de tu Vehículo</h3>
             <p class="sim-stage-sub">Los precios y tiempos de trabajo se adaptan con precisión a la categoría de tu móvil.</p>
           </div>
@@ -319,7 +324,7 @@
         <!-- ETAPA 2: NUESTROS PAQUETES -->
         <div class="sim-stage-panel" id="simStage2">
           <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 2 de 4</span>
+            <span class="sim-stage-counter">Paso 2 de 5</span>
             <h3 class="sim-stage-heading">Seleccioná tu Paquete Principal</h3>
             <p class="sim-stage-sub">Elegí el nivel de detallado que mejor se adapte a las necesidades de tu vehículo.</p>
           </div>
@@ -328,128 +333,83 @@
             <!-- Package 1: Full Detail (Exterior + Interior) -->
             <div class="sim-package-card popular selected" id="pkgCardFullDetail" onclick="pricingSimulator.selectPackage('full_detail')">
               <div class="sim-pkg-ribbon">MÁS POPULAR</div>
-              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
-                <img src="assets/gallery-house.jpg" alt="Full Detail (Exterior + Interior)" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
-                <div class="sim-pkg-badge-overlay">EXTERIOR + INTERIOR</div>
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/package-full-detail.png" alt="Full Detail - Paraguay Detail" class="sim-pkg-img">
               </div>
-              <div class="sim-pkg-body">
-                <h4 class="sim-pkg-title">Full Detail (Exterior + Interior)</h4>
-                <div class="sim-pkg-spec-pill">Detallado integral completo: cabina + carrocería</div>
-                <p class="sim-pkg-desc">Tratamiento integral completo: vapor a 140°C en cabina, lavado artesanal a 2 baldes y sellado hidrofóbico de carrocería.</p>
-                
-                <div class="sim-pkg-price-row">
-                  <span class="sim-pkg-price" id="pkgPriceFullDetail">Gs. 250.000</span>
-                  <span class="sim-pkg-unit">/ servicio</span>
-                </div>
-
-                <ul class="sim-pkg-features">
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado exterior a 2 baldes con shampoo pH neutro</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y llantas con foam activo</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aspirado profundo de alfombras, piso y baúl</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionamiento mate de plásticos con filtro UV</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sellador cerámico express en cristales y carrocería</li>
-                </ul>
-
-                <button type="button" class="btn-select-pkg">
-                  <i data-lucide="check" style="width: 16px; height: 16px;"></i>
-                  <span id="pkgBtnTextFullDetail">Paquete Seleccionado</span>
-                </button>
+              <div class="sim-pkg-header">
+                <h4>Full Detail (Exterior + Interior)</h4>
+                <div class="sim-pkg-price" id="pkgPriceFullDetail">Gs. 250.000</div>
               </div>
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Lavado exterior espuma nieve pH neutro</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Limpieza profunda y aspirado de habitáculo</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Acondicionado de plásticos UV y llantas</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Limpieza de cristales libre de manchas</li>
+              </ul>
+              <button type="button" class="sim-pkg-btn" id="pkgBtnFullDetail">
+                <span id="pkgBtnTextFullDetail">Paquete Seleccionado</span>
+              </button>
             </div>
 
             <!-- Package 2: Full Interior Detail -->
             <div class="sim-package-card" id="pkgCardFullInterior" onclick="pricingSimulator.selectPackage('full_interior')">
-              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
-                <img src="assets/gallery-trx-interior.jpg" alt="Full Interior Detail" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
-                <div class="sim-pkg-badge-overlay">SOLO INTERIOR</div>
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/package-full-interior.png" alt="Full Interior Detail - Paraguay Detail" class="sim-pkg-img">
               </div>
-              <div class="sim-pkg-body">
-                <h4 class="sim-pkg-title">Full Interior Detail</h4>
-                <div class="sim-pkg-spec-pill">Stain removal • Steam cleaning • Shampoo • Leather conditioner</div>
-                <p class="sim-pkg-desc">Desinfección y renovación profunda de cabina: remoción de manchas difíciles, vapor a 140°C, shampoo de tapizados y acondicionador de cuero.</p>
-                
-                <div class="sim-pkg-price-row">
-                  <span class="sim-pkg-price" id="pkgPriceFullInterior">Gs. 180.000</span>
-                  <span class="sim-pkg-unit">/ servicio</span>
-                </div>
-
-                <ul class="sim-pkg-features">
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C (Steam cleaning)</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Eliminación de manchas difíciles y derrames (Stain removal)</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado y shampoo profundo de tapizados y alfombras</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Nutrición e hidratación de cueros (Leather conditioner)</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sanitización antibacteriana y desodorización total</li>
-                </ul>
-
-                <button type="button" class="btn-select-pkg">
-                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
-                  <span id="pkgBtnTextFullInterior">Elegir este Paquete</span>
-                </button>
+              <div class="sim-pkg-header">
+                <h4>Full Interior Detail</h4>
+                <div class="sim-pkg-price" id="pkgPriceFullInterior">Gs. 180.000</div>
               </div>
+              <p class="sim-pkg-subtitle-spec">Stain removal + steam cleaning + Shampoo + Leather conditioner</p>
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Remoción intensiva de manchas (Stain removal)</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Desinfección a vapor a 140°C (Steam cleaning)</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Lavado profundo de tapizados (Shampoo)</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Nutrición de cueros con pH balanceado</li>
+              </ul>
+              <button type="button" class="sim-pkg-btn" id="pkgBtnFullInterior">
+                <span id="pkgBtnTextFullInterior">Elegir este Paquete</span>
+              </button>
             </div>
 
             <!-- Package 3: Exterior Detail -->
             <div class="sim-package-card" id="pkgCardExterior" onclick="pricingSimulator.selectPackage('exterior_detail')">
-              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
-                <img src="assets/gallery-parking.jpg" alt="Exterior Detail" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
-                <div class="sim-pkg-badge-overlay">SOLO EXTERIOR</div>
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/package-exterior.png" alt="Exterior Detail - Paraguay Detail" class="sim-pkg-img">
               </div>
-              <div class="sim-pkg-body">
-                <h4 class="sim-pkg-title">Exterior Detail</h4>
-                <div class="sim-pkg-spec-pill">Lavado artesanal + Descontaminado + Sellado</div>
-                <p class="sim-pkg-desc">Tratamiento exterior para revitalizar el brillo original, remover contaminantes de la pintura y proteger contra el sol.</p>
-                
-                <div class="sim-pkg-price-row">
-                  <span class="sim-pkg-price" id="pkgPriceExterior">Gs. 140.000</span>
-                  <span class="sim-pkg-unit">/ servicio</span>
-                </div>
-
-                <ul class="sim-pkg-features">
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado artesanal a 2 baldes con shampoo pH neutro</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y remoción de alquitrán / savia</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Limpieza profunda de llantas, rines y pasos de rueda</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Encerado de alta protección con sellador hidrofóbico</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionado de neumáticos y molduras plásticas</li>
-                </ul>
-
-                <button type="button" class="btn-select-pkg">
-                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
-                  <span id="pkgBtnTextExterior">Elegir este Paquete</span>
-                </button>
+              <div class="sim-pkg-header">
+                <h4>Exterior Detail</h4>
+                <div class="sim-pkg-price" id="pkgPriceExterior">Gs. 140.000</div>
               </div>
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Pre-lavado desengrasante cítrico sin contacto</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Lavado dos baldes con guante de microfibra</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Limpieza profunda de llantas y pasos de rueda</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Sellador rápido hidrofóbico con brillo gloss</li>
+              </ul>
+              <button type="button" class="sim-pkg-btn" id="pkgBtnExterior">
+                <span id="pkgBtnTextExterior">Elegir este Paquete</span>
+              </button>
             </div>
 
             <!-- Package 4: Ceramic Coating -->
             <div class="sim-package-card" id="pkgCardCeramic" onclick="pricingSimulator.selectPackage('ceramic_coating')">
-              <div class="sim-pkg-ribbon" style="background: linear-gradient(135deg, #0f172a, #0066FF);">MÁXIMA PROTECCIÓN</div>
-              <div class="sim-pkg-img-wrap" style="height: 125px; max-height: 125px; overflow: hidden; width: 100%;">
-                <img src="assets/gallery-office.jpg" alt="Ceramic Coating" class="sim-pkg-img" style="height: 125px; width: 100%; object-fit: cover; display: block;">
-                <div class="sim-pkg-badge-overlay">PROTECCIÓN CERÁMICA 9H</div>
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/package-ceramic.png" alt="Ceramic Coating - Paraguay Detail" class="sim-pkg-img">
               </div>
-              <div class="sim-pkg-body">
-                <h4 class="sim-pkg-title">Ceramic Coating</h4>
-                <div class="sim-pkg-spec-pill">Corrección de laca + Nanotecnología 9H</div>
-                <p class="sim-pkg-desc">Recubrimiento cerámico profesional de alta dureza 9H para un brillo espejo insuperable y máxima protección hidrofóbica.</p>
-                
-                <div class="sim-pkg-price-row">
-                  <span class="sim-pkg-price" id="pkgPriceCeramic">Gs. 450.000</span>
-                  <span class="sim-pkg-unit">/ servicio</span>
-                </div>
-
-                <ul class="sim-pkg-features">
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado técnico y descontaminado férrico profundo</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Corrección de pintura (Pulido para eliminar micro-rayas)</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aplicación de recubrimiento Ceramic Coating 9H</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Brillo espejo profundo y repelencia extrema al agua</li>
-                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Protección de 12+ meses contra rayos UV y lluvia ácida</li>
-                </ul>
-
-                <button type="button" class="btn-select-pkg">
-                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
-                  <span id="pkgBtnTextCeramic">Elegir este Paquete</span>
-                </button>
+              <div class="sim-pkg-header">
+                <h4>Ceramic Coating</h4>
+                <div class="sim-pkg-price" id="pkgPriceCeramic">Gs. 450.000</div>
               </div>
+              <ul class="sim-pkg-features">
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Descontaminado químico y mecánico (Clay Bar)</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Pulido de corrección óptica y brillo espejo</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Aplicación de sellado cerámico nano-tecnológico</li>
+                <li><i data-lucide="check" style="width: 14px; height: 14px;"></i> Protección de alta repelencia y dureza 9H</li>
+              </ul>
+              <button type="button" class="sim-pkg-btn" id="pkgBtnCeramic">
+                <span id="pkgBtnTextCeramic">Elegir este Paquete</span>
+              </button>
             </div>
           </div>
         </div>
@@ -457,7 +417,7 @@
         <!-- ETAPA 3: EXTRAS & ADICIONALES -->
         <div class="sim-stage-panel" id="simStage3">
           <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 3 de 4</span>
+            <span class="sim-stage-counter">Paso 3 de 5</span>
             <h3 class="sim-stage-heading">Tratamientos Adicionales (Opcionales)</h3>
             <p class="sim-stage-sub">Personalizá tu experiencia sumando tratamientos especiales de alto rendimiento.</p>
           </div>
@@ -540,52 +500,155 @@
           </div>
         </div>
 
-        <!-- ETAPA 4: RESUMEN Y CONFIRMACIÓN -->
+        <!-- ETAPA 4: UBICACIÓN Y MAPA -->
         <div class="sim-stage-panel" id="simStage4">
           <div class="sim-stage-header">
-            <span class="sim-stage-counter">Paso 4 de 4</span>
+            <span class="sim-stage-counter">Paso 4 de 5</span>
+            <h3 class="sim-stage-heading">Ubicación del Servicio</h3>
+            <p class="sim-stage-sub">Llegamos a tu domicilio u oficina con nuestra unidad móvil 100% equipada, o podés traer tu móvil a nuestro taller central.</p>
+          </div>
+
+          <div class="sim-location-layout">
+            <!-- Left Column: Interactive Visual Map -->
+            <div class="sim-map-container">
+              <div class="sim-map-canvas">
+                <div class="sim-map-bg-grid"></div>
+                <svg class="sim-map-roads-svg" viewBox="0 0 400 350" preserveAspectRatio="none">
+                  <!-- Water / River (Río Paraguay outline) -->
+                  <path d="M 0,0 Q 80,120 40,240 T 0,350 L 0,350 L 0,0 Z" fill="#e0f2fe" opacity="0.65"></path>
+                  <!-- Secondary Roads / Grid -->
+                  <path d="M 30,50 L 380,50 M 50,110 L 390,110 M 40,170 L 390,170 M 60,230 L 380,230 M 70,290 L 380,290" stroke="#e2e8f0" stroke-width="2.5" stroke-dasharray="3,3"></path>
+                  <path d="M 100,0 L 100,350 M 170,0 L 170,350 M 240,0 L 240,350 M 310,0 L 310,350" stroke="#e2e8f0" stroke-width="2.5" stroke-dasharray="3,3"></path>
+                  <!-- Main Avenues: Mcal. López, España, Santa Teresa, Madame Lynch -->
+                  <path d="M 50,120 Q 200,160 380,140" stroke="#cbd5e1" stroke-width="5" fill="none"></path>
+                  <path d="M 70,70 Q 220,110 390,80" stroke="#cbd5e1" stroke-width="4.5" fill="none"></path>
+                  <path d="M 80,210 Q 230,240 370,220" stroke="#cbd5e1" stroke-width="5" fill="none"></path>
+                  <path d="M 220,10 L 250,340" stroke="#94a3b8" stroke-width="5.5" fill="none"></path>
+                  <!-- Route highlight to pin -->
+                  <path d="M 220,10 Q 235,120 200,175" stroke="#38bdf8" stroke-width="4" stroke-dasharray="6,4" fill="none"></path>
+                </svg>
+                <div class="sim-map-watermark-text">COBERTURA: ASUNCIÓN • LUQUE • SAN LORENZO</div>
+                <div class="sim-map-pin">
+                  <div class="sim-pin-pulse"></div>
+                  <div class="sim-pin-badge">
+                    <i data-lucide="map-pin" style="width: 22px; height: 22px; color: #ffffff;"></i>
+                  </div>
+                  <div class="sim-pin-label" id="simMapPinLabel">Av. Santa Teresa 1827, Asunción</div>
+                </div>
+                <div class="sim-map-zoom-controls">
+                  <button type="button" class="sim-zoom-btn" title="Acercar" onclick="toast.show('Zoom +', 'info')">+</button>
+                  <button type="button" class="sim-zoom-btn" title="Alejar" onclick="toast.show('Zoom -', 'info')">−</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Location Mode & Address Inputs -->
+            <div class="sim-location-form-wrap">
+              <!-- Service Mode Choice Cards -->
+              <div class="sim-loc-choices">
+                <div class="sim-loc-choice-card active" id="simChoiceDomicilio" onclick="pricingSimulator.selectLocationType('domicilio')">
+                  <div class="sim-loc-icon-circle blue-bg">
+                    <i data-lucide="truck" style="width: 24px; height: 24px; color: #0066FF;"></i>
+                  </div>
+                  <h4>A Domicilio</h4>
+                  <p>Vamos a tu casa u oficina sin costo extra</p>
+                </div>
+                <div class="sim-loc-choice-card" id="simChoiceTaller" onclick="pricingSimulator.selectLocationType('taller')">
+                  <div class="sim-loc-icon-circle gray-bg">
+                    <i data-lucide="building-2" style="width: 24px; height: 24px; color: #64748b;"></i>
+                  </div>
+                  <h4>En Nuestro Taller</h4>
+                  <p>Taller Central climatizado en Asunción</p>
+                </div>
+              </div>
+
+              <!-- Address Search Input Section -->
+              <div class="sim-address-section" id="simAddressSection">
+                <h4 class="sim-input-heading">¿A dónde debemos ir?</h4>
+                <p class="sim-input-sub">Ingresá tu calle, número y barrio de referencia:</p>
+                
+                <div class="sim-search-input-wrap">
+                  <i data-lucide="search" class="sim-search-icon"></i>
+                  <input type="text" id="simAddressInput" class="sim-search-input" placeholder="Ej: Av. Santa Teresa 1827 c/ Aviadores" value="Av. Santa Teresa 1827" oninput="pricingSimulator.updateAddress(this.value)">
+                </div>
+
+                <!-- City Whitelist Quick Select Chips -->
+                <div class="sim-city-chips-wrap">
+                  <span class="sim-city-chips-label">Ciudad de atención:</span>
+                  <div class="sim-city-chips">
+                    <button type="button" class="sim-city-chip active" data-city="Asunción" onclick="pricingSimulator.selectCity('Asunción')">
+                      <i data-lucide="check" style="width: 12px; height: 12px;"></i> Asunción
+                    </button>
+                    <button type="button" class="sim-city-chip" data-city="Luque" onclick="pricingSimulator.selectCity('Luque')">
+                      <i data-lucide="check" style="width: 12px; height: 12px; display: none;"></i> Luque
+                    </button>
+                    <button type="button" class="sim-city-chip" data-city="San Lorenzo" onclick="pricingSimulator.selectCity('San Lorenzo')">
+                      <i data-lucide="check" style="width: 12px; height: 12px; display: none;"></i> San Lorenzo
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Optional Reference / Notes Input -->
+                <div class="sim-search-input-wrap" style="margin-top: 0.5rem;">
+                  <i data-lucide="file-text" class="sim-search-icon"></i>
+                  <input type="text" id="simNotesInput" class="sim-search-input" placeholder="Referencia adicional (e.g. Casa con rejas negras, Portón 2)" oninput="pricingSimulator.updateNotes(this.value)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 5: RESUMEN Y CONFIRMACIÓN -->
+        <div class="sim-stage-panel" id="simStage5">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 5 de 5</span>
             <h3 class="sim-stage-heading">Resumen Final de tu Configuración</h3>
             <p class="sim-stage-sub">Revisá tu selección y agendá tu turno directamente con nuestra unidad móvil.</p>
           </div>
 
-          <div class="sim-stage4-summary-card">
-            <div class="stage4-summary-grid">
-              <div class="stage4-item-box">
-                <span class="stage4-item-label">Vehículo Elegido</span>
-                <div class="stage4-item-value" id="stage4Vehicle">Coupé / Sedán</div>
+          <div class="sim-stage5-summary-card">
+            <div class="stage5-summary-grid">
+              <div class="stage5-item-box">
+                <span class="stage5-item-label">Vehículo Elegido</span>
+                <div class="stage5-item-value" id="stage5Vehicle">Coupé / Sedán</div>
               </div>
-              <div class="stage4-item-box">
-                <span class="stage4-item-label">Paquete Base</span>
-                <div class="stage4-item-value" id="stage4Package">Detallado Estándar (Completo)</div>
-                <span class="stage4-item-sub" id="stage4PkgPrice">Gs. 250.000</span>
+              <div class="stage5-item-box">
+                <span class="stage5-item-label">Paquete Base</span>
+                <div class="stage5-item-value" id="stage5Package">Full Detail (Exterior + Interior)</div>
+                <span class="stage5-item-sub" id="stage5PkgPrice">Gs. 250.000</span>
+              </div>
+              <div class="stage5-item-box">
+                <span class="stage5-item-label">Lugar del Servicio</span>
+                <div class="stage5-item-value" id="stage5Location">A Domicilio (Asunción)</div>
+                <span class="stage5-item-sub" id="stage5AddressSub">Av. Santa Teresa 1827</span>
               </div>
             </div>
 
-            <div class="stage4-extras-box">
-              <span class="stage4-item-label">Tratamientos Adicionales</span>
-              <ul class="stage4-extras-list" id="stage4ExtrasList">
+            <div class="stage5-extras-box">
+              <span class="stage5-item-label">Tratamientos Adicionales</span>
+              <ul class="stage5-extras-list" id="stage5ExtrasList">
                 <li class="no-extras"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #10b981;"></i> Sin extras adicionales seleccionados</li>
               </ul>
             </div>
 
-            <div class="stage4-meta-row">
-              <div class="stage4-meta-item">
+            <div class="stage5-meta-row">
+              <div class="stage5-meta-item">
                 <i data-lucide="clock" style="width: 18px; height: 18px; color: #0066FF;"></i>
                 <div>
                   <span class="meta-label">Tiempo Estimado</span>
-                  <strong id="stage4TotalTime">2h 30m</strong>
+                  <strong id="stage5TotalTime">2h 30m</strong>
                 </div>
               </div>
-              <div class="stage4-meta-item">
+              <div class="stage5-meta-item">
                 <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #10b981;"></i>
                 <div>
                   <span class="meta-label">Garantía de Pago</span>
                   <strong>Pago al finalizar el servicio</strong>
                 </div>
               </div>
-              <div class="stage4-meta-item stage4-total-price-item">
+              <div class="stage5-meta-item stage5-total-price-item">
                 <span class="meta-label">Total a Pagar</span>
-                <strong class="stage4-final-price" id="stage4TotalPrice">Gs. 250.000</strong>
+                <strong class="stage5-final-price" id="stage5TotalPrice">Gs. 250.000</strong>
               </div>
             </div>
           </div>
@@ -785,7 +848,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- Application Engine Script -->
-  <script src="app.js"></script>
+  <script src="app.js?v=2.6"></script>
   <script>
     if (window.lucide) {
       lucide.createIcons();

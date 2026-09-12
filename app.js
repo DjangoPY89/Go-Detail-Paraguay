@@ -761,7 +761,13 @@ const pricingSimulator = {
   state: {
     vehicleSize: 'coupe_sedan', // coupe_sedan, suv_mediana, pickup_suv_grande, van_oversized
     package: 'full_detail', // full_detail, full_interior, exterior_detail, ceramic_coating
-    extras: new Set() // encerado, pulido_2pasos, pulido_faros, pulido_cristales, ceramic_coating
+    extras: new Set(), // encerado, pulido_2pasos, pulido_faros, pulido_cristales, ceramic_coating
+    location: {
+      type: 'domicilio', // 'domicilio' | 'taller'
+      address: 'Av. Santa Teresa 1827',
+      city: 'Asunción',
+      notes: ''
+    }
   },
 
   // Base pricing matrix per vehicle size
@@ -809,7 +815,7 @@ const pricingSimulator = {
       btnTextId: 'pkgBtnTextFullDetail'
     },
     full_interior: {
-      name: 'Full Interior Detail (Stain removal + steam cleaning + Shampoo + Leather conditioner)',
+      name: 'Full Interior Detail',
       cardId: 'pkgCardFullInterior',
       priceId: 'pkgPriceFullInterior',
       btnTextId: 'pkgBtnTextFullInterior'
@@ -847,11 +853,11 @@ const pricingSimulator = {
   },
 
   goToStage(stageNum) {
-    if (stageNum < 1 || stageNum > 4) return;
+    if (stageNum < 1 || stageNum > 5) return;
     this.currentStage = stageNum;
 
     // Update Stage Panels
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
       const panel = document.getElementById(`simStage${i}`);
       if (panel) {
         panel.classList.toggle("active", i === stageNum);
@@ -866,8 +872,8 @@ const pricingSimulator = {
     // Update Progress Bar
     const progressBar = document.getElementById("simProgressBar");
     if (progressBar) {
-      const percent = ((stageNum - 1) / 3) * 100;
-      progressBar.style.width = `${Math.max(12, percent)}%`;
+      const percent = ((stageNum - 1) / 4) * 100;
+      progressBar.style.width = `${Math.max(10, percent)}%`;
     }
 
     // Update Nav Buttons
@@ -885,13 +891,15 @@ const pricingSimulator = {
       } else if (stageNum === 2) {
         nextBtnText.innerText = "Continuar a Extras";
       } else if (stageNum === 3) {
-        nextBtnText.innerText = "Ver Resumen Final";
+        nextBtnText.innerText = "Continuar a Ubicación";
       } else if (stageNum === 4) {
+        nextBtnText.innerText = "Ver Resumen Final";
+      } else if (stageNum === 5) {
         nextBtnText.innerText = "Agendar Turno";
       }
     }
 
-    if (stageNum === 4) {
+    if (stageNum === 5) {
       this.renderSummaryStage();
     }
 
@@ -899,7 +907,7 @@ const pricingSimulator = {
   },
 
   nextStage() {
-    if (this.currentStage < 4) {
+    if (this.currentStage < 5) {
       this.goToStage(this.currentStage + 1);
     } else {
       this.transferToBooking();
@@ -975,6 +983,57 @@ const pricingSimulator = {
     this.recalculate();
   },
 
+  selectLocationType(type) {
+    this.state.location.type = type;
+    const choiceDom = document.getElementById("simChoiceDomicilio");
+    const choiceTal = document.getElementById("simChoiceTaller");
+    const addressSec = document.getElementById("simAddressSection");
+
+    if (choiceDom) choiceDom.classList.toggle("active", type === 'domicilio');
+    if (choiceTal) choiceTal.classList.toggle("active", type === 'taller');
+    if (addressSec) {
+      addressSec.style.opacity = type === 'taller' ? '0.5' : '1';
+      addressSec.style.pointerEvents = type === 'taller' ? 'none' : 'auto';
+    }
+
+    const pinLabel = document.getElementById("simMapPinLabel");
+    if (pinLabel) {
+      if (type === 'taller') {
+        pinLabel.innerText = "Taller Central (Asunción)";
+      } else {
+        pinLabel.innerText = `${this.state.location.address || 'Tu Ubicación'}, ${this.state.location.city}`;
+      }
+    }
+  },
+
+  selectCity(city) {
+    this.state.location.city = city;
+    const chips = document.querySelectorAll(".sim-city-chip");
+    chips.forEach(chip => {
+      const isMatch = chip.dataset.city === city;
+      chip.classList.toggle("active", isMatch);
+      const icon = chip.querySelector("i");
+      if (icon) icon.style.display = isMatch ? "inline-block" : "none";
+    });
+
+    const pinLabel = document.getElementById("simMapPinLabel");
+    if (pinLabel && this.state.location.type !== 'taller') {
+      pinLabel.innerText = `${this.state.location.address || 'Tu Ubicación'}, ${city}`;
+    }
+  },
+
+  updateAddress(address) {
+    this.state.location.address = address;
+    const pinLabel = document.getElementById("simMapPinLabel");
+    if (pinLabel && this.state.location.type !== 'taller') {
+      pinLabel.innerText = `${address || 'Tu Ubicación'}, ${this.state.location.city}`;
+    }
+  },
+
+  updateNotes(notes) {
+    this.state.location.notes = notes;
+  },
+
   getPackageName() {
     return this.packageMeta[this.state.package]?.name || 'Full Detail (Exterior + Interior)';
   },
@@ -1001,16 +1060,28 @@ const pricingSimulator = {
     const mins = totalMinutes % 60;
     const timeFormatted = mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
 
-    const summaryVehEl = document.getElementById("stage4Vehicle");
-    const summaryPkgEl = document.getElementById("stage4Package");
-    const summaryPkgPriceEl = document.getElementById("stage4PkgPrice");
-    const summaryExtrasListEl = document.getElementById("stage4ExtrasList");
-    const summaryTotalTimeEl = document.getElementById("stage4TotalTime");
-    const summaryTotalPriceEl = document.getElementById("stage4TotalPrice");
+    const summaryVehEl = document.getElementById("stage5Vehicle") || document.getElementById("stage4Vehicle");
+    const summaryPkgEl = document.getElementById("stage5Package") || document.getElementById("stage4Package");
+    const summaryPkgPriceEl = document.getElementById("stage5PkgPrice") || document.getElementById("stage4PkgPrice");
+    const summaryLocEl = document.getElementById("stage5Location");
+    const summaryLocSubEl = document.getElementById("stage5AddressSub");
+    const summaryExtrasListEl = document.getElementById("stage5ExtrasList") || document.getElementById("stage4ExtrasList");
+    const summaryTotalTimeEl = document.getElementById("stage5TotalTime") || document.getElementById("stage4TotalTime");
+    const summaryTotalPriceEl = document.getElementById("stage5TotalPrice") || document.getElementById("stage4TotalPrice");
 
     if (summaryVehEl) summaryVehEl.innerText = vehConfig.name;
     if (summaryPkgEl) summaryPkgEl.innerText = pkgName;
     if (summaryPkgPriceEl) summaryPkgPriceEl.innerText = `Gs. ${basePkg.priceGs.toLocaleString("es-PY")}`;
+
+    if (summaryLocEl) {
+      if (this.state.location.type === 'taller') {
+        summaryLocEl.innerText = "En Nuestro Taller";
+        if (summaryLocSubEl) summaryLocSubEl.innerText = "Taller Central (Asunción)";
+      } else {
+        summaryLocEl.innerText = `A Domicilio (${this.state.location.city})`;
+        if (summaryLocSubEl) summaryLocSubEl.innerText = this.state.location.address || "Dirección a coordinar";
+      }
+    }
 
     if (summaryExtrasListEl) {
       if (extrasList.length === 0) {
@@ -1075,7 +1146,7 @@ const pricingSimulator = {
       if (window.lucide) lucide.createIcons();
     }
 
-    if (this.currentStage === 4) {
+    if (this.currentStage === 5) {
       this.renderSummaryStage();
     }
   },
@@ -1102,13 +1173,18 @@ const pricingSimulator = {
     const mins = totalMinutes % 60;
     const timeFormatted = mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
 
+    const locationText = this.state.location.type === 'taller' 
+      ? 'En Nuestro Taller Central (Asunción)' 
+      : `${this.state.location.address}, ${this.state.location.city}${this.state.location.notes ? ` (Ref: ${this.state.location.notes})` : ''}`;
+
     const extrasStr = extrasList.length > 0 ? `\n• *Extras:* ${extrasList.join(', ')}` : '';
     const message = `¡Hola Paraguay Detail! Me gustaría agendar un turno con la siguiente configuración:\n\n` +
       `🚗 *Vehículo:* ${vehConfig.name}\n` +
       `✨ *Paquete:* ${pkgName}${extrasStr}\n` +
+      `📍 *Ubicación:* ${locationText}\n` +
       `⏱️ *Tiempo Estimado:* ${timeFormatted}\n` +
       `💰 *Total Estimado:* Gs. ${totalPrice.toLocaleString("es-PY")}\n\n` +
-      `¿Tienen disponibilidad en Asunción / Gran Asunción para esta semana?`;
+      `¿Tienen disponibilidad para esta semana?`;
 
     const whatsappUrl = `https://wa.me/595981123456?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

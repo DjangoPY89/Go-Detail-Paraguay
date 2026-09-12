@@ -3891,7 +3891,326 @@ svg.we-come-icon {
   color: #0f172a;
 }
 
-/* Step 4: Summary Card */
+/* Step 4: Location Layout & Map */
+.sim-location-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.sim-map-container {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  min-height: 380px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.sim-map-canvas {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+}
+
+.sim-map-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 24px 24px;
+  background-image: linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
+}
+
+.sim-map-roads-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sim-map-watermark-text {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  border: 1px solid #e2e8f0;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.sim-map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.sim-pin-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0066FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(0, 102, 255, 0.22), 0 8px 18px rgba(0, 102, 255, 0.35);
+  position: relative;
+  z-index: 2;
+}
+
+.sim-pin-pulse {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: rgba(0, 102, 255, 0.25);
+  animation: simPulse 2s infinite ease-out;
+  z-index: 1;
+}
+
+@keyframes simPulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.sim-pin-label {
+  margin-top: 0.6rem;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.sim-map-zoom-controls {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.sim-zoom-btn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #475569;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.sim-zoom-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.sim-zoom-btn:first-child {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sim-location-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sim-loc-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.sim-loc-choice-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  user-select: none;
+}
+
+.sim-loc-choice-card:hover {
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+}
+
+.sim-loc-choice-card.active {
+  border-color: #0066FF;
+  background: rgba(0, 102, 255, 0.03);
+  box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.15);
+}
+
+.sim-loc-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sim-loc-icon-circle.blue-bg { background: #eff6ff; }
+.sim-loc-icon-circle.gray-bg { background: #f1f5f9; }
+
+.sim-loc-choice-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+}
+
+.sim-loc-choice-card p {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.sim-address-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.sim-input-heading {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.sim-input-sub {
+  font-size: 0.86rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.sim-search-input-wrap {
+  position: relative;
+  margin-top: 0.35rem;
+}
+
+.sim-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  width: 18px;
+  height: 18px;
+}
+
+.sim-search-input {
+  width: 100%;
+  padding: 0.95rem 1rem 0.95rem 42px;
+  border-radius: 12px;
+  border: 1.5px solid #cbd5e1;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  background: #ffffff;
+  color: #0f172a;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.sim-search-input:focus {
+  outline: none;
+  border-color: #0066FF;
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
+}
+
+.sim-city-chips-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.sim-chips-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.sim-city-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sim-city-chip {
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sim-city-chip:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.sim-city-chip.active {
+  background: #0066FF;
+  border-color: #0066FF;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .sim-location-layout {
+    grid-template-columns: 1fr;
+  }
+  .sim-map-container {
+    height: 280px;
+    min-height: 280px;
+  }
+}
+
+/* Step 5: Summary Card */
+.sim-stage5-summary-card,
 .sim-stage4-summary-card {
   background: #f8fafc;
   border: 1.5px solid #e2e8f0;
@@ -3902,12 +4221,14 @@ svg.we-come-icon {
   gap: 1.5rem;
 }
 
+.stage5-summary-grid,
 .stage4-summary-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
 }
 
+.stage5-item-box,
 .stage4-item-box {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -3918,6 +4239,7 @@ svg.we-come-icon {
   gap: 0.35rem;
 }
 
+.stage5-item-label,
 .stage4-item-label {
   font-size: 0.75rem;
   font-weight: 800;
@@ -3926,6 +4248,7 @@ svg.we-come-icon {
   letter-spacing: 0.05em;
 }
 
+.stage5-item-value,
 .stage4-item-value {
   font-family: var(--font-heading);
   font-size: 1.15rem;
@@ -3933,12 +4256,14 @@ svg.we-come-icon {
   color: #0f172a;
 }
 
+.stage5-item-sub,
 .stage4-item-sub {
   font-size: 0.85rem;
   color: #64748b;
   font-weight: 600;
 }
 
+.stage5-extras-box,
 .stage4-extras-box {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -3949,6 +4274,7 @@ svg.we-come-icon {
   gap: 0.75rem;
 }
 
+.stage5-extras-list,
 .stage4-extras-list {
   list-style: none;
   padding: 0;
@@ -3958,6 +4284,7 @@ svg.we-come-icon {
   gap: 0.5rem;
 }
 
+.stage5-extras-list li,
 .stage4-extras-list li {
   display: flex;
   align-items: center;
@@ -3968,10 +4295,12 @@ svg.we-come-icon {
   border-bottom: 1px dashed #f1f5f9;
 }
 
+.stage5-extras-list li:last-child,
 .stage4-extras-list li:last-child {
   border-bottom: none;
 }
 
+.stage5-extras-list li.no-extras,
 .stage4-extras-list li.no-extras {
   color: #64748b;
   font-style: italic;
@@ -3980,6 +4309,7 @@ svg.we-come-icon {
   gap: 0.5rem;
 }
 
+.stage5-meta-row,
 .stage4-meta-row {
   display: flex;
   align-items: center;
@@ -3991,12 +4321,14 @@ svg.we-come-icon {
   gap: 1.5rem;
 }
 
+.stage5-meta-item,
 .stage4-meta-item {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
+.stage5-meta-item .meta-label,
 .stage4-meta-item .meta-label {
   font-size: 0.75rem;
   color: #94a3b8;
@@ -4005,11 +4337,13 @@ svg.we-come-icon {
   letter-spacing: 0.04em;
 }
 
+.stage5-meta-item strong,
 .stage4-meta-item strong {
   font-size: 1rem;
   color: #ffffff;
 }
 
+.stage5-total-price-item,
 .stage4-total-price-item {
   text-align: right;
   flex-direction: column;
@@ -4017,6 +4351,7 @@ svg.we-come-icon {
   gap: 0.2rem;
 }
 
+.stage5-final-price,
 .stage4-final-price {
   font-family: var(--font-heading);
   font-size: 1.75rem !important;
