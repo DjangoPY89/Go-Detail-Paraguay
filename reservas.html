@@ -214,576 +214,407 @@
   <!-- Mobile Navigation Overlay (Closes menu on click outside) -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="mobileNav.close()"></div>
 
-  <!-- 4. GODETAIL 5-STEP BOOKING WIZARD (Direct Clean App Flow) -->
-  <main class="godetail-booking-section" id="booking">
-    <div class="godetail-booking-container">
-      
-      <!-- Top Wizard Header Bar (Back button, Step Indicator, Progress Bar) -->
-      <div class="gd-top-nav-bar">
-        <button type="button" class="gd-back-btn" id="gdBackBtn" onclick="gdWizard.prevStep()" style="visibility: hidden;">
-          <i data-lucide="chevron-left" style="width: 18px; height: 18px;"></i>
-          <span>Back</span>
+  <!-- 3. PAGE HEADER HERO -->
+  <header class="reservas-page-header">
+    <div class="reservas-header-inner">
+      <div class="reservas-badge-pill">
+        <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+        <span>Cotizador & Agenda Online</span>
+      </div>
+      <h1 class="reservas-page-title">Precios & Paquetes</h1>
+      <p class="reservas-page-subtitle">
+        Configurá tu servicio a medida en simples pasos con cotización transparente en tiempo real y agendá tu turno a domicilio.
+      </p>
+      <div class="reservas-trust-tags">
+        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> 100% Autónomos (Agua y Luz propia)</span>
+        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> Pago al finalizar</span>
+        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> Sin costos ocultos</span>
+        <span class="reservas-trust-tag"><i data-lucide="map-pin" style="width: 16px; height: 16px;"></i> Asunción • Luque • San Lorenzo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4. PRICING & PACKAGES SIMULATOR (Multi-Stage Interactive Engine) -->
+  <section class="pricing-sim-section" id="pricing">
+    <div class="pricing-sim-container">
+
+      <!-- Multi-Stage Stepper Navigation Bar -->
+      <div class="sim-stepper-wrap">
+        <div class="sim-stepper-tabs">
+          <button type="button" class="sim-tab-btn active" id="simTab1" onclick="pricingSimulator.goToStage(1)">
+            <span class="sim-tab-num">1</span>
+            <span class="sim-tab-label">Vehículo</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab2" onclick="pricingSimulator.goToStage(2)">
+            <span class="sim-tab-num">2</span>
+            <span class="sim-tab-label">Paquete</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab3" onclick="pricingSimulator.goToStage(3)">
+            <span class="sim-tab-num">3</span>
+            <span class="sim-tab-label">Extras</span>
+          </button>
+          <div class="sim-tab-connector"></div>
+          <button type="button" class="sim-tab-btn" id="simTab4" onclick="pricingSimulator.goToStage(4)">
+            <span class="sim-tab-num">4</span>
+            <span class="sim-tab-label">Resumen</span>
+          </button>
+        </div>
+        <div class="sim-progress-track">
+          <div class="sim-progress-bar" id="simProgressBar" style="width: 12%;"></div>
+        </div>
+      </div>
+
+      <!-- Stages Viewport Container -->
+      <div class="sim-stages-viewport">
+
+        <!-- ETAPA 1: TAMAÑO DE VEHÍCULO -->
+        <div class="sim-stage-panel active" id="simStage1">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 1 de 4</span>
+            <h3 class="sim-stage-heading">Seleccioná el Tamaño de tu Vehículo</h3>
+            <p class="sim-stage-sub">Los precios y tiempos de trabajo se adaptan con precisión a la categoría de tu móvil.</p>
+          </div>
+
+          <div class="sim-veh-grid">
+            <!-- Size 1: Coupe / Sedan -->
+            <div class="sim-veh-card selected" data-size="coupe_sedan" onclick="pricingSimulator.selectVehicleSize('coupe_sedan')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/toyota-camry.png" alt="Toyota Camry - Coupé / Sedán" class="sim-veh-img">
+              </div>
+              <h4>Coupé / Sedán</h4>
+              <p>e.g. BMW Serie 3, Corolla, Camry, Audi A4, Mercedes Clase C, Gol</p>
+            </div>
+
+            <!-- Size 2: SUV Mediana -->
+            <div class="sim-veh-card" data-size="suv_mediana" onclick="pricingSimulator.selectVehicleSize('suv_mediana')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/mid-size-suv.png" alt="Mid Size SUV - SUV Mediana" class="sim-veh-img">
+              </div>
+              <h4>SUV Mediana (5 Asientos)</h4>
+              <p>e.g. Range Rover, RAV4, CR-V, Tucson, Hilux CS</p>
+            </div>
+
+            <!-- Size 3: Camioneta / Pick Up -->
+            <div class="sim-veh-card" data-size="pickup_suv_grande" onclick="pricingSimulator.selectVehicleSize('pickup_suv_grande')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/land-cruiser.png" alt="Land Cruiser - SUV Grande" class="sim-veh-img">
+              </div>
+              <h4>SUV Grande / Pick-Up (7 Asientos)</h4>
+              <p>e.g. Hilux CD, Ranger, SW4, Amarok, Fortuner, BMW X7</p>
+            </div>
+
+            <!-- Size 4: Van / Oversized -->
+            <div class="sim-veh-card" data-size="van_oversized" onclick="pricingSimulator.selectVehicleSize('van_oversized')">
+              <div class="sim-veh-img-wrap">
+                <img src="assets/van.png" alt="Van / Furgón Grande" class="sim-veh-img">
+              </div>
+              <h4>Van / Furgón Grande</h4>
+              <p>e.g. Mercedes Sprinter, Kia Carnival, Ford Transit, Escalade</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 2: NUESTROS PAQUETES -->
+        <div class="sim-stage-panel" id="simStage2">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 2 de 4</span>
+            <h3 class="sim-stage-heading">Seleccioná tu Paquete Principal</h3>
+            <p class="sim-stage-sub">Elegí el nivel de detallado que mejor se adapte a las necesidades de tu vehículo.</p>
+          </div>
+
+          <div class="sim-packages-grid">
+            <!-- Package 1: Full Detail (Exterior + Interior) -->
+            <div class="sim-package-card popular selected" id="pkgCardFullDetail" onclick="pricingSimulator.selectPackage('full_detail')">
+              <div class="sim-pkg-ribbon">MÁS POPULAR</div>
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/gallery-house.jpg" alt="Full Detail (Exterior + Interior)" class="sim-pkg-img">
+                <div class="sim-pkg-badge-overlay">EXTERIOR + INTERIOR</div>
+              </div>
+              <div class="sim-pkg-body">
+                <h4 class="sim-pkg-title">Full Detail (Exterior + Interior)</h4>
+                <p class="sim-pkg-desc">Tratamiento integral completo: vapor a 140°C en cabina, lavado artesanal a 2 baldes y sellado hidrofóbico de carrocería.</p>
+                
+                <div class="sim-pkg-price-row">
+                  <span class="sim-pkg-price" id="pkgPriceFullDetail">Gs. 250.000</span>
+                  <span class="sim-pkg-unit">/ servicio</span>
+                </div>
+
+                <ul class="sim-pkg-features">
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado exterior a 2 baldes con shampoo pH neutro</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y llantas con foam activo</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C en butacas</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aspirado profundo de alfombras, piso y baúl</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionamiento mate de plásticos con filtro UV</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sellador cerámico express en cristales y carrocería</li>
+                </ul>
+
+                <button type="button" class="btn-select-pkg">
+                  <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                  <span id="pkgBtnTextFullDetail">Paquete Seleccionado</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Package 2: Full Interior Detail -->
+            <div class="sim-package-card" id="pkgCardFullInterior" onclick="pricingSimulator.selectPackage('full_interior')">
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/gallery-trx-interior.jpg" alt="Full Interior Detail" class="sim-pkg-img">
+                <div class="sim-pkg-badge-overlay">SOLO INTERIOR</div>
+              </div>
+              <div class="sim-pkg-body">
+                <h4 class="sim-pkg-title">Full Interior Detail (Stain removal + steam cleaning + Shampoo + Leather conditioner)</h4>
+                <p class="sim-pkg-desc">Desinfección y renovación profunda de cabina: remoción de manchas difíciles, vapor a 140°C, shampoo de tapizados y acondicionador de cuero.</p>
+                
+                <div class="sim-pkg-price-row">
+                  <span class="sim-pkg-price" id="pkgPriceFullInterior">Gs. 180.000</span>
+                  <span class="sim-pkg-unit">/ servicio</span>
+                </div>
+
+                <ul class="sim-pkg-features">
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Inyección y extracción de vapor a 140°C (Steam cleaning)</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Eliminación de manchas difíciles y derrames (Stain removal)</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado y shampoo profundo de tapizados y alfombras</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Nutrición e hidratación de cueros (Leather conditioner)</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Sanitización antibacteriana y desodorización total</li>
+                </ul>
+
+                <button type="button" class="btn-select-pkg">
+                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                  <span id="pkgBtnTextFullInterior">Elegir este Paquete</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Package 3: Exterior Detail -->
+            <div class="sim-package-card" id="pkgCardExterior" onclick="pricingSimulator.selectPackage('exterior_detail')">
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/gallery-parking.jpg" alt="Exterior Detail" class="sim-pkg-img">
+                <div class="sim-pkg-badge-overlay">SOLO EXTERIOR</div>
+              </div>
+              <div class="sim-pkg-body">
+                <h4 class="sim-pkg-title">Exterior Detail</h4>
+                <p class="sim-pkg-desc">Tratamiento exterior para revitalizar el brillo original, remover contaminantes de la pintura y proteger contra el sol.</p>
+                
+                <div class="sim-pkg-price-row">
+                  <span class="sim-pkg-price" id="pkgPriceExterior">Gs. 140.000</span>
+                  <span class="sim-pkg-unit">/ servicio</span>
+                </div>
+
+                <ul class="sim-pkg-features">
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado artesanal a 2 baldes con shampoo pH neutro</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Descontaminado de pintura y remoción de alquitrán / savia</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Limpieza profunda de llantas, rines y pasos de rueda</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Encerado de alta protección con sellador hidrofóbico</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Acondicionado de neumáticos y molduras plásticas</li>
+                </ul>
+
+                <button type="button" class="btn-select-pkg">
+                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                  <span id="pkgBtnTextExterior">Elegir este Paquete</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Package 4: Ceramic Coating -->
+            <div class="sim-package-card" id="pkgCardCeramic" onclick="pricingSimulator.selectPackage('ceramic_coating')">
+              <div class="sim-pkg-ribbon" style="background: linear-gradient(135deg, #0f172a, #0066FF);">MÁXIMA PROTECCIÓN</div>
+              <div class="sim-pkg-img-wrap">
+                <img src="assets/IMG_2157.jpg" alt="Ceramic Coating" class="sim-pkg-img">
+                <div class="sim-pkg-badge-overlay">PROTECCIÓN CERÁMICA 9H</div>
+              </div>
+              <div class="sim-pkg-body">
+                <h4 class="sim-pkg-title">Ceramic Coating</h4>
+                <p class="sim-pkg-desc">Recubrimiento cerámico profesional de alta dureza 9H para un brillo espejo insuperable y máxima protección hidrofóbica.</p>
+                
+                <div class="sim-pkg-price-row">
+                  <span class="sim-pkg-price" id="pkgPriceCeramic">Gs. 450.000</span>
+                  <span class="sim-pkg-unit">/ servicio</span>
+                </div>
+
+                <ul class="sim-pkg-features">
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Lavado técnico y descontaminado férrico profundo</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Corrección de pintura (Pulido para eliminar micro-rayas)</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Aplicación de recubrimiento Ceramic Coating 9H</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Brillo espejo profundo y repelencia extrema al agua</li>
+                  <li><i data-lucide="check" style="width: 16px; height: 16px;"></i> Protección de 12+ meses contra rayos UV y lluvia ácida</li>
+                </ul>
+
+                <button type="button" class="btn-select-pkg">
+                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                  <span id="pkgBtnTextCeramic">Elegir este Paquete</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 3: EXTRAS & ADICIONALES -->
+        <div class="sim-stage-panel" id="simStage3">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 3 de 4</span>
+            <h3 class="sim-stage-heading">Tratamientos Adicionales (Opcionales)</h3>
+            <p class="sim-stage-sub">Personalizá tu experiencia sumando tratamientos especiales de alto rendimiento.</p>
+          </div>
+
+          <div class="sim-extras-grid">
+            <!-- Extra 1: Encerado Carnauba -->
+            <div class="sim-extra-card" data-extra="encerado" onclick="pricingSimulator.toggleExtra('encerado')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Encerado Premium</h4>
+                <p class="sim-extra-desc">Cera de Carnauba de grado concurso para un brillo profundo y repelencia líquida.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +35 min</span>
+                  <span class="sim-extra-price">+Gs. 60.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 2: Pulido 2 Pasos -->
+            <div class="sim-extra-card" data-extra="pulido_2pasos" onclick="pricingSimulator.toggleExtra('pulido_2pasos')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido 2 Pasos</h4>
+                <p class="sim-extra-desc">Corrección de pintura en 2 etapas: remoción de microrrayas y acabado óptico.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +120 min</span>
+                  <span class="sim-extra-price">+Gs. 200.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 3: Pulido de Faros -->
+            <div class="sim-extra-card" data-extra="pulido_faros" onclick="pricingSimulator.toggleExtra('pulido_faros')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido de Faros</h4>
+                <p class="sim-extra-desc">Lijado microprogresivo al agua y sellador cerámico UV para ópticas cristalinas.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +40 min</span>
+                  <span class="sim-extra-price">+Gs. 70.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 4: Pulido de Cristales -->
+            <div class="sim-extra-card" data-extra="pulido_cristales" onclick="pricingSimulator.toggleExtra('pulido_cristales')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Pulido de Cristales</h4>
+                <p class="sim-extra-desc">Descontaminación con óxido de cerio y sellador antilluvia repelente al agua.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +45 min</span>
+                  <span class="sim-extra-price">+Gs. 80.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra 5: Ceramic Coating 9H -->
+            <div class="sim-extra-card" data-extra="ceramic_coating" onclick="pricingSimulator.toggleExtra('ceramic_coating')">
+              <div class="sim-extra-checkbox">
+                <i data-lucide="check" style="width: 14px; height: 14px; display: none;"></i>
+              </div>
+              <div class="sim-extra-info">
+                <h4 class="sim-extra-title">Ceramic Coating 9H</h4>
+                <p class="sim-extra-desc">Nanotecnología de alta dureza 9H con repelencia extrema y protección de 12 meses.</p>
+                <div class="sim-extra-meta">
+                  <span class="sim-extra-time"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> +180 min</span>
+                  <span class="sim-extra-price">+Gs. 350.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ETAPA 4: RESUMEN Y CONFIRMACIÓN -->
+        <div class="sim-stage-panel" id="simStage4">
+          <div class="sim-stage-header">
+            <span class="sim-stage-counter">Paso 4 de 4</span>
+            <h3 class="sim-stage-heading">Resumen Final de tu Configuración</h3>
+            <p class="sim-stage-sub">Revisá tu selección y agendá tu turno directamente con nuestra unidad móvil.</p>
+          </div>
+
+          <div class="sim-stage4-summary-card">
+            <div class="stage4-summary-grid">
+              <div class="stage4-item-box">
+                <span class="stage4-item-label">Vehículo Elegido</span>
+                <div class="stage4-item-value" id="stage4Vehicle">Coupé / Sedán</div>
+              </div>
+              <div class="stage4-item-box">
+                <span class="stage4-item-label">Paquete Base</span>
+                <div class="stage4-item-value" id="stage4Package">Detallado Estándar (Completo)</div>
+                <span class="stage4-item-sub" id="stage4PkgPrice">Gs. 250.000</span>
+              </div>
+            </div>
+
+            <div class="stage4-extras-box">
+              <span class="stage4-item-label">Tratamientos Adicionales</span>
+              <ul class="stage4-extras-list" id="stage4ExtrasList">
+                <li class="no-extras"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #10b981;"></i> Sin extras adicionales seleccionados</li>
+              </ul>
+            </div>
+
+            <div class="stage4-meta-row">
+              <div class="stage4-meta-item">
+                <i data-lucide="clock" style="width: 18px; height: 18px; color: #0066FF;"></i>
+                <div>
+                  <span class="meta-label">Tiempo Estimado</span>
+                  <strong id="stage4TotalTime">2h 30m</strong>
+                </div>
+              </div>
+              <div class="stage4-meta-item">
+                <i data-lucide="shield-check" style="width: 18px; height: 18px; color: #10b981;"></i>
+                <div>
+                  <span class="meta-label">Garantía de Pago</span>
+                  <strong>Pago al finalizar el servicio</strong>
+                </div>
+              </div>
+              <div class="stage4-meta-item stage4-total-price-item">
+                <span class="meta-label">Total a Pagar</span>
+                <strong class="stage4-final-price" id="stage4TotalPrice">Gs. 250.000</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Real-Time Calculation & Multi-Stage Nav Control Bar -->
+      <div class="sim-total-bar">
+        <button type="button" class="btn-sim-prev" id="simPrevBtn" onclick="pricingSimulator.prevStage()">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+          <span>Anterior</span>
         </button>
 
-        <div class="gd-step-indicator-wrap">
-          <span class="gd-step-text" id="gdStepText">Service · 1/5</span>
-          <div class="gd-progress-track">
-            <div class="gd-progress-bar" id="gdProgressBar" style="width: 20%;"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WIZARD STEP PANELS -->
-      <div class="gd-steps-viewport">
-
-        <!-- ==========================================
-             STEP 1: SERVICE SELECTION (1/5)
-             ========================================== -->
-        <div class="gd-step-panel active" id="gdStep1">
-          <div class="gd-step-heading-wrap">
-            <h1 class="gd-step-title">Book an appointment</h1>
-            <p class="gd-step-sub">Pick a service to get started.</p>
-          </div>
-
-          <div class="gd-services-grid">
-            <!-- 1. Full Detail -->
-            <div class="gd-service-card" onclick="gdWizard.selectService('full_detail', 'Full Detail', 210, 300000)">
-              <div class="gd-card-thumb">
-                <img src="assets/gallery/61264E26-A110-4475-A068-CC33D4A92702.jpg" alt="Full Detail">
-              </div>
-              <div class="gd-card-info">
-                <div class="gd-card-text">
-                  <h3>Full Detail</h3>
-                  <p>Interior & Exterior complete reconditioning and protective seal</p>
-                </div>
-                <div class="gd-card-arrow">
-                  <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. Interior Detail -->
-            <div class="gd-service-card" onclick="gdWizard.selectService('interior_detail', 'Interior Detail', 120, 200000)">
-              <div class="gd-card-thumb">
-                <img src="assets/gallery-trx-interior.jpg" alt="Interior Detail">
-              </div>
-              <div class="gd-card-info">
-                <div class="gd-card-text">
-                  <h3>Interior Detail</h3>
-                  <p>Deep 140°C steam extraction, leather nutrition & sanitization</p>
-                </div>
-                <div class="gd-card-arrow">
-                  <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3. Exterior Detail -->
-            <div class="gd-service-card" onclick="gdWizard.selectService('exterior_detail', 'Exterior Detail', 90, 150000)">
-              <div class="gd-card-thumb">
-                <img src="assets/gallery/IMG_2575.jpg" alt="Exterior Detail">
-              </div>
-              <div class="gd-card-info">
-                <div class="gd-card-text">
-                  <h3>Exterior Detail</h3>
-                  <p>2-bucket foam hand wash, paint decontamination & ceramic shine</p>
-                </div>
-                <div class="gd-card-arrow">
-                  <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4. Ceramic Coating -->
-            <div class="gd-service-card" onclick="gdWizard.selectService('ceramic_coating', 'Ceramic Coating', 240, 450000)">
-              <div class="gd-card-thumb">
-                <img src="assets/gallery/IMG_2737.jpg" alt="Ceramic Coating">
-              </div>
-              <div class="gd-card-info">
-                <div class="gd-card-text">
-                  <h3>Ceramic Coating</h3>
-                  <p>9H Nanotechnology ultra gloss, hydrophobic shield & 12 mo. warranty</p>
-                </div>
-                <div class="gd-card-arrow">
-                  <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5. Paint Protection Film -->
-            <div class="gd-service-card" onclick="gdWizard.selectService('ppf_protection', 'Protection Film', 180, 400000)">
-              <div class="gd-card-thumb">
-                <img src="assets/gallery/IMG_2842.jpg" alt="Protection Film">
-              </div>
-              <div class="gd-card-info">
-                <div class="gd-card-text">
-                  <h3>Protection Film</h3>
-                  <p>Self-healing invisible polyurethane shield against stone chips</p>
-                </div>
-                <div class="gd-card-arrow">
-                  <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- 6. Window Tint -->
-            <div class="gd-service-card" onclick="gdWizard.selectService('window_tint', 'Window Tint', 120, 250000)">
-              <div class="gd-card-thumb">
-                <img src="assets/gallery/IMG_2157.jpg" alt="Window Tint">
-              </div>
-              <div class="gd-card-info">
-                <div class="gd-card-text">
-                  <h3>Window Tint</h3>
-                  <p>Premium heat & UV rejection film with optical clarity</p>
-                </div>
-                <div class="gd-card-arrow">
-                  <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="sim-total-breakdown">
+          <span class="sim-total-label">Configuración Actual</span>
+          <div class="sim-total-details" id="simSummaryText">Coupé / Sedán • Detallado Estándar (Completo)</div>
+          <div class="sim-total-time" id="simSummaryTime"><i data-lucide="clock" style="width: 14px; height: 14px; display: inline;"></i> Tiempo Estimado: 2h 30m • Pago al finalizar</div>
         </div>
 
-        <!-- ==========================================
-             STEP 2: LOCATION (2/5)
-             ========================================== -->
-        <div class="gd-step-panel" id="gdStep2">
-          <div class="gd-location-layout">
-            <!-- Left: High-Fidelity Stylized Map Container -->
-            <div class="gd-map-container">
-              <div class="gd-map-canvas" id="gdMapCanvas">
-                <div class="gd-map-bg-grid"></div>
-                <!-- Simulated City Roads and River Map -->
-                <div class="gd-map-roads-svg">
-                  <svg width="100%" height="100%" viewBox="0 0 600 500" preserveAspectRatio="none">
-                    <!-- River / Water body -->
-                    <path d="M 0 60 Q 150 140 280 110 T 600 80 L 600 0 L 0 0 Z" fill="#e0f2fe" opacity="0.6"/>
-                    <!-- Major Highways -->
-                    <path d="M 20 180 Q 220 220 380 180 T 580 260" stroke="#cbd5e1" stroke-width="10" fill="none"/>
-                    <path d="M 160 480 Q 240 300 300 240 T 460 40" stroke="#94a3b8" stroke-width="12" fill="none"/>
-                    <path d="M 280 250 L 540 420" stroke="#cbd5e1" stroke-width="8" fill="none"/>
-                    <path d="M 60 100 L 420 400" stroke="#e2e8f0" stroke-width="14" fill="none"/>
-                    <!-- City radius circle -->
-                    <circle cx="300" cy="240" r="140" stroke="#ec4899" stroke-width="2" stroke-dasharray="6,6" fill="rgba(236, 72, 153, 0.05)"/>
-                  </svg>
-                </div>
-                <div class="gd-map-watermark-text">PARAGUAY DETAIL • ASUNCIÓN COVERAGE</div>
-                <!-- Interactive Center Pin -->
-                <div class="gd-map-pin" id="gdMapPin">
-                  <div class="gd-pin-pulse"></div>
-                  <div class="gd-pin-badge">
-                    <i data-lucide="map-pin" style="width: 20px; height: 20px; color: #fff;"></i>
-                  </div>
-                  <span class="gd-pin-label" id="gdPinLabel">Asunción (Cobertura Activa)</span>
-                </div>
-                <!-- Zoom Controls -->
-                <div class="gd-map-zoom-controls">
-                  <button type="button" class="gd-zoom-btn" onclick="gdWizard.mapZoom(1)" title="Zoom in">+</button>
-                  <button type="button" class="gd-zoom-btn" onclick="gdWizard.mapZoom(-1)" title="Zoom out">−</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Location Options & Search Input -->
-            <div class="gd-location-controls">
-              <div class="gd-step-heading-wrap">
-                <h2 class="gd-step-title">Where works best for you?</h2>
-                <p class="gd-step-sub">Your <strong id="gdLocServiceName" style="color: #0f172a;">Full Detail</strong> can happen at your place or at ours.</p>
-              </div>
-
-              <!-- 2 Choice Cards -->
-              <div class="gd-loc-choices">
-                <div class="gd-loc-choice-card active" id="locChoiceLocation" onclick="gdWizard.selectLocationType('location')">
-                  <div class="gd-loc-icon-circle pink-bg">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="1" y="3" width="15" height="13"></rect>
-                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                    </svg>
-                  </div>
-                  <h4>At Your Location</h4>
-                  <p>We come to you</p>
-                </div>
-
-                <div class="gd-loc-choice-card" id="locChoiceShop" onclick="gdWizard.selectLocationType('shop')">
-                  <div class="gd-loc-icon-circle gray-bg">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                  </div>
-                  <h4>At Our Shop</h4>
-                  <p>You come to us</p>
-                </div>
-              </div>
-
-              <!-- Address Section -->
-              <div class="gd-address-input-section" id="gdAddressSection">
-                <h3 class="gd-input-heading">Where should we come?</h3>
-                <p class="gd-input-sub">Enter the address where you'd like your service.</p>
-
-                <div class="gd-search-input-wrap">
-                  <i data-lucide="search" class="gd-search-icon"></i>
-                  <input type="text" id="gdAddressInput" class="gd-search-input" placeholder="Start typing your address..." value="Av. Santa Teresa 1827">
-                </div>
-
-                <!-- City Whitelist Chips -->
-                <div class="gd-city-chips">
-                  <span class="gd-city-chip active" id="chipAsuncion" onclick="gdWizard.selectCity('Asunción')">Asunción</span>
-                  <span class="gd-city-chip" id="chipLuque" onclick="gdWizard.selectCity('Luque')">Luque</span>
-                  <span class="gd-city-chip" id="chipSanLorenzo" onclick="gdWizard.selectCity('San Lorenzo')">San Lorenzo</span>
-                </div>
-              </div>
-
-              <!-- Next Button (Matching Pink Pill) -->
-              <div class="gd-action-bar">
-                <button type="button" class="gd-btn-primary" onclick="gdWizard.nextFromLocation()">
-                  <span>Next</span>
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="sim-total-price-box">
+          <span class="sim-total-price-label">Precio Estimado</span>
+          <span class="sim-total-price-val" id="simSummaryPrice">Gs. 250.000</span>
         </div>
 
-        <!-- ==========================================
-             STEP 3A: VEHICLE DETAILS (3/5)
-             ========================================== -->
-        <div class="gd-step-panel" id="gdStep3A">
-          <div class="gd-step-heading-wrap">
-            <h2 class="gd-step-title">Tell us about your vehicle</h2>
-            <p class="gd-step-sub">Select your make, model and year</p>
-          </div>
-
-          <!-- Selects Row -->
-          <div class="gd-veh-selects-grid">
-            <div class="gd-select-group">
-              <label>Year</label>
-              <div class="gd-custom-select-wrap">
-                <select id="gdVehYear" class="gd-select-control" onchange="gdWizard.updateVehiclePreview()">
-                  <option value="2025">2025</option>
-                  <option value="2024" selected>2024</option>
-                  <option value="2023">2023</option>
-                  <option value="2022">2022</option>
-                  <option value="2021">2021</option>
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-                  <option value="2018">2018</option>
-                </select>
-                <i data-lucide="chevron-down" class="gd-select-arrow"></i>
-              </div>
-            </div>
-
-            <div class="gd-select-group">
-              <label>Make</label>
-              <div class="gd-custom-select-wrap">
-                <select id="gdVehMake" class="gd-select-control" onchange="gdWizard.handleMakeChange()">
-                  <option value="Toyota" selected>Toyota</option>
-                  <option value="BMW">BMW</option>
-                  <option value="Mercedes-Benz">Mercedes-Benz</option>
-                  <option value="Honda">Honda</option>
-                  <option value="Ford">Ford</option>
-                  <option value="Hyundai">Hyundai</option>
-                  <option value="Kia">Kia</option>
-                  <option value="Chevrolet">Chevrolet</option>
-                  <option value="Porsche">Porsche</option>
-                  <option value="Audi">Audi</option>
-                  <option value="Volkswagen">Volkswagen</option>
-                  <option value="Jeep">Jeep</option>
-                  <option value="Land Rover">Land Rover</option>
-                </select>
-                <span class="gd-select-spinner"></span>
-              </div>
-            </div>
-
-            <div class="gd-select-group">
-              <label>Model</label>
-              <div class="gd-custom-select-wrap">
-                <select id="gdVehModel" class="gd-select-control" onchange="gdWizard.updateVehiclePreview()">
-                  <option value="Tacoma" selected>Tacoma</option>
-                  <option value="Hilux">Hilux</option>
-                  <option value="Land Cruiser">Land Cruiser</option>
-                  <option value="Corolla">Corolla</option>
-                  <option value="Camry">Camry</option>
-                  <option value="RAV4">RAV4</option>
-                  <option value="4Runner">4Runner</option>
-                </select>
-                <span class="gd-select-spinner"></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Vehicle Central Render Box with Tacoma Truck Image -->
-          <div class="gd-veh-render-box">
-            <img id="gdVehMainImg" src="assets/tacoma-truck.png" alt="Toyota Tacoma Preview" class="gd-veh-main-img">
-          </div>
-
-          <!-- Size Selector Header -->
-          <div class="gd-size-section-header">
-            <span class="gd-size-title">What size is your vehicle?</span>
-            <span class="gd-size-status"><span class="gd-status-spinner"></span> Checking your model...</span>
-          </div>
-
-          <!-- 6 Vehicle Size Cards (Matching Suds Grid) -->
-          <div class="gd-sizes-grid">
-            <!-- 1. Coupe -->
-            <div class="gd-size-card" data-size="coupe" onclick="gdWizard.selectVehicleSize('coupe')">
-              <h4>Coupe / 2-seater</h4>
-              <p>Porsche 911, Lotus,<br>Corvette, Mustang</p>
-            </div>
-
-            <!-- 2. Sedan -->
-            <div class="gd-size-card" data-size="sedan" onclick="gdWizard.selectVehicleSize('sedan')">
-              <h4>Sedan</h4>
-              <p>Camry, Accord, BMW 3<br>Series, Model 3</p>
-            </div>
-
-            <!-- 3. Crossover -->
-            <div class="gd-size-card" data-size="crossover" onclick="gdWizard.selectVehicleSize('crossover')">
-              <h4>Crossover</h4>
-              <p>RAV4, Model Y, Subaru<br>Crosstrek</p>
-            </div>
-
-            <!-- 4. SUV / Truck (Selected with Pink checkmark) -->
-            <div class="gd-size-card active" data-size="suv_truck" onclick="gdWizard.selectVehicleSize('suv_truck')">
-              <div class="gd-card-check"><i data-lucide="check" style="width: 16px; height: 16px;"></i></div>
-              <h4>SUV / Truck</h4>
-              <p>4Runner, Land Rover,<br>Wrangler</p>
-            </div>
-
-            <!-- 5. XL SUV / Truck -->
-            <div class="gd-size-card" data-size="xl_suv" onclick="gdWizard.selectVehicleSize('xl_suv')">
-              <h4>XL SUV / Truck</h4>
-              <p>Tahoe, F-250, Minivan</p>
-              <span class="gd-pill-badge">3rd row seats</span>
-            </div>
-
-            <!-- 6. Van / Sprinter -->
-            <div class="gd-size-card" data-size="van_sprinter" onclick="gdWizard.selectVehicleSize('van_sprinter')">
-              <h4>Van / Sprinter</h4>
-              <p>Sprinter, Transit,<br>ProMaster</p>
-            </div>
-          </div>
-
-          <!-- Next Button -->
-          <div class="gd-action-bar">
-            <button type="button" class="gd-btn-primary" onclick="gdWizard.goToStage3B()">
-              <span>Next</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- ==========================================
-             STEP 3B: TROPHY PACKAGE TIERS (3/5)
-             ========================================== -->
-        <div class="gd-step-panel" id="gdStep3B">
-          <div class="gd-step-heading-row">
-            <div>
-              <h2 class="gd-step-title" id="gdTierServiceName">Full Detail</h2>
-            </div>
-            <div class="gd-mini-car-thumb">
-              <img id="gdMiniCarImg" src="assets/tacoma-truck.png" alt="Toyota Tacoma">
-            </div>
-          </div>
-
-          <!-- 3 Trophy Cards (Using 3D Trophy Assets) -->
-          <div class="gd-trophy-grid">
-            <!-- 1. Full Maintenance (Silver Trophy) -->
-            <div class="gd-trophy-card" onclick="gdWizard.selectTier('maintenance', 'Full Maintenance', 150, 250000)">
-              <div class="gd-trophy-icon-wrap">
-                <img src="assets/trophy-silver.png" alt="Silver Trophy - Full Maintenance" class="gd-trophy-img">
-              </div>
-              <h3 class="gd-trophy-title">Full Maintenance</h3>
-              <div class="gd-trophy-meta">
-                <span class="gd-time-pill" id="pillTimeMaint">2 hours 30 min</span>
-              </div>
-              <div class="gd-trophy-arrow">
-                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-              </div>
-            </div>
-
-            <!-- 2. Gold Premium (Gold Trophy) -->
-            <div class="gd-trophy-card" onclick="gdWizard.selectTier('gold', 'Gold Premium', 210, 350000)">
-              <div class="gd-trophy-icon-wrap">
-                <img src="assets/trophy-gold.png" alt="Gold Trophy - Gold Premium" class="gd-trophy-img">
-              </div>
-              <h3 class="gd-trophy-title">Gold Premium</h3>
-              <div class="gd-trophy-meta">
-                <span class="gd-time-pill" id="pillTimeGold">3 hours 30 min</span>
-              </div>
-              <div class="gd-trophy-arrow">
-                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-              </div>
-            </div>
-
-            <!-- 3. Masterpiece (Diamond Trophy) -->
-            <div class="gd-trophy-card" onclick="gdWizard.selectTier('masterpiece', 'Masterpiece', 300, 500000)">
-              <div class="gd-trophy-icon-wrap">
-                <img src="assets/trophy-diamond.png" alt="Diamond Trophy - Masterpiece" class="gd-trophy-img">
-              </div>
-              <h3 class="gd-trophy-title">Masterpiece</h3>
-              <div class="gd-trophy-meta">
-                <span class="gd-time-pill" id="pillTimeMaster">5 hours</span>
-              </div>
-              <div class="gd-trophy-arrow">
-                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==========================================
-             STEP 4: SCHEDULE / CALENDAR (4/5)
-             ========================================== -->
-        <div class="gd-step-panel" id="gdStep4">
-          <div class="gd-step-heading-row">
-            <div>
-              <h2 class="gd-step-title">Select date & time</h2>
-              <p class="gd-step-sub" id="gdSchedSub">Gold Premium · 3 hours 30 min</p>
-            </div>
-            <div class="gd-mini-car-thumb">
-              <img id="gdMiniCarImg2" src="assets/tacoma-truck.png" alt="Toyota Tacoma">
-            </div>
-          </div>
-
-          <div class="gd-calendar-grid-wrap">
-            <!-- Left: Calendar Day Picker -->
-            <div class="gd-calendar-card">
-              <div class="gd-cal-header">
-                <button type="button" class="gd-cal-nav-btn" onclick="gdWizard.prevMonth()">&lt;</button>
-                <h3 class="gd-cal-month" id="gdCalMonthText">Septiembre 2026</h3>
-                <button type="button" class="gd-cal-nav-btn" onclick="gdWizard.nextMonth()">&gt;</button>
-              </div>
-
-              <div class="gd-cal-weekdays">
-                <span class="cal-sunday">Dom</span>
-                <span>Lun</span>
-                <span>Mar</span>
-                <span>Mié</span>
-                <span>Jue</span>
-                <span>Vie</span>
-                <span>Sáb</span>
-              </div>
-
-              <div class="gd-cal-days-grid" id="gdCalDaysGrid">
-                <!-- Dynamically populated days -->
-              </div>
-            </div>
-
-            <!-- Right: Available Times -->
-            <div class="gd-times-card">
-              <h3 class="gd-times-title">Available start times</h3>
-              
-              <div class="gd-time-pills-list">
-                <button type="button" class="gd-time-pill-btn active" data-time="08:30" onclick="gdWizard.selectTime('08:30')">8:30 AM</button>
-                <button type="button" class="gd-time-pill-btn" data-time="10:30" onclick="gdWizard.selectTime('10:30')">10:30 AM</button>
-                <button type="button" class="gd-time-pill-btn" data-time="12:30" onclick="gdWizard.selectTime('12:30')">12:30 PM</button>
-                <button type="button" class="gd-time-pill-btn" data-time="14:30" onclick="gdWizard.selectTime('14:30')">2:30 PM</button>
-                <button type="button" class="gd-time-pill-btn" data-time="16:30" onclick="gdWizard.selectTime('16:30')">4:30 PM</button>
-              </div>
-
-              <!-- Next Button -->
-              <div class="gd-action-bar" style="margin-top: 2rem;">
-                <button type="button" class="gd-btn-primary" onclick="gdWizard.goToStep5()">
-                  <span>Next</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==========================================
-             STEP 5: REVIEW & CONTACT (5/5)
-             ========================================== -->
-        <div class="gd-step-panel" id="gdStep5">
-          <div class="gd-step-heading-wrap">
-            <h2 class="gd-step-title">Review & Confirm</h2>
-            <p class="gd-step-sub">We're excited to detail your vehicle at your location!</p>
-          </div>
-
-          <div class="gd-review-layout">
-            <!-- Left: Order Summary -->
-            <div class="gd-review-summary-card">
-              <div class="gd-review-header-badge">
-                <i data-lucide="shield-check" style="width: 16px; height: 16px; color: #10b981;"></i>
-                <span>Resumen de tu Reserva</span>
-              </div>
-
-              <div class="gd-summary-item">
-                <span class="gd-summary-label">Servicio & Nivel</span>
-                <strong class="gd-summary-val" id="revServiceTier">Full Detail — Gold Premium</strong>
-                <span class="gd-summary-sub" id="revDuration">3 hours 30 min de tratamiento</span>
-              </div>
-
-              <div class="gd-summary-item">
-                <span class="gd-summary-label">Vehículo</span>
-                <strong class="gd-summary-val" id="revVehicleSummary">2024 Toyota Tacoma (SUV / Truck)</strong>
-              </div>
-
-              <div class="gd-summary-item">
-                <span class="gd-summary-label">Ubicación</span>
-                <strong class="gd-summary-val" id="revLocationSummary">At Your Location — Av. Santa Teresa 1827, Asunción</strong>
-              </div>
-
-              <div class="gd-summary-item">
-                <span class="gd-summary-label">Fecha y Turno</span>
-                <strong class="gd-summary-val" id="revDateSummary">Martes, 15 de Septiembre a las 8:30 AM</strong>
-              </div>
-
-              <div class="gd-summary-total-box">
-                <span class="gd-total-label">Total a Pagar</span>
-                <span class="gd-total-price" id="revTotalPrice">Gs. 350.000</span>
-                <div class="gd-pay-guarantee">
-                  <i data-lucide="check-circle-2" style="width: 14px; height: 14px; color: #10b981;"></i>
-                  <span>Pago al finalizar el servicio (Transferencia SIPAP, Tarjeta o Efectivo)</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Contact Form -->
-            <div class="gd-review-form-card">
-              <h3 class="gd-form-title">Tus Datos de Contacto</h3>
-              <p class="gd-form-sub">Ingresá tus datos para confirmar el turno en nuestra agenda y enviarte la ficha.</p>
-
-              <form id="gdBookingForm" onsubmit="gdWizard.handleSubmit(event)">
-                <div class="gd-form-group">
-                  <label>Nombre y Apellido *</label>
-                  <input type="text" id="gdClientName" class="gd-form-control" placeholder="Ej: Juan Solalinde" required>
-                </div>
-
-                <div class="gd-form-group">
-                  <label>WhatsApp / Teléfono *</label>
-                  <input type="tel" id="gdClientPhone" class="gd-form-control" placeholder="+595 981 123 456" required>
-                </div>
-
-                <div class="gd-form-group">
-                  <label>Correo Electrónico *</label>
-                  <input type="email" id="gdClientEmail" class="gd-form-control" placeholder="tu@correo.com" required>
-                </div>
-
-                <div class="gd-form-group">
-                  <label>Notas de Llegada o Referencias (Opcional)</label>
-                  <input type="text" id="gdClientNotes" class="gd-form-control" placeholder="Ej: Casa con portón negro / timbre 2B">
-                </div>
-
-                <button type="submit" class="gd-btn-confirm" id="gdSubmitBtn">
-                  <i data-lucide="calendar-check" style="width: 20px; height: 20px;"></i>
-                  <span>Confirmar Reserva y Enviar a WhatsApp</span>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Suds / GoDetail Footer Copyright Note -->
-      <div class="gd-wizard-footer-note">
-        Online booking © 2026 Suds Software LLC. All rights reserved.
+        <button type="button" class="btn-sim-book" id="simNextBtn" onclick="pricingSimulator.nextStage()">
+          <span id="simNextBtnText">Continuar a Paquetes</span>
+          <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+        </button>
       </div>
 
     </div>
-  </main>
+  </section>
 
   <!-- 5. TRUST PILLARS BAR (4 Value Pillars) -->
   <section class="trust-pillars-section">
