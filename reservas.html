@@ -214,28 +214,8 @@
   <!-- Mobile Navigation Overlay (Closes menu on click outside) -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="mobileNav.close()"></div>
 
-  <!-- 3. PAGE HEADER HERO -->
-  <header class="reservas-page-header">
-    <div class="reservas-header-inner">
-      <div class="reservas-badge-pill">
-        <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
-        <span>Cotizador & Agenda Online</span>
-      </div>
-      <h1 class="reservas-page-title">Precios & Paquetes</h1>
-      <p class="reservas-page-subtitle">
-        Configurá tu servicio a medida en simples pasos con cotización transparente en tiempo real y agendá tu turno a domicilio.
-      </p>
-      <div class="reservas-trust-tags">
-        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> 100% Autónomos (Agua y Luz propia)</span>
-        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> Pago al finalizar</span>
-        <span class="reservas-trust-tag"><i data-lucide="check-circle-2" style="width: 16px; height: 16px;"></i> Sin costos ocultos</span>
-        <span class="reservas-trust-tag"><i data-lucide="map-pin" style="width: 16px; height: 16px;"></i> Asunción • Luque • San Lorenzo</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- 4. GODETAIL 5-STEP BOOKING WIZARD -->
-  <section class="godetail-booking-section" id="booking">
+  <!-- 4. GODETAIL 5-STEP BOOKING WIZARD (Direct Clean App Flow) -->
+  <main class="godetail-booking-section" id="booking">
     <div class="godetail-booking-container">
       
       <!-- Top Wizard Header Bar (Back button, Step Indicator, Progress Bar) -->
@@ -261,7 +241,7 @@
              ========================================== -->
         <div class="gd-step-panel active" id="gdStep1">
           <div class="gd-step-heading-wrap">
-            <h2 class="gd-step-title">Book an appointment</h2>
+            <h1 class="gd-step-title">Book an appointment</h1>
             <p class="gd-step-sub">Pick a service to get started.</p>
           </div>
 
@@ -369,20 +349,26 @@
              ========================================== -->
         <div class="gd-step-panel" id="gdStep2">
           <div class="gd-location-layout">
-            <!-- Left: Stylized Map Graphic with Interactive Pin -->
+            <!-- Left: High-Fidelity Stylized Map Container -->
             <div class="gd-map-container">
               <div class="gd-map-canvas" id="gdMapCanvas">
                 <div class="gd-map-bg-grid"></div>
+                <!-- Simulated City Roads and River Map -->
                 <div class="gd-map-roads-svg">
                   <svg width="100%" height="100%" viewBox="0 0 600 500" preserveAspectRatio="none">
-                    <path d="M 50 120 Q 200 180 350 150 T 580 220" stroke="#e2e8f0" stroke-width="8" fill="none"/>
-                    <path d="M 120 450 Q 220 280 300 240 T 480 60" stroke="#cbd5e1" stroke-width="12" fill="none"/>
-                    <path d="M 280 250 L 520 400" stroke="#e2e8f0" stroke-width="6" fill="none"/>
-                    <path d="M 80 80 L 400 380" stroke="#f1f5f9" stroke-width="14" fill="none"/>
-                    <circle cx="300" cy="240" r="160" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="6,6" fill="rgba(236, 72, 153, 0.04)"/>
+                    <!-- River / Water body -->
+                    <path d="M 0 60 Q 150 140 280 110 T 600 80 L 600 0 L 0 0 Z" fill="#e0f2fe" opacity="0.6"/>
+                    <!-- Major Highways -->
+                    <path d="M 20 180 Q 220 220 380 180 T 580 260" stroke="#cbd5e1" stroke-width="10" fill="none"/>
+                    <path d="M 160 480 Q 240 300 300 240 T 460 40" stroke="#94a3b8" stroke-width="12" fill="none"/>
+                    <path d="M 280 250 L 540 420" stroke="#cbd5e1" stroke-width="8" fill="none"/>
+                    <path d="M 60 100 L 420 400" stroke="#e2e8f0" stroke-width="14" fill="none"/>
+                    <!-- City radius circle -->
+                    <circle cx="300" cy="240" r="140" stroke="#ec4899" stroke-width="2" stroke-dasharray="6,6" fill="rgba(236, 72, 153, 0.05)"/>
                   </svg>
                 </div>
-                <div class="gd-map-overlay-watermark">Paraguay Detail • Gran Asunción</div>
+                <div class="gd-map-watermark-text">PARAGUAY DETAIL • ASUNCIÓN COVERAGE</div>
+                <!-- Interactive Center Pin -->
                 <div class="gd-map-pin" id="gdMapPin">
                   <div class="gd-pin-pulse"></div>
                   <div class="gd-pin-badge">
@@ -390,25 +376,31 @@
                   </div>
                   <span class="gd-pin-label" id="gdPinLabel">Asunción (Cobertura Activa)</span>
                 </div>
+                <!-- Zoom Controls -->
                 <div class="gd-map-zoom-controls">
-                  <button type="button" class="gd-zoom-btn" onclick="gdWizard.mapZoom(1)">+</button>
-                  <button type="button" class="gd-zoom-btn" onclick="gdWizard.mapZoom(-1)">−</button>
+                  <button type="button" class="gd-zoom-btn" onclick="gdWizard.mapZoom(1)" title="Zoom in">+</button>
+                  <button type="button" class="gd-zoom-btn" onclick="gdWizard.mapZoom(-1)" title="Zoom out">−</button>
                 </div>
               </div>
             </div>
 
-            <!-- Right: Options & Address Input -->
+            <!-- Right: Location Options & Search Input -->
             <div class="gd-location-controls">
               <div class="gd-step-heading-wrap">
                 <h2 class="gd-step-title">Where works best for you?</h2>
-                <p class="gd-step-sub">Your <strong id="gdLocServiceName" style="color: #ec4899;">Full Detail</strong> can happen at your place or at ours.</p>
+                <p class="gd-step-sub">Your <strong id="gdLocServiceName" style="color: #0f172a;">Full Detail</strong> can happen at your place or at ours.</p>
               </div>
 
-              <!-- Choice Cards -->
+              <!-- 2 Choice Cards -->
               <div class="gd-loc-choices">
                 <div class="gd-loc-choice-card active" id="locChoiceLocation" onclick="gdWizard.selectLocationType('location')">
                   <div class="gd-loc-icon-circle pink-bg">
-                    <i data-lucide="truck" style="width: 24px; height: 24px; color: #ec4899;"></i>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="1" y="3" width="15" height="13"></rect>
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
                   </div>
                   <h4>At Your Location</h4>
                   <p>We come to you</p>
@@ -416,7 +408,10 @@
 
                 <div class="gd-loc-choice-card" id="locChoiceShop" onclick="gdWizard.selectLocationType('shop')">
                   <div class="gd-loc-icon-circle gray-bg">
-                    <i data-lucide="store" style="width: 24px; height: 24px; color: #64748b;"></i>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
                   </div>
                   <h4>At Our Shop</h4>
                   <p>You come to us</p>
@@ -430,7 +425,7 @@
 
                 <div class="gd-search-input-wrap">
                   <i data-lucide="search" class="gd-search-icon"></i>
-                  <input type="text" id="gdAddressInput" class="gd-search-input" placeholder="Escribí tu dirección (Ej: Av. Santa Teresa 1827)..." value="Av. Santa Teresa 1827">
+                  <input type="text" id="gdAddressInput" class="gd-search-input" placeholder="Start typing your address..." value="Av. Santa Teresa 1827">
                 </div>
 
                 <!-- City Whitelist Chips -->
@@ -441,7 +436,7 @@
                 </div>
               </div>
 
-              <!-- Next Button -->
+              <!-- Next Button (Matching Pink Pill) -->
               <div class="gd-action-bar">
                 <button type="button" class="gd-btn-primary" onclick="gdWizard.nextFromLocation()">
                   <span>Next</span>
@@ -464,99 +459,109 @@
           <div class="gd-veh-selects-grid">
             <div class="gd-select-group">
               <label>Year</label>
-              <select id="gdVehYear" class="gd-select-control" onchange="gdWizard.updateVehiclePreview()">
-                <option value="2025">2025</option>
-                <option value="2024" selected>2024</option>
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-              </select>
+              <div class="gd-custom-select-wrap">
+                <select id="gdVehYear" class="gd-select-control" onchange="gdWizard.updateVehiclePreview()">
+                  <option value="2025">2025</option>
+                  <option value="2024" selected>2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                </select>
+                <i data-lucide="chevron-down" class="gd-select-arrow"></i>
+              </div>
             </div>
 
             <div class="gd-select-group">
               <label>Make</label>
-              <select id="gdVehMake" class="gd-select-control" onchange="gdWizard.handleMakeChange()">
-                <option value="Toyota" selected>Toyota</option>
-                <option value="BMW">BMW</option>
-                <option value="Mercedes-Benz">Mercedes-Benz</option>
-                <option value="Honda">Honda</option>
-                <option value="Ford">Ford</option>
-                <option value="Hyundai">Hyundai</option>
-                <option value="Kia">Kia</option>
-                <option value="Chevrolet">Chevrolet</option>
-                <option value="Porsche">Porsche</option>
-                <option value="Audi">Audi</option>
-                <option value="Volkswagen">Volkswagen</option>
-                <option value="Jeep">Jeep</option>
-                <option value="Land Rover">Land Rover</option>
-              </select>
+              <div class="gd-custom-select-wrap">
+                <select id="gdVehMake" class="gd-select-control" onchange="gdWizard.handleMakeChange()">
+                  <option value="Toyota" selected>Toyota</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Mercedes-Benz">Mercedes-Benz</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Hyundai">Hyundai</option>
+                  <option value="Kia">Kia</option>
+                  <option value="Chevrolet">Chevrolet</option>
+                  <option value="Porsche">Porsche</option>
+                  <option value="Audi">Audi</option>
+                  <option value="Volkswagen">Volkswagen</option>
+                  <option value="Jeep">Jeep</option>
+                  <option value="Land Rover">Land Rover</option>
+                </select>
+                <span class="gd-select-spinner"></span>
+              </div>
             </div>
 
             <div class="gd-select-group">
               <label>Model</label>
-              <select id="gdVehModel" class="gd-select-control" onchange="gdWizard.updateVehiclePreview()">
-                <option value="Tacoma / Hilux" selected>Tacoma / Hilux</option>
-                <option value="Land Cruiser / Prado">Land Cruiser / Prado</option>
-                <option value="Corolla">Corolla</option>
-                <option value="Camry">Camry</option>
-                <option value="RAV4">RAV4</option>
-                <option value="SW4 / Fortuner">SW4 / Fortuner</option>
-              </select>
+              <div class="gd-custom-select-wrap">
+                <select id="gdVehModel" class="gd-select-control" onchange="gdWizard.updateVehiclePreview()">
+                  <option value="Tacoma" selected>Tacoma</option>
+                  <option value="Hilux">Hilux</option>
+                  <option value="Land Cruiser">Land Cruiser</option>
+                  <option value="Corolla">Corolla</option>
+                  <option value="Camry">Camry</option>
+                  <option value="RAV4">RAV4</option>
+                  <option value="4Runner">4Runner</option>
+                </select>
+                <span class="gd-select-spinner"></span>
+              </div>
             </div>
           </div>
 
-          <!-- Vehicle Central Render Box -->
+          <!-- Vehicle Central Render Box with Tacoma Truck Image -->
           <div class="gd-veh-render-box">
-            <img id="gdVehMainImg" src="assets/suv-7seat-vector.png" alt="Selected Vehicle Preview" class="gd-veh-main-img">
+            <img id="gdVehMainImg" src="assets/tacoma-truck.png" alt="Toyota Tacoma Preview" class="gd-veh-main-img">
           </div>
 
           <!-- Size Selector Header -->
           <div class="gd-size-section-header">
             <span class="gd-size-title">What size is your vehicle?</span>
-            <span class="gd-size-status"><i data-lucide="check-circle" style="width: 14px; height: 14px; color: #10b981;"></i> Model detected</span>
+            <span class="gd-size-status"><span class="gd-status-spinner"></span> Checking your model...</span>
           </div>
 
-          <!-- 6 Vehicle Size Cards -->
+          <!-- 6 Vehicle Size Cards (Matching Suds Grid) -->
           <div class="gd-sizes-grid">
             <!-- 1. Coupe -->
             <div class="gd-size-card" data-size="coupe" onclick="gdWizard.selectVehicleSize('coupe')">
               <h4>Coupe / 2-seater</h4>
-              <p>Porsche 911, Lotus, Corvette, Mustang</p>
+              <p>Porsche 911, Lotus,<br>Corvette, Mustang</p>
             </div>
 
             <!-- 2. Sedan -->
             <div class="gd-size-card" data-size="sedan" onclick="gdWizard.selectVehicleSize('sedan')">
               <h4>Sedan</h4>
-              <p>Camry, Accord, BMW Serie 3, Corolla, Model 3</p>
+              <p>Camry, Accord, BMW 3<br>Series, Model 3</p>
             </div>
 
             <!-- 3. Crossover -->
             <div class="gd-size-card" data-size="crossover" onclick="gdWizard.selectVehicleSize('crossover')">
               <h4>Crossover</h4>
-              <p>RAV4, Model Y, Subaru Crosstrek, Tucson</p>
+              <p>RAV4, Model Y, Subaru<br>Crosstrek</p>
             </div>
 
-            <!-- 4. SUV / Truck -->
+            <!-- 4. SUV / Truck (Selected with Pink checkmark) -->
             <div class="gd-size-card active" data-size="suv_truck" onclick="gdWizard.selectVehicleSize('suv_truck')">
-              <div class="gd-card-check"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+              <div class="gd-card-check"><i data-lucide="check" style="width: 16px; height: 16px;"></i></div>
               <h4>SUV / Truck</h4>
-              <p>4Runner, Land Rover, Wrangler, Hilux</p>
+              <p>4Runner, Land Rover,<br>Wrangler</p>
             </div>
 
             <!-- 5. XL SUV / Truck -->
             <div class="gd-size-card" data-size="xl_suv" onclick="gdWizard.selectVehicleSize('xl_suv')">
               <h4>XL SUV / Truck</h4>
-              <p>Tahoe, F-250, Minivan, Land Cruiser</p>
+              <p>Tahoe, F-250, Minivan</p>
               <span class="gd-pill-badge">3rd row seats</span>
             </div>
 
             <!-- 6. Van / Sprinter -->
             <div class="gd-size-card" data-size="van_sprinter" onclick="gdWizard.selectVehicleSize('van_sprinter')">
               <h4>Van / Sprinter</h4>
-              <p>Sprinter, Transit, ProMaster, Carnival</p>
+              <p>Sprinter, Transit,<br>ProMaster</p>
             </div>
           </div>
 
@@ -575,96 +580,53 @@
           <div class="gd-step-heading-row">
             <div>
               <h2 class="gd-step-title" id="gdTierServiceName">Full Detail</h2>
-              <p class="gd-step-sub">Select your tier package</p>
             </div>
             <div class="gd-mini-car-thumb">
-              <img id="gdMiniCarImg" src="assets/suv-7seat-vector.png" alt="Mini Car">
+              <img id="gdMiniCarImg" src="assets/tacoma-truck.png" alt="Toyota Tacoma">
             </div>
           </div>
 
-          <!-- 3 Trophy Cards -->
+          <!-- 3 Trophy Cards (Using 3D Trophy Assets) -->
           <div class="gd-trophy-grid">
-            <!-- 1. Full Maintenance (Silver / Bronze Trophy) -->
+            <!-- 1. Full Maintenance (Silver Trophy) -->
             <div class="gd-trophy-card" onclick="gdWizard.selectTier('maintenance', 'Full Maintenance', 150, 250000)">
-              <div class="gd-trophy-icon-wrap trophy-silver">
-                <svg viewBox="0 0 24 24" width="68" height="68" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M4 22h16" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34" fill="#cbd5e1" stroke="#94a3b8"/>
-                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" fill="url(#silverGradient)" stroke="#94a3b8"/>
-                  <defs>
-                    <linearGradient id="silverGradient" x1="6" y1="2" x2="18" y2="15" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#f1f5f9"/>
-                      <stop offset="0.5" stop-color="#cbd5e1"/>
-                      <stop offset="1" stop-color="#94a3b8"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
+              <div class="gd-trophy-icon-wrap">
+                <img src="assets/trophy-silver.png" alt="Silver Trophy - Full Maintenance" class="gd-trophy-img">
               </div>
               <h3 class="gd-trophy-title">Full Maintenance</h3>
               <div class="gd-trophy-meta">
                 <span class="gd-time-pill" id="pillTimeMaint">2 hours 30 min</span>
               </div>
-              <p class="gd-trophy-price" id="priceMaint">Gs. 250.000</p>
               <div class="gd-trophy-arrow">
-                <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
               </div>
             </div>
 
             <!-- 2. Gold Premium (Gold Trophy) -->
-            <div class="gd-trophy-card popular" onclick="gdWizard.selectTier('gold', 'Gold Premium', 210, 350000)">
-              <div class="gd-trophy-icon-wrap trophy-gold">
-                <svg viewBox="0 0 24 24" width="68" height="68" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M4 22h16" stroke="#d97706" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34" fill="#fde68a" stroke="#d97706"/>
-                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" fill="url(#goldGradient)" stroke="#d97706"/>
-                  <defs>
-                    <linearGradient id="goldGradient" x1="6" y1="2" x2="18" y2="15" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#fef08a"/>
-                      <stop offset="0.5" stop-color="#f59e0b"/>
-                      <stop offset="1" stop-color="#b45309"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
+            <div class="gd-trophy-card" onclick="gdWizard.selectTier('gold', 'Gold Premium', 210, 350000)">
+              <div class="gd-trophy-icon-wrap">
+                <img src="assets/trophy-gold.png" alt="Gold Trophy - Gold Premium" class="gd-trophy-img">
               </div>
               <h3 class="gd-trophy-title">Gold Premium</h3>
               <div class="gd-trophy-meta">
                 <span class="gd-time-pill" id="pillTimeGold">3 hours 30 min</span>
               </div>
-              <p class="gd-trophy-price" id="priceGold">Gs. 350.000</p>
               <div class="gd-trophy-arrow">
-                <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
               </div>
             </div>
 
             <!-- 3. Masterpiece (Diamond Trophy) -->
             <div class="gd-trophy-card" onclick="gdWizard.selectTier('masterpiece', 'Masterpiece', 300, 500000)">
-              <div class="gd-trophy-icon-wrap trophy-diamond">
-                <svg viewBox="0 0 24 24" width="68" height="68" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M4 22h16" stroke="#0284c7" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34" fill="#bae6fd" stroke="#0284c7"/>
-                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" fill="url(#diamondGradient)" stroke="#0284c7"/>
-                  <defs>
-                    <linearGradient id="diamondGradient" x1="6" y1="2" x2="18" y2="15" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#e0f2fe"/>
-                      <stop offset="0.5" stop-color="#38bdf8"/>
-                      <stop offset="1" stop-color="#0284c7"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
+              <div class="gd-trophy-icon-wrap">
+                <img src="assets/trophy-diamond.png" alt="Diamond Trophy - Masterpiece" class="gd-trophy-img">
               </div>
               <h3 class="gd-trophy-title">Masterpiece</h3>
               <div class="gd-trophy-meta">
                 <span class="gd-time-pill" id="pillTimeMaster">5 hours</span>
               </div>
-              <p class="gd-trophy-price" id="priceMaster">Gs. 500.000</p>
               <div class="gd-trophy-arrow">
-                <i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i>
+                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
               </div>
             </div>
           </div>
@@ -680,7 +642,7 @@
               <p class="gd-step-sub" id="gdSchedSub">Gold Premium · 3 hours 30 min</p>
             </div>
             <div class="gd-mini-car-thumb">
-              <img id="gdMiniCarImg2" src="assets/suv-7seat-vector.png" alt="Mini Car">
+              <img id="gdMiniCarImg2" src="assets/tacoma-truck.png" alt="Toyota Tacoma">
             </div>
           </div>
 
@@ -821,7 +783,7 @@
       </div>
 
     </div>
-  </section>
+  </main>
 
   <!-- 5. TRUST PILLARS BAR (4 Value Pillars) -->
   <section class="trust-pillars-section">
